@@ -12,13 +12,14 @@ namespace ConsoleApp1
         public string Name { get; set; }
         public List<string> Options { get; set; }
 
+        public List<Item> ItemsInRoom { get; set; }
         public List<Item> ItemsInLocation { get; set; }
         public Location LocationNorth{ get; set; }
         public Location LocationSouth { get; set; }
         public Location LocationEast { get; set; }
         public Location LocationWest { get; set; }
 
-        public Boolean canEnter { get; set; }
+        public bool canEnter { get; set; }
     }
 
 }

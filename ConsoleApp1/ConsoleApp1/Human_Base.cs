@@ -25,8 +25,6 @@ namespace ConsoleApp1
         public string HomeWorld { get; set; }
         public int CurrentPosition { get; set; }
 
-        public List<string> Options { get; set; }
-
 
         public Human_Base(string name, int ws, int bs, int str, int t, int ag, int inte, int per, int wp, int fel, int ifl)
         {

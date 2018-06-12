@@ -6,11 +6,11 @@ using System.Threading.Tasks;
 
 namespace ConsoleApp1
 {
-    class Potion:Item
+    class Potion: Item_base
     {
         public int AmountToHeal { get; set; }
 
-        public Potion(int id, string name, string nameplural, int amounttoheal, double weight):base(id, name, nameplural, weight)
+        public Potion(string name, int amounttoheal, double weight):base(id, name, nameplural, weight)
         {
             AmountToHeal = amounttoheal;
         }
