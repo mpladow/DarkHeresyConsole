@@ -4,7 +4,7 @@
     {
         public string Language { get; set; }
 
-        public Book(string name, string language, double weight): base(name, weight)
+        public Book(int id, string name, string nameplural, string language, double weight) : base(id, name, nameplural, weight)
         {
             Language = language;
         }

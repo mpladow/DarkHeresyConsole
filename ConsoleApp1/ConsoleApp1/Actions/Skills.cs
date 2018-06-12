@@ -19,11 +19,11 @@ namespace ConsoleApp1
             message += "You rolled a " + result.Item1 + " against your Fellowship value of " + modValue;
             if (result.Item2 == false)
             {
-                message += ", unfortunately you failed.";
+                message += ", unfortunately you were spotted...";
             }
             else
             {
-                message += ", success!"; ;
+                message += ", you are currently sneaking!"; ;
             }
             return message;
 
@@ -34,14 +34,14 @@ namespace ConsoleApp1
             var result = CharacteristicChecks.StrengthCheck(modValue);
 
             var message = "You attempt to break down the door.\r\n";
-            message += "You rolled a " + result.Item1 + " against your Strength value of " + modValue;
+            message += "(You rolled a " + result.Item1 + " against your Strength value of " + modValue+ ").";
             if (result.Item2 == false)
             {
                 message += ", unfortunately you failed.";
             }
             else
             {
-                message += ", success!"; ;
+                message += ", you successfully"; ;
             }
             return message;
 

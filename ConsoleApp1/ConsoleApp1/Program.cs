@@ -47,8 +47,6 @@ namespace ConsoleApp1
                     }
                 }
 
-
-                Constants.Difficulties.GenerateDifficulties();
                 Console.WriteLine("You see a guard door.");
                 Console.WriteLine(Skills.Sneak(player.Fel, Constants.Difficulties.Trivial));
                 Console.ReadLine();

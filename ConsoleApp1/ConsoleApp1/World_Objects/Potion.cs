@@ -10,7 +10,7 @@ namespace ConsoleApp1
     {
         public int AmountToHeal { get; set; }
 
-        public Potion(string name, int amounttoheal, double weight):base(name, weight)
+        public Potion(int id, string name, string nameplural, int amounttoheal, double weight):base(id, name, nameplural, weight)
         {
             AmountToHeal = amounttoheal;
         }
