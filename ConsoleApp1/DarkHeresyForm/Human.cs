@@ -8,8 +8,6 @@
         public int Gold { get; set; }
         public int XP { get; set; }
 
-        public List<Skills> Skills{ get; set; }
-
         public Human(string name, int hp, int mana, int gold, int xp)
         {
             Name = name;

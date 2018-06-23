@@ -6,11 +6,8 @@ using System.Threading.Tasks;
 
 namespace ConsoleApp1.World_Objects
 {
-    class Door:WorldObject_base
+    class WorldObject_base
     {
-        public Door()
-        {
-
-        }
+        public string Name { get; set; }
     }
 }

@@ -8,12 +8,6 @@ using System.Windows.Input;
 
 namespace ConsoleApp1
 {
-    public interface ISkillCheck
-    {
-        public int ModValue { get; set; }
-        public int Result { get; set; }
-    }
-    
     static class Skills
     {
        

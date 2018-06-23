@@ -1,4 +1,5 @@
-﻿using System;
+﻿using DarkHeresyForm;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -136,19 +137,6 @@ namespace ConsoleApp1.Utilities
             }
 
         }
-
-        public static void WriteToTop(string text)
-        {
-            Console.SetCursorPosition((Console.WindowWidth - text.Length) / 2, (Console.WindowTop + 1));
-            Console.WriteLine(text);
-        }
-
-        public static void WriteToCentre(string text)
-        {
-            Console.SetCursorPosition((Console.WindowWidth - text.Length) / 2, (Console.WindowHeight-1)/3);
-            Console.WriteLine(text);
-        }
-
         //this retrieves the options and formats them into a horizontal menu
         static void BuildOptionsMenu(List<string> options, string selected, string message)
         {

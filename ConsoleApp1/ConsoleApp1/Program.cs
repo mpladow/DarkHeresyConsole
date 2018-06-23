@@ -14,91 +14,103 @@ namespace ConsoleApp1
         static void Main(string[] args)
         {
             var inGame = true;
-            var generatingChar = true;
+
+            UserInterface.WriteToCentre("Hello World");
+            Console.ReadLine();
             while (inGame)
             {
-                //TEST
-                List<(int, string)> difficulties = Difficulties.GenerateDifficulties();
-                var xx= difficulties.FirstOrDefault(x => x.Item1 == 1);
-                var xxx = xx.Item2;
-                //ENDTEST
-
-                var player = new Player();
-                while (generatingChar)
+                //create options menu - which will include new game, load game, and exit
+                var mainMenu = new List<UserInterface.ICommand>()
                 {
-                    Player.ResetValues(player);
-                    Player.GeneratePlayer(player);
-                    var input = "";
+                    new UserInterface.NewGame(),
+                    new UserInterface.Exit()
+                };
+                UserInterface.RegisterMenuInput(mainMenu, "What would you like to do today?");
+                
+                Console.ReadLine();
+            }
+        }
+        public static void NewGame()
+        {
 
-                    Console.WriteLine("You were born on a {0}.", player.HomeWorld);
-                    Console.WriteLine("Enter a name for your character.");
-                    player.Name = Console.ReadLine();
-                    UserInterface.ShowCharacterStats(player);
+            Player[] players = CharacterCreation();
 
-                    Console.WriteLine("");
+            Console.WriteLine("Character creation complete");
 
-                    Console.WriteLine("Would you like to generate a new character?");
-
-                    input = Console.ReadLine();
-
-                    if (input == "n")
-                    {
-                        generatingChar = false;
-                    }
-                }
-
+            while (true)
+            {
                 Console.WriteLine("You see a guard door.");
-                Console.WriteLine(Skills.Sneak(player.Fel, Constants.Difficulties.Trivial));
+                Console.WriteLine(Skills.Sneak(players[0], players[0].Fel, Constants.Difficulties.Trivial));
                 Console.ReadLine();
 
                 Console.WriteLine("The door is barred with iron bars.");
-                Console.WriteLine(Skills.BreakDoor(player.Str, Constants.Difficulties.VeryHard));
+                Console.WriteLine(Skills.BreakDoor(players[0], players[0].Str, Constants.Difficulties.VeryHard));
                 Console.ReadLine();
 
                 Console.WriteLine("You talk to the guard, who is wary of you");
-                Console.WriteLine(Skills.Charm(player.Fel, Constants.Difficulties.Ordinary));
+                Console.WriteLine(Skills.Charm(players[0].Fel, Constants.Difficulties.Ordinary));
                 Console.ReadLine();
-
-                //var player = new Player("Michael", 10, 15, 100, 0);
-                //var ui = new UserInterface();
-                //player.Options = player.OptionsMenu();
-
-                //var input1 = "";
-                //var input2 = "";
-
-                ////Generate Room
-                //var entranceRoom = new Room("bedroom", "small", "low");
-                //var itemsInRoom = new List<Object>()
-                //{
-                //    new Book("Book of Light", "Standard", 2.0),
-                //    new Potion("Healing Potion", 10, 0.2)
-                //};
-
-                //entranceRoom.Options = entranceRoom.OptionsMenu();
-
-                //Console.WriteLine("You enter a {0} {1}, with a bed and a small book on the table.", entranceRoom.Size, entranceRoom.Name);
-
-                //input1 = ui.RegisterInput(player.Options, "What do you choose to do?");//this will wait for an input from the user
-                //Console.WriteLine("You wish to {0} ...", input1);
-                //input2 = ui.RegisterInput(entranceRoom.Options, "");
-
-                //Console.WriteLine("You try to {0} the {1}",input1, input2);
-                //Console.ReadLine();
-
             }
+
 
         }
 
+        public static Player[] CharacterCreation() {
+            Player[] players = new Player[3];
+            do
+            {
+                for (int i = 0; i < players.Length; i++)
+                {
+                    if (players[i] != null)
+                    {
+                        Player.ResetValues(players[i]);
+                    }
+                    players[i] = new Player();
+                    Player.GeneratePlayer(players[i]);
+                    var input = "";
+
+                    Console.WriteLine("You were born on a {0}.", players[i].HomeWorld);
+                    var acolyteNumber = "";
+                    switch (i)
+                    {
+                        case 0:
+                            acolyteNumber = "[first]";
+                            break;
+                        case 1:
+                            acolyteNumber = "[second]";
+                            break;
+                        case 2:
+                            acolyteNumber = "[third]";
+                            break;
+                        default:
+                            acolyteNumber = "";
+                            break;
+                    }
+                    Console.WriteLine("Enter a name for your {0} Acolyte.", acolyteNumber);
+                    players[i].Name = Console.ReadLine();
+                    UserInterface.ShowCharacterStats(players[i]);
+
+                    Console.WriteLine("");
+
+                    Console.WriteLine("Press 'R' to reset this character, or any other key to continue...");
+
+                    input = Console.ReadLine();
+                    if (input == "r")
+                    {
+                        UserInterface.RefreshUI();
+                        i = i - 1;
+                    }
+                }
+                break;
+            } while (true);
+            return players;
+        }
         public static void SetToTop(Player player)
         {
             var top = Console.CursorTop;
             var left = Console.CursorLeft;
             Console.SetCursorPosition(0, 0);
         }
-
-
-
-
-
     }
+
 }
