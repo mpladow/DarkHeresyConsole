@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace Engine.Actions
 {
-    static class DiceRolls
+    public static class DiceRolls
     {
         public static string RollD100(Random rn)
         {

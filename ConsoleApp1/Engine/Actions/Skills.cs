@@ -10,11 +10,11 @@ namespace Engine
 {
     public interface ISkillCheck
     {
-        public int ModValue { get; set; }
-        public int Result { get; set; }
+        int ModValue { get; set; }
+        int Result { get; set; }
     }
     
-    static class Skills
+    class Skills
     {
        
         public static string Sneak(Player player, int charvalue, int difficulty = 0)

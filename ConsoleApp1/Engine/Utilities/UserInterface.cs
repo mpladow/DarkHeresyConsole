@@ -18,7 +18,7 @@ namespace Engine.Utilities
             public string Description => "New Game";
             public void Execute()
             {
-                Program.NewGame();
+                
             }
         }
         public class Exit : ICommand
