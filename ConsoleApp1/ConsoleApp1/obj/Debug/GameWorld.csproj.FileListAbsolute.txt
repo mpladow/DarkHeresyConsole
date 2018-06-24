@@ -18,3 +18,5 @@ C:\Users\mplad\Documents\GitHub\DarkHeresyConsole\ConsoleApp1\ConsoleApp1\bin\De
 C:\Users\mplad\Documents\GitHub\DarkHeresyConsole\ConsoleApp1\ConsoleApp1\obj\Debug\GameWorld.exe
 C:\Users\mplad\Documents\GitHub\DarkHeresyConsole\ConsoleApp1\ConsoleApp1\obj\Debug\GameWorld.pdb
 C:\Users\mplad\Documents\GitHub\DarkHeresyConsole\ConsoleApp1\ConsoleApp1\obj\Debug\GameWorld.csprojAssemblyReference.cache
+C:\Users\mplad\DarkHeresyConsole\ConsoleApp1\ConsoleApp1\obj\Debug\GameWorld.csprojAssemblyReference.cache
+C:\Users\mplad\DarkHeresyConsole\ConsoleApp1\ConsoleApp1\obj\Debug\GameWorld.csproj.CoreCompileInputs.cache

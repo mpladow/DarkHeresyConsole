@@ -5,6 +5,10 @@ VisualStudioVersion = 15.0.27703.1
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GameWorld", "ConsoleApp1\GameWorld.csproj", "{DF84E740-C3AD-4C71-9C50-2CA2191519F7}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DarkHeresyForm", "DarkHeresyForm\DarkHeresyForm.csproj", "{642288E5-C218-435F-B5B4-F20A09DE5C82}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Engine", "Engine\Engine.csproj", "{019FEF6D-56CC-4C63-BB25-7E642CEE6639}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -15,6 +19,14 @@ Global
 		{DF84E740-C3AD-4C71-9C50-2CA2191519F7}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{DF84E740-C3AD-4C71-9C50-2CA2191519F7}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{DF84E740-C3AD-4C71-9C50-2CA2191519F7}.Release|Any CPU.Build.0 = Release|Any CPU
+		{642288E5-C218-435F-B5B4-F20A09DE5C82}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{642288E5-C218-435F-B5B4-F20A09DE5C82}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{642288E5-C218-435F-B5B4-F20A09DE5C82}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{642288E5-C218-435F-B5B4-F20A09DE5C82}.Release|Any CPU.Build.0 = Release|Any CPU
+		{019FEF6D-56CC-4C63-BB25-7E642CEE6639}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{019FEF6D-56CC-4C63-BB25-7E642CEE6639}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{019FEF6D-56CC-4C63-BB25-7E642CEE6639}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{019FEF6D-56CC-4C63-BB25-7E642CEE6639}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

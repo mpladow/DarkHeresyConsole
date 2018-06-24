@@ -1,0 +1,2 @@
+C:\Users\mplad\DarkHeresyConsole\ConsoleApp1\Engine\obj\Debug\Engine.csprojAssemblyReference.cache
+C:\Users\mplad\DarkHeresyConsole\ConsoleApp1\Engine\obj\Debug\Engine.csproj.CoreCompileInputs.cache
