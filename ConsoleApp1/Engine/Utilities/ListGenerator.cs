@@ -5,28 +5,53 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using static Engine.Characters.HomeWorlds.HomeWorlds_Base;
+using static Engine.Characters.HomeWorlds.HomeWorlds;
 using static Engine.Statistics.CharacterStat;
 
 namespace Engine.Utilities
 {
     public static class ListGenerator
     {
-        public static List<HomeWorlds_Base> GenerateHomeWorldList()
+        //this static class is used to generate the world objects and concepts.
+        public static List<Characters.HomeWorlds.HomeWorlds> GenerateHomeWorldList()
         {
-            List<HomeWorlds_Base> list = new List<HomeWorlds_Base>();
-            var FeralWorld = new HomeWorlds_Base(HomeWorlds.FeralWorld.ToString(), "A feral world");
+            List<Characters.HomeWorlds.HomeWorlds> list = new List<Characters.HomeWorlds.HomeWorlds>();
+            var FeralWorld = new Characters.HomeWorlds.HomeWorlds(Characters.HomeWorlds.HomeWorlds.enumHomeWorlds.FeralWorld.ToString(), "A feral world");
             FeralWorld.StatsAffectedPositive.Add(StatName.Str.ToString());
             FeralWorld.StatsAffectedPositive.Add(StatName.T.ToString());
             FeralWorld.StatsAffectedNegative.Add(StatName.Inte.ToString());
             list.Add(FeralWorld);
 
-            var HiveWorld = new HomeWorlds_Base(HomeWorlds.HiveWorld.ToString(), "A hive world");
-            var HighBorn = new HomeWorlds_Base(HomeWorlds.HighBorn.ToString(), "A High Born from an ecclessiarchal world.");
-            var ForgeWorld = new HomeWorlds_Base(HomeWorlds.ForgeWorld.ToString(), "A forge world");
-            var ShrineWorld = new HomeWorlds_Base(HomeWorlds.ShrineWorld.ToString(), "A shrine world");
-            var VoidBorn = new HomeWorlds_Base(HomeWorlds.VoidBorn.ToString(), "A void-born");
+            var HiveWorld = new Characters.HomeWorlds.HomeWorlds(Characters.HomeWorlds.HomeWorlds.enumHomeWorlds.HiveWorld.ToString(), "A hive world");
+            HiveWorld.StatsAffectedPositive.Add(StatName.Ag.ToString());
+            HiveWorld.StatsAffectedPositive.Add(StatName.Per.ToString());
+            HiveWorld.StatsAffectedNegative.Add(StatName.Wp.ToString());
+            list.Add(HiveWorld);
 
+            var HighBorn = new Characters.HomeWorlds.HomeWorlds(Characters.HomeWorlds.HomeWorlds.enumHomeWorlds.HighBorn.ToString(), "A High Born from an ecclessiarchal world.");
+            HighBorn.StatsAffectedPositive.Add(StatName.Fel.ToString());
+            HighBorn.StatsAffectedPositive.Add(StatName.Ifl.ToString());
+            HighBorn.StatsAffectedNegative.Add(StatName.T.ToString());
+            list.Add(HighBorn);
+
+
+            var ForgeWorld = new Characters.HomeWorlds.HomeWorlds(Characters.HomeWorlds.HomeWorlds.enumHomeWorlds.ForgeWorld.ToString(), "An industrial forge world");
+            ForgeWorld.StatsAffectedPositive.Add(StatName.Inte.ToString());
+            ForgeWorld.StatsAffectedPositive.Add(StatName.T.ToString());
+            ForgeWorld.StatsAffectedNegative.Add(StatName.Fel.ToString());
+            list.Add(ForgeWorld);
+
+            var ShrineWorld = new Characters.HomeWorlds.HomeWorlds(Characters.HomeWorlds.HomeWorlds.enumHomeWorlds.ShrineWorld.ToString(), "A shrine world");
+            ShrineWorld.StatsAffectedPositive.Add(StatName.Fel.ToString());
+            ShrineWorld.StatsAffectedPositive.Add(StatName.Wp.ToString());
+            ShrineWorld.StatsAffectedNegative.Add(StatName.Per.ToString());
+            list.Add(ShrineWorld);
+
+            var VoidBorn = new Characters.HomeWorlds.HomeWorlds(Characters.HomeWorlds.HomeWorlds.enumHomeWorlds.VoidBorn.ToString(), "A void-born");
+            VoidBorn.StatsAffectedPositive.Add(StatName.Inte.ToString());
+            VoidBorn.StatsAffectedPositive.Add(StatName.Wp.ToString());
+            VoidBorn.StatsAffectedNegative.Add(StatName.Str.ToString());
+            list.Add(VoidBorn);
             return list;
         }
     }

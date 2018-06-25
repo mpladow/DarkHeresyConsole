@@ -19,6 +19,11 @@ namespace Engine
             Weight = weight;
         }
 
+        private void EquipItem()
+        {
+
+        }
+
 
     }
 

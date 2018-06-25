@@ -13,7 +13,7 @@ using System.Reflection;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using static Engine.Characters.HomeWorlds.HomeWorlds_Base;
+using static Engine.Characters.HomeWorlds.HomeWorlds;
 using static Engine.Human_Base;
 using static Engine.Statistics.CharacterStat;
 
@@ -60,8 +60,26 @@ namespace DarkHeresyForm
         {
             AllocateValues(Player);
             SelectHomeWorld(this.Player);
-            rtbInformation.Text = String.Format("You were born on a {0}.", Player.HomeWorld);
+            rtbInformation.Text += String.Format("{0}. {1}", Player.HomeWorld.Name, Player.HomeWorld.Description);
+            rtbInformation.Text += Environment.NewLine;
+            rtbInformation.Text += "Strengths include:";
+            rtbInformation.Text += Environment.NewLine;
+            foreach (var item in Player.HomeWorld.StatsAffectedPositive)
+            {
+                rtbInformation.Text += item;
+                rtbInformation.Text += Environment.NewLine;
+            }
+            rtbInformation.Text += "Weaknesses include:";
+            rtbInformation.Text += Environment.NewLine;
+            foreach (var item in Player.HomeWorld.StatsAffectedNegative)
+            {
+                rtbInformation.Text += item;
+                rtbInformation.Text += Environment.NewLine;
+            }
+
             btnGenerateHomeworld.Hide();
+
+
             //create new button and replace the current one.
             CreateFormButton("Generate Statistics", new Point(93, 259), new Size(142, 23), b_AllocateValues, panelInformation);
 
@@ -75,6 +93,7 @@ namespace DarkHeresyForm
             AllocateValues(_player);
             rtbInformation.Text += Environment.NewLine;
             rtbInformation.Text += String.Format("Character Statistics have been generated: WS: {0}, BS: {1}", Player.Ws.Value, Player.Bs.Value);
+            UpdateDisplay(panelPlayerStats, Player);
         }
 
         void CreateFormButton(string buttonName, Point location, Size size, EventHandler handler, Panel panel = null)
@@ -87,46 +106,66 @@ namespace DarkHeresyForm
             btn.Name = btnNameString;
             btn.Click += new EventHandler(handler);
             panel.Controls.Add(btn);
-
-
         }
+
+        void UpdateDisplay(Panel panel, Player player)
+        {
+            var playerProperties = player.GetType().GetProperties().Where(x => x.PropertyType == typeof(CharacterStat)).ToList();//finds the properties of the player
+            var children = panel.Controls.OfType<TextBox>();//
+            var enumPropertyNames = EnumUtility.GetValues<StatName>();
+            foreach (var control in children)
+            {
+                //if this text box contains the appropriate statistic, then update the text
+                foreach (var stat in enumPropertyNames)
+                {
+                    control.Name = "tb" + stat.ToString();
+
+
+                    var xx = playerProperties.Where(x => x.Name == stat.ToString()).FirstOrDefault();
+                    control.Text = xx.GetValue(player.);
+
+                }
+            }
+        }
+
+
 
         static void SelectHomeWorld(Player player)
         {
-            List<HomeWorlds_Base> list = ListGenerator.GenerateHomeWorldList();
+            List<Engine.Characters.HomeWorlds.HomeWorlds> list = ListGenerator.GenerateHomeWorldList();
 
             Random rn = new Random();
             var result = Convert.ToInt32(DiceRolls.RollD100(rn));
             if (result >= 1 && result <= 15)
 
-                player.HomeWorld = list.Where(x => x.Name == HomeWorlds.FeralWorld.ToString()).FirstOrDefault();
+                player.HomeWorld = list.Where(x => x.Name == enumHomeWorlds.FeralWorld.ToString()).FirstOrDefault();
             if (result >= 16 && result <= 33)
-                player.HomeWorld = list.Where(x => x.Name == HomeWorlds.ForgeWorld.ToString()).FirstOrDefault();
+                player.HomeWorld = list.Where(x => x.Name == enumHomeWorlds.ForgeWorld.ToString()).FirstOrDefault();
             if (result >= 34 && result <= 44)
-                player.HomeWorld = list.Where(x => x.Name == HomeWorlds.HighBorn.ToString()).FirstOrDefault();
+                player.HomeWorld = list.Where(x => x.Name == enumHomeWorlds.HighBorn.ToString()).FirstOrDefault();
             if (result >= 45 && result <= 69)
-                player.HomeWorld = list.Where(x => x.Name == HomeWorlds.HiveWorld.ToString()).FirstOrDefault();
+                player.HomeWorld = list.Where(x => x.Name == enumHomeWorlds.HiveWorld.ToString()).FirstOrDefault();
             if (result >= 70 && result <= 85)
-                player.HomeWorld = list.Where(x => x.Name == HomeWorlds.ShrineWorld.ToString()).FirstOrDefault();
+                player.HomeWorld = list.Where(x => x.Name == enumHomeWorlds.ShrineWorld.ToString()).FirstOrDefault();
             if (result >= 86 && result <= 100)
-                player.HomeWorld = list.Where(x => x.Name == HomeWorlds.VoidBorn.ToString()).FirstOrDefault();
+                player.HomeWorld = list.Where(x => x.Name == enumHomeWorlds.VoidBorn.ToString()).FirstOrDefault();
         }
 
-        static void ResetValues(Player player)
-        {
-            PropertyInfo[] pi = player.GetType().GetProperties();
-            for (int i = 0; i < pi.Length; i++)
-            {
-                if (pi[i].PropertyType == typeof(int))
-                {
-                    pi[i].SetValue(player, 0);
-                }
-                if (pi[i].PropertyType == typeof(string))
-                {
-                    pi[i].SetValue(player, "");
-                }
-            }
-        }
+        //static void ResetValues(Player player)
+        //{
+        //    PropertyInfo[] pi = player.GetType().GetProperties();
+        //    for (int i = 0; i < pi.Length; i++)
+        //    {
+        //        if (pi[i].PropertyType == typeof(int))
+        //        {
+        //            pi[i].SetValue(player, 0);
+        //        }
+        //        if (pi[i].PropertyType == typeof(string))
+        //        {
+        //            pi[i].SetValue(player, "");
+        //        }
+        //    }
+        //}
         static void AllocateValues(Player player)
         {
             Random rn = new Random();

@@ -47,10 +47,8 @@
     <Compile Include="Actions\DiceRolls.cs" />
     <Compile Include="Actions\Skills.cs" />
     <Compile Include="Armour\Armour_base.cs" />
-    <Compile Include="Characters\HomeWorlds\HomeWorlds_Base.cs" />
-    <Compile Include="Characters\HomeWorld_Base.cs" />
+    <Compile Include="Characters\HomeWorlds\HomeWorlds.cs" />
     <Compile Include="Inventory.cs" />
-    <Compile Include="Characters\Human.cs" />
     <Compile Include="Characters\Human_Base.cs" />
     <Compile Include="Locations\Location.cs" />
     <Compile Include="Locations\Room.cs" />

@@ -33,7 +33,7 @@ namespace Engine
 
         public List<Item_base> InventoryItems{ get; set; }
 
-        public HomeWorlds_Base HomeWorld { get; set; }
+        public HomeWorlds HomeWorld { get; set; }
         public int CurrentPosition { get; set; }
 
 
