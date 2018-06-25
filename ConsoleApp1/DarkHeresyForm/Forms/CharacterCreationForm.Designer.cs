@@ -59,7 +59,6 @@
             this.button1 = new System.Windows.Forms.Button();
             this.label14 = new System.Windows.Forms.Label();
             this.cboHomeWorld = new System.Windows.Forms.ComboBox();
-            this.btnSelectHomeWorld = new System.Windows.Forms.Button();
             this.panelPlayerStats.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -194,7 +193,7 @@
             // 
             // btnGenerateHomeworld
             // 
-            this.btnGenerateHomeworld.Location = new System.Drawing.Point(56, 159);
+            this.btnGenerateHomeworld.Location = new System.Drawing.Point(52, 395);
             this.btnGenerateHomeworld.Name = "btnGenerateHomeworld";
             this.btnGenerateHomeworld.Size = new System.Drawing.Size(142, 33);
             this.btnGenerateHomeworld.TabIndex = 15;
@@ -204,7 +203,6 @@
             // 
             // panelPlayerStats
             // 
-            this.panelPlayerStats.Controls.Add(this.btnSelectHomeWorld);
             this.panelPlayerStats.Controls.Add(this.cboHomeWorld);
             this.panelPlayerStats.Controls.Add(this.tbStatIfl);
             this.panelPlayerStats.Controls.Add(this.tbStatFel);
@@ -306,7 +304,7 @@
             // label13
             // 
             this.label13.AutoSize = true;
-            this.label13.Location = new System.Drawing.Point(15, 224);
+            this.label13.Location = new System.Drawing.Point(15, 178);
             this.label13.Name = "label13";
             this.label13.Size = new System.Drawing.Size(60, 13);
             this.label13.TabIndex = 19;
@@ -314,7 +312,7 @@
             // 
             // rtbInformation
             // 
-            this.rtbInformation.Location = new System.Drawing.Point(37, 355);
+            this.rtbInformation.Location = new System.Drawing.Point(37, 309);
             this.rtbInformation.Name = "rtbInformation";
             this.rtbInformation.Size = new System.Drawing.Size(215, 157);
             this.rtbInformation.TabIndex = 16;
@@ -341,21 +339,11 @@
             // cboHomeWorld
             // 
             this.cboHomeWorld.FormattingEnabled = true;
-            this.cboHomeWorld.Location = new System.Drawing.Point(81, 221);
+            this.cboHomeWorld.Location = new System.Drawing.Point(81, 175);
             this.cboHomeWorld.Name = "cboHomeWorld";
             this.cboHomeWorld.Size = new System.Drawing.Size(152, 21);
             this.cboHomeWorld.TabIndex = 21;
             this.cboHomeWorld.SelectedIndexChanged += new System.EventHandler(this.cboHomeWorld_SelectedIndexChanged);
-            // 
-            // btnSelectHomeWorld
-            // 
-            this.btnSelectHomeWorld.Location = new System.Drawing.Point(51, 414);
-            this.btnSelectHomeWorld.Name = "btnSelectHomeWorld";
-            this.btnSelectHomeWorld.Size = new System.Drawing.Size(137, 30);
-            this.btnSelectHomeWorld.TabIndex = 29;
-            this.btnSelectHomeWorld.Text = "Select this homeworld";
-            this.btnSelectHomeWorld.UseVisualStyleBackColor = true;
-            this.btnSelectHomeWorld.Click += new System.EventHandler(this.btnSelectHomeWorld_Click);
             // 
             // CharacterCreationForm
             // 
@@ -412,6 +400,5 @@
         private System.Windows.Forms.Button button1;
         private System.Windows.Forms.ComboBox cboHomeWorld;
         private System.Windows.Forms.Label label14;
-        private System.Windows.Forms.Button btnSelectHomeWorld;
     }
 }

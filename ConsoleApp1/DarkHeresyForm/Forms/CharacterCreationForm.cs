@@ -62,48 +62,31 @@ namespace DarkHeresyForm
         //FUNCTIONS FOR THE CLASS
         private void btnGenerateHomeworld_Click(object sender, EventArgs e)
         {
-            AllocateValues(Player);
-            SelectHomeWorld(this.Player);
-            rtbInformation.Text += String.Format("{0}. {1}", Player.HomeWorld.Name, Player.HomeWorld.Description);
-            rtbInformation.Text += Environment.NewLine;
-            rtbInformation.Text += "Strengths include:";
-            rtbInformation.Text += Environment.NewLine;
-            foreach (var item in Player.HomeWorld.StatsAffectedPositive)
-            {
-                rtbInformation.Text += item;
-                rtbInformation.Text += Environment.NewLine;
-            }
-            rtbInformation.Text += "Weaknesses include:";
-            rtbInformation.Text += Environment.NewLine;
-            foreach (var item in Player.HomeWorld.StatsAffectedNegative)
-            {
-                rtbInformation.Text += item;
-                rtbInformation.Text += Environment.NewLine;
-            }
 
-            
+            //SelectHomeWorld(this.Player);
+
             AllocateValues(Player);
             rtbInformation.Text += Environment.NewLine;
             rtbInformation.Text += String.Format("Character Statistics have been generated.");
             UpdateDisplay(panelPlayerStats, Player);
 
             btnGenerateHomeworld.Hide();
-            //create new button and replace the current one.
+            cboHomeWorld.Enabled = false;            //create new button and replace the current one.
             //CreateFormButton("GenerateStatistics", new Point(93, 259), new Size(142, 23), b_AllocateValues, panelInformation);
 
         }
 
 
         //button bindings to be assigned dynamically
-        private void b_AllocateValues(object sender, EventArgs e)
-        {
-            var _player = Player;
-            AllocateValues(_player);
-            rtbInformation.Text += Environment.NewLine;
-            rtbInformation.Text += String.Format("Character Statistics have been generated: WS: {0}, BS: {1}", Player.Ws.Value, Player.Bs.Value);
-            UpdateDisplay(panelPlayerStats, Player);
+        //private void b_AllocateValues(object sender, EventArgs e)
+        //{
+        //    var _player = Player;
+        //    AllocateValues(_player);
+        //    rtbInformation.Text += Environment.NewLine;
+        //    rtbInformation.Text += String.Format("Character Statistics have been generated: WS: {0}, BS: {1}", Player.Ws.Value, Player.Bs.Value);
+        //    UpdateDisplay(panelPlayerStats, Player);
 
-        }
+        //}
 
         void CreateFormButton(string buttonName, Point location, Size size, EventHandler handler, Panel panel = null)
         {
