@@ -19,29 +19,23 @@ namespace Engine
 
         }
 
-        public static void GeneratePlayer(Player player)
-        {
-            SelectHomeWorld(player);
-            AllocateValues(player);
-        }
-
-        public static void SelectHomeWorld(Player player) 
-        {
-            Random rn = new Random();
-            var result = Convert.ToInt32(DiceRolls.RollD100(rn));
-            if (result >= 1 && result <=  15)
-                player.HomeWorld = "Feral World";
-            if (result >= 16 && result <= 33)
-                player.HomeWorld = "Forge World";
-            if (result >= 34 && result <= 44)
-                player.HomeWorld = "High Born";
-            if (result >= 45 && result <= 69)
-                player.HomeWorld = "Hive World";
-            if (result >= 70 && result <= 85)
-                player.HomeWorld = "Shrine World";
-            if (result >= 86 && result <= 100)
-                player.HomeWorld = "Void Born";
-        }
+        //public static void SelectHomeWorld(Player player) 
+        //{
+        //    Random rn = new Random();
+        //    var result = Convert.ToInt32(DiceRolls.RollD100(rn));
+        //    if (result >= 1 && result <=  15)
+        //        player.HomeWorld = "Feral World";
+        //    if (result >= 16 && result <= 33)
+        //        player.HomeWorld = "Forge World";
+        //    if (result >= 34 && result <= 44)
+        //        player.HomeWorld = "High Born";
+        //    if (result >= 45 && result <= 69)
+        //        player.HomeWorld = "Hive World";
+        //    if (result >= 70 && result <= 85)
+        //        player.HomeWorld = "Shrine World";
+        //    if (result >= 86 && result <= 100)
+        //        player.HomeWorld = "Void Born";
+        //}
 
         public static void ResetValues(Player player)
         {

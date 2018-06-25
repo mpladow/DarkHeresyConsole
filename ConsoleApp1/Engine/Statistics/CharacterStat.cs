@@ -48,6 +48,7 @@ namespace Engine.Statistics
         {
             Name = name;
             BaseValue = basevalue;
+            StatModifiers = new List<StatModifier>();
         }
 
 
@@ -85,7 +86,7 @@ namespace Engine.Statistics
         //should be able to calculate final values
     }
 
-    class StatModifier
+    public class StatModifier
     {
         public string Name;
         public int Value;

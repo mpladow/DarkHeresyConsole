@@ -1,5 +1,6 @@
 ﻿using Engine;
 using Engine.Actions;
+using Engine.Characters.HomeWorlds;
 using Engine.Statistics;
 using Engine.Utilities;
 using System;
@@ -12,6 +13,7 @@ using System.Reflection;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using static Engine.Characters.HomeWorlds.HomeWorlds_Base;
 using static Engine.Human_Base;
 using static Engine.Statistics.CharacterStat;
 
@@ -72,7 +74,7 @@ namespace DarkHeresyForm
             var _player = Player;
             AllocateValues(_player);
             rtbInformation.Text += Environment.NewLine;
-            rtbInformation.Text += String.Format("Character Statistics have been generated: WS: {0}, BS: {1}", Player.Ws, Player.Bs);
+            rtbInformation.Text += String.Format("Character Statistics have been generated: WS: {0}, BS: {1}", Player.Ws.Value, Player.Bs.Value);
         }
 
         void CreateFormButton(string buttonName, Point location, Size size, EventHandler handler, Panel panel = null)
@@ -91,20 +93,23 @@ namespace DarkHeresyForm
 
         static void SelectHomeWorld(Player player)
         {
+            List<HomeWorlds_Base> list = ListGenerator.GenerateHomeWorldList();
+
             Random rn = new Random();
             var result = Convert.ToInt32(DiceRolls.RollD100(rn));
             if (result >= 1 && result <= 15)
-                player.HomeWorld = "Feral World";
+
+                player.HomeWorld = list.Where(x => x.Name == HomeWorlds.FeralWorld.ToString()).FirstOrDefault();
             if (result >= 16 && result <= 33)
-                player.HomeWorld = "Forge World";
+                player.HomeWorld = list.Where(x => x.Name == HomeWorlds.ForgeWorld.ToString()).FirstOrDefault();
             if (result >= 34 && result <= 44)
-                player.HomeWorld = "High Born";
+                player.HomeWorld = list.Where(x => x.Name == HomeWorlds.HighBorn.ToString()).FirstOrDefault();
             if (result >= 45 && result <= 69)
-                player.HomeWorld = "Hive World";
+                player.HomeWorld = list.Where(x => x.Name == HomeWorlds.HiveWorld.ToString()).FirstOrDefault();
             if (result >= 70 && result <= 85)
-                player.HomeWorld = "Shrine World";
+                player.HomeWorld = list.Where(x => x.Name == HomeWorlds.ShrineWorld.ToString()).FirstOrDefault();
             if (result >= 86 && result <= 100)
-                player.HomeWorld = "Void Born";
+                player.HomeWorld = list.Where(x => x.Name == HomeWorlds.VoidBorn.ToString()).FirstOrDefault();
         }
 
         static void ResetValues(Player player)
@@ -133,13 +138,39 @@ namespace DarkHeresyForm
             {
                 foreach (var name in enumPropertyNames)
                 {
+                    var statValue = 25;
                     if (name.ToString() == prop.Name)
                     {
-                        var statValue = DiceRolls.RollD10(2, rn).Sum();
+                        statValue += DiceRolls.RollD10(2, rn).Sum();
+                        if (player.HomeWorld != null)
+                        {
+                            foreach (var stat in player.HomeWorld.StatsAffectedPositive)
+                            {
+                                if (stat == prop.Name)
+                                {
+                                    int[] roll = DiceRolls.RollD10(3, rn);
+                                    statValue += DiceRolls.TakeDice(2, roll, true).Sum();
+                                };
+
+                            }
+                            foreach (var stat in player.HomeWorld.StatsAffectedNegative)
+                            {
+                                if (stat == prop.Name)
+                                {
+                                    int[] roll = DiceRolls.RollD10(3, rn);
+                                    statValue += DiceRolls.TakeDice(2, roll, false).Sum();
+                                }
+                            }
+                        }
                         prop.SetValue(player, new CharacterStat(name.ToString(), statValue));
                     }
                 }
             }
+
+            //select the player's home world.
+            //reallocate the player stats.
+
+
         }
     }
 }

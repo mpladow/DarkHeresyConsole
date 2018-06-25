@@ -1,4 +1,5 @@
-﻿using Engine.Statistics;
+﻿using Engine.Characters.HomeWorlds;
+using Engine.Statistics;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -32,7 +33,7 @@ namespace Engine
 
         public List<Item_base> InventoryItems{ get; set; }
 
-        public string HomeWorld { get; set; }
+        public HomeWorlds_Base HomeWorld { get; set; }
         public int CurrentPosition { get; set; }
 
 

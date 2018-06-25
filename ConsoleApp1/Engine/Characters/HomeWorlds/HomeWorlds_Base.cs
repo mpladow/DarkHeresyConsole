@@ -7,9 +7,9 @@ using System.Threading.Tasks;
 
 namespace Engine.Characters.HomeWorlds
 {
-    class HomeWorlds_Base
+    public class HomeWorlds_Base
     {
-        private enum HomeWorlds
+        public enum HomeWorlds
         {
             FeralWorld,
             HiveWorld,
@@ -19,6 +19,8 @@ namespace Engine.Characters.HomeWorlds
             VoidBorn
         }
         public string Name { get; set; }
+        public List<string> StatsAffectedPositive { get; set; }
+        public List<string> StatsAffectedNegative { get; set; }
         public List<StatModifier> StatModifiers { get; set; }
         public string Description { get; set; }
 
@@ -27,14 +29,10 @@ namespace Engine.Characters.HomeWorlds
             Name = name;
             Description = description;
             StatModifiers = new List<StatModifier>();
+            StatsAffectedPositive = new List<string>();
+            StatsAffectedNegative = new List<string>();
         }
 
-        public static void GenerateHomeWorldList()
-        {
-            var FeralWorld = new HomeWorlds_Base(HomeWorlds.FeralWorld.ToString(), "A feral world");
-            var HiveWorld = new HomeWorlds_Base(HomeWorlds.HiveWorld.ToString(), "A feral world");
-
-        }
 
     }
 

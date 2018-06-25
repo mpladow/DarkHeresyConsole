@@ -48,6 +48,7 @@
     <Compile Include="Actions\Skills.cs" />
     <Compile Include="Armour\Armour_base.cs" />
     <Compile Include="Characters\HomeWorlds\HomeWorlds_Base.cs" />
+    <Compile Include="Characters\HomeWorld_Base.cs" />
     <Compile Include="Inventory.cs" />
     <Compile Include="Characters\Human.cs" />
     <Compile Include="Characters\Human_Base.cs" />
@@ -59,6 +60,7 @@
     <Compile Include="Statistics\CharacterStat.cs" />
     <Compile Include="Utilities\Constants\Constants.cs" />
     <Compile Include="Utilities\EnumUtility.cs" />
+    <Compile Include="Utilities\ListGenerator.cs" />
     <Compile Include="Utilities\RNG.cs" />
     <Compile Include="Utilities\UserInterface.cs" />
     <Compile Include="World_Objects\Book.cs" />
