@@ -20,13 +20,7 @@ namespace DarkHeresyForm
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
             Application.Run(new splashscreen());
-            Player player = new Player();
-            Test test = new Test();
 
-        }
-        class Test
-        {
-            
         }
     }
 }

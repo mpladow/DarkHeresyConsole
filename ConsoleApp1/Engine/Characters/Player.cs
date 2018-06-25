@@ -1,4 +1,5 @@
 ﻿using Engine.Actions;
+using Engine.Statistics;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -10,13 +11,8 @@ namespace Engine
 {
     public class Player:Human_Base
     {
-        enum Stats { Name, Ws, Bs };
 
         public Location CurrentLocation { get; set; }
-        public Player(string name, int ws, int bs, int str, int t, int ag, int inte, int per, int wp, int fel, int ifl) 
-            :  base(name, ws, bs, str, t, ag, inte, per, wp, fel, ifl)
-        {
-        }
 
         public Player()
         {
@@ -62,47 +58,47 @@ namespace Engine
                 }
             }
         }
+
         public static void AllocateValues(Player player)
         {
-            Random rn = new Random();
-            PropertyInfo[] pi = player .GetType().GetProperties();
-            var statValue = 0;
-            //TEST
-            player.HomeWorld = "Feral World";
-            for (int i = 0; i < 12; i++)   
-            {
-                statValue = 0;
-                if (pi[i].PropertyType == typeof(int))//checks if the value is an int 
-                {
-                    statValue = DiceRolls.RollD10(2, rn).Sum();
-                    if(player.HomeWorld == "Feral World")
-                    {
-                        if(pi[i].Name == "Str")
-                        {
-                            int[] roll = DiceRolls.RollD10(3, rn);
-                            statValue = DiceRolls.TakeDice(2, roll, true).Sum();
-                        }
-                        if (pi[i].Name == "T")
-                        {
-                            int[] roll = DiceRolls.RollD10(3, rn);
-                            statValue = DiceRolls.TakeDice(2, roll, true).Sum();
-                        }
-                        if (pi[i].Name == "Inte")
-                        {
-                            int[] roll = DiceRolls.RollD10(3, rn);
-                            statValue = DiceRolls.TakeDice(2, roll, false).Sum();
-                        }
-                    }
-                    statValue += 25;
-                    if (statValue >= 100)
-                    {
-                        statValue = 100;
-                    }
-                    pi[i].SetValue(player, statValue);
-                }
+            //PropertyInfo[] pi = player .GetType().GetProperties();
+            //var statValue = 0;
+            ////TEST
+            //player.HomeWorld = "Feral World";
+            //for (int i = 0; i < 12; i++)   
+            //{
+            //    statValue = 0;
+            //    if (pi[i].PropertyType == typeof(int))//checks if the value is an int 
+            //    {
+            //        statValue = DiceRolls.RollD10(2, rn).Sum();
+            //        if(player.HomeWorld == "Feral World")
+            //        {
+            //            if(pi[i].Name == "Str")
+            //            {
+            //                int[] roll = DiceRolls.RollD10(3, rn);
+            //                statValue = DiceRolls.TakeDice(2, roll, true).Sum();
+            //            }
+            //            if (pi[i].Name == "T")
+            //            {
+            //                int[] roll = DiceRolls.RollD10(3, rn);
+            //                statValue = DiceRolls.TakeDice(2, roll, true).Sum();
+            //            }
+            //            if (pi[i].Name == "Inte")
+            //            {
+            //                int[] roll = DiceRolls.RollD10(3, rn);
+            //                statValue = DiceRolls.TakeDice(2, roll, false).Sum();
+            //            }
+            //        }
+            //        statValue += 25;
+            //        if (statValue >= 100)
+            //        {
+            //            statValue = 100;
+            //        }
+            //        pi[i].SetValue(player, statValue);
+            //    }
 
                 
-            }
+            //}
         }
         public List<String> OptionsMenu()
         {

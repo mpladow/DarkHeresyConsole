@@ -47,15 +47,18 @@
     <Compile Include="Actions\DiceRolls.cs" />
     <Compile Include="Actions\Skills.cs" />
     <Compile Include="Armour\Armour_base.cs" />
-    <Compile Include="Class1.cs" />
-    <Compile Include="Human.cs" />
-    <Compile Include="Human_Base.cs" />
+    <Compile Include="Characters\HomeWorlds\HomeWorlds_Base.cs" />
+    <Compile Include="Inventory.cs" />
+    <Compile Include="Characters\Human.cs" />
+    <Compile Include="Characters\Human_Base.cs" />
     <Compile Include="Locations\Location.cs" />
     <Compile Include="Locations\Room.cs" />
-    <Compile Include="NPC.cs" />
-    <Compile Include="Player.cs" />
+    <Compile Include="Characters\NPC.cs" />
+    <Compile Include="Characters\Player.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Statistics\CharacterStat.cs" />
     <Compile Include="Utilities\Constants\Constants.cs" />
+    <Compile Include="Utilities\EnumUtility.cs" />
     <Compile Include="Utilities\RNG.cs" />
     <Compile Include="Utilities\UserInterface.cs" />
     <Compile Include="World_Objects\Book.cs" />
@@ -63,6 +66,7 @@
     <Compile Include="World_Objects\Item_base.cs" />
     <Compile Include="World_Objects\Potion.cs" />
     <Compile Include="World_Objects\WorldObject_base.cs" />
+    <Compile Include="_Enums.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />

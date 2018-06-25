@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Engine
 {
-    public class Class1
+    public class NPC:Human_Base
     {
     }
 }

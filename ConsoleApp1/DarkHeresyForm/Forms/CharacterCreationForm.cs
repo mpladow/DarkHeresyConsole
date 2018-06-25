@@ -1,5 +1,7 @@
 ﻿using Engine;
 using Engine.Actions;
+using Engine.Statistics;
+using Engine.Utilities;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -10,6 +12,8 @@ using System.Reflection;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using static Engine.Human_Base;
+using static Engine.Statistics.CharacterStat;
 
 namespace DarkHeresyForm
 {
@@ -52,6 +56,7 @@ namespace DarkHeresyForm
         //FUNCTIONS FOR THE CLASS
         private void btnGenerateHomeworld_Click(object sender, EventArgs e)
         {
+            AllocateValues(Player);
             SelectHomeWorld(this.Player);
             rtbInformation.Text = String.Format("You were born on a {0}.", Player.HomeWorld);
             btnGenerateHomeworld.Hide();
@@ -120,44 +125,20 @@ namespace DarkHeresyForm
         static void AllocateValues(Player player)
         {
             Random rn = new Random();
-            PropertyInfo[] pi = player.GetType().GetProperties();
-            var statValue = 0;
-            //TEST
-            player.HomeWorld = "Feral World";
-            //
-            for (int i = 0; i < 12; i++)
+            var enumPropertyNames = EnumUtility.GetValues<StatName>();//creates a list of characteristic enums
+            var playerProperties = player.GetType().GetProperties().Where(x => x.PropertyType == typeof(CharacterStat)).ToList(); //uses reflection to get the property types in 
+            //casts this object into a list
+
+            foreach (var prop in playerProperties)
             {
-                statValue = 0;
-                if (pi[i].PropertyType == typeof(int))//checks if the value is an int 
+                foreach (var name in enumPropertyNames)
                 {
-                    statValue = DiceRolls.RollD10(2, rn).Sum();
-                    if (player.HomeWorld == "Feral World")
+                    if (name.ToString() == prop.Name)
                     {
-                        if (pi[i].Name == "Str")
-                        {
-                            int[] roll = DiceRolls.RollD10(3, rn);
-                            statValue = DiceRolls.TakeDice(2, roll, true).Sum();
-                        }
-                        if (pi[i].Name == "T")
-                        {
-                            int[] roll = DiceRolls.RollD10(3, rn);
-                            statValue = DiceRolls.TakeDice(2, roll, true).Sum();
-                        }
-                        if (pi[i].Name == "Inte")
-                        {
-                            int[] roll = DiceRolls.RollD10(3, rn);
-                            statValue = DiceRolls.TakeDice(2, roll, false).Sum();
-                        }
+                        var statValue = DiceRolls.RollD10(2, rn).Sum();
+                        prop.SetValue(player, new CharacterStat(name.ToString(), statValue));
                     }
-                    statValue += 25;
-                    if (statValue >= 100)
-                    {
-                        statValue = 100;
-                    }
-                    pi[i].SetValue(player, statValue);
                 }
-
-
             }
         }
     }
