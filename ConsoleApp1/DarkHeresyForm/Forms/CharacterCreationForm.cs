@@ -22,7 +22,9 @@ namespace DarkHeresyForm
     public partial class CharacterCreationForm : Form
     {
         public Player Player { get; set; }
+        private List<HomeWorlds> HomeWorlds { get; set; }
 
+        
 
         public CharacterCreationForm(Player player = null)
         {
@@ -32,7 +34,9 @@ namespace DarkHeresyForm
                 Player newPlayer = new Player();
                 Player = newPlayer;
             }
-
+            HomeWorlds = ListGenerator.GenerateHomeWorldList();
+            cboHomeWorld.DataSource = HomeWorlds;
+            cboHomeWorld.DisplayMember = "Name";
         }
 
         private void richTextBox1_TextChanged(object sender, EventArgs e)
@@ -77,11 +81,15 @@ namespace DarkHeresyForm
                 rtbInformation.Text += Environment.NewLine;
             }
 
+            
+            AllocateValues(Player);
+            rtbInformation.Text += Environment.NewLine;
+            rtbInformation.Text += String.Format("Character Statistics have been generated.");
+            UpdateDisplay(panelPlayerStats, Player);
+
             btnGenerateHomeworld.Hide();
-
-
             //create new button and replace the current one.
-            CreateFormButton("Generate Statistics", new Point(93, 259), new Size(142, 23), b_AllocateValues, panelInformation);
+            //CreateFormButton("GenerateStatistics", new Point(93, 259), new Size(142, 23), b_AllocateValues, panelInformation);
 
         }
 
@@ -94,6 +102,7 @@ namespace DarkHeresyForm
             rtbInformation.Text += Environment.NewLine;
             rtbInformation.Text += String.Format("Character Statistics have been generated: WS: {0}, BS: {1}", Player.Ws.Value, Player.Bs.Value);
             UpdateDisplay(panelPlayerStats, Player);
+
         }
 
         void CreateFormButton(string buttonName, Point location, Size size, EventHandler handler, Panel panel = null)
@@ -107,23 +116,38 @@ namespace DarkHeresyForm
             btn.Click += new EventHandler(handler);
             panel.Controls.Add(btn);
         }
-
+        //this will update the display on the page and fill in the details generated
         void UpdateDisplay(Panel panel, Player player)
         {
+
             var playerProperties = player.GetType().GetProperties().Where(x => x.PropertyType == typeof(CharacterStat)).ToList();//finds the properties of the player
             var children = panel.Controls.OfType<TextBox>();//
             var enumPropertyNames = EnumUtility.GetValues<StatName>();
-            foreach (var control in children)
+            foreach (Control control in children)
             {
                 //if this text box contains the appropriate statistic, then update the text
                 foreach (var stat in enumPropertyNames)
                 {
-                    control.Name = "tb" + stat.ToString();
-
-
-                    var xx = playerProperties.Where(x => x.Name == stat.ToString()).FirstOrDefault();
-                    control.Text = xx.GetValue(player.);
-
+                    if (control.Name.Contains(stat.ToString()))
+                    {
+                        var pi = playerProperties.Where(x => x.Name == stat.ToString()).FirstOrDefault();
+                        var prop = (CharacterStat)pi.GetValue(player);//gets the property from the player object
+                        control.Text = prop.Value.ToString();//sets this value to the control text
+                    }
+                }
+                foreach (var strength in player.HomeWorld.StatsAffectedPositive)
+                {
+                    if (control.Name.Contains(strength))
+                    {
+                        control.ForeColor = Color.DarkSeaGreen;
+                    }
+                }
+                foreach (var weakness in player.HomeWorld.StatsAffectedNegative)
+                {
+                    if (control.Name.Contains(weakness))
+                    {
+                        control.ForeColor = Color.DarkRed;
+                    }
                 }
             }
         }
@@ -190,7 +214,6 @@ namespace DarkHeresyForm
                                     int[] roll = DiceRolls.RollD10(3, rn);
                                     statValue += DiceRolls.TakeDice(2, roll, true).Sum();
                                 };
-
                             }
                             foreach (var stat in player.HomeWorld.StatsAffectedNegative)
                             {
@@ -201,14 +224,22 @@ namespace DarkHeresyForm
                                 }
                             }
                         }
-                        prop.SetValue(player, new CharacterStat(name.ToString(), statValue));
+                        CharacterStat _stat = new CharacterStat(name.ToString(), statValue);
+                        prop.SetValue(player, _stat);
+
                     }
                 }
             }
+        }
+        private void cboHomeWorld_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            var selection = cboHomeWorld.SelectedItem;
+            Player.HomeWorld = (HomeWorlds)selection;
+            rtbInformation.Text = Player.HomeWorld.Description;
+        }
 
-            //select the player's home world.
-            //reallocate the player stats.
-
+        private void btnSelectHomeWorld_Click(object sender, EventArgs e)
+        {
 
         }
     }

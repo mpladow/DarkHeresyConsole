@@ -13,6 +13,7 @@ namespace Engine
 
         public string Name { get; set; }
 
+        public List<CharacterStat> Stats { get; set; }
         public CharacterStat Ws { get; set; }
         public CharacterStat Bs{ get; set; }
         public CharacterStat Str { get; set; }
@@ -30,8 +31,6 @@ namespace Engine
         public int A_RightArm { get; set; }
         public int A_LeftLeg { get; set; }
         public int A_RightLeg { get; set; }
-
-        public List<Item_base> InventoryItems{ get; set; }
 
         public HomeWorlds HomeWorld { get; set; }
         public int CurrentPosition { get; set; }

@@ -17,3 +17,4 @@ C:\Users\Michael.LaDow\Projects\DarkHeresyConsole\ConsoleApp1\Engine\bin\Debug\S
 C:\Users\Michael.LaDow\Projects\DarkHeresyConsole\ConsoleApp1\Engine\obj\Debug\Engine.csproj.CopyComplete
 C:\Users\Michael.LaDow\Projects\DarkHeresyConsole\ConsoleApp1\Engine\obj\Debug\Engine.dll
 C:\Users\Michael.LaDow\Projects\DarkHeresyConsole\ConsoleApp1\Engine\obj\Debug\Engine.pdb
+C:\Users\mplad\Documents\GitHub\DarkHeresyConsole\ConsoleApp1\Engine\obj\Debug\Engine.csprojAssemblyReference.cache
