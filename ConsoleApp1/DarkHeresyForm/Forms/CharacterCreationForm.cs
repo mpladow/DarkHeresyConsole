@@ -225,5 +225,12 @@ namespace DarkHeresyForm
         {
 
         }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            var result = CharacteristicChecks.CharacteristicCheck(Player.Ws.Value);
+            rtbInformation.Text += String.Format("Result = {0}  Success? = {1}  Degrees of success/failure: {2}", result.Item1, result.Item2, result.Item3);
+            rtbInformation.Text += Environment.NewLine;
+        }
     }
 }

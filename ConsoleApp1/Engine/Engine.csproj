@@ -45,7 +45,6 @@
   <ItemGroup>
     <Compile Include="Actions\CharacteristicChecks.cs" />
     <Compile Include="Actions\DiceRolls.cs" />
-    <Compile Include="Actions\Skills.cs" />
     <Compile Include="Armour\Armour_base.cs" />
     <Compile Include="Characters\HomeWorlds\HomeWorlds.cs" />
     <Compile Include="Inventory.cs" />

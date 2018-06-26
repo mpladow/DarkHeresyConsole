@@ -9,17 +9,19 @@ namespace Engine.Actions
 {
     public static class DiceRolls
     {
-        public static string RollD100(Random rn)
+
+        public static int[] RollD100(Random rn)
         {
-            RNG.NumberBetween(1, 10);
-            int d10_ones = rn.Next(1, 10);
-            int d10_tens = rn.Next(1, 10);
-            if (d10_tens == 10)
+            //RNG.NumberBetween(1, 10);
+            int[] die = new int[2];
+            die[0] = rn.Next(1, 10);//
+            die[1] = rn.Next(1, 10);//10
+            if (die[0] == 10)
             {
-                d10_tens = 0;
+                die[0] = 0;
             }
-            string result = d10_ones.ToString() + d10_tens.ToString();
-            return result;
+            return die;
+
         }
         public static int[] RollD10(int times, Random rn)
         {
