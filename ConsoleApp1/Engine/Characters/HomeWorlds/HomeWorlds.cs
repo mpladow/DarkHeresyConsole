@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace Engine.Characters.HomeWorlds
 {
-    public class HomeWorlds
+    public class HomeWorld
     {
         public enum enumHomeWorlds
         {
@@ -24,7 +24,7 @@ namespace Engine.Characters.HomeWorlds
         public List<string> StatsAffectedNegative { get; set; }
         public string Description { get; set; }
 
-        public HomeWorlds(string name, string description)
+        public HomeWorld(string name, string description)
         {
             Name = name;
             Description = description;

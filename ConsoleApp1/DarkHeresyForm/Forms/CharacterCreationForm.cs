@@ -1,8 +1,10 @@
 ﻿using Engine;
 using Engine.Actions;
 using Engine.Characters.HomeWorlds;
+using Engine.Skills;
 using Engine.Statistics;
 using Engine.Utilities;
+using Engine.Utilities.Constants;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -13,7 +15,7 @@ using System.Reflection;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using static Engine.Characters.HomeWorlds.HomeWorlds;
+using static Engine.Characters.HomeWorlds.HomeWorld;
 using static Engine.Human_Base;
 using static Engine.Statistics.CharacterStat;
 
@@ -22,9 +24,7 @@ namespace DarkHeresyForm
     public partial class CharacterCreationForm : Form
     {
         public Player Player { get; set; }
-        private List<HomeWorlds> HomeWorlds { get; set; }
-
-        
+        private List<HomeWorld> HomeWorlds { get; set; }
 
         public CharacterCreationForm(Player player = null)
         {
@@ -139,7 +139,7 @@ namespace DarkHeresyForm
 
         static void SelectHomeWorld(Player player)
         {
-            List<Engine.Characters.HomeWorlds.HomeWorlds> list = ListGenerator.GenerateHomeWorldList();
+            List<Engine.Characters.HomeWorlds.HomeWorld> list = ListGenerator.GenerateHomeWorldList();
 
             Random rn = new Random();
             var result = Convert.ToInt32(DiceRolls.RollD100(rn));
@@ -217,7 +217,7 @@ namespace DarkHeresyForm
         private void cboHomeWorld_SelectedIndexChanged(object sender, EventArgs e)
         {
             var selection = cboHomeWorld.SelectedItem;
-            Player.HomeWorld = (HomeWorlds)selection;
+            Player.HomeWorld = (HomeWorld)selection;
             rtbInformation.Text = Player.HomeWorld.Description;
         }
 
@@ -228,9 +228,13 @@ namespace DarkHeresyForm
 
         private void button2_Click(object sender, EventArgs e)
         {
-            var result = CharacteristicChecks.CharacteristicCheck(Player.Ws.Value);
-            rtbInformation.Text += String.Format("Result = {0}  Success? = {1}  Degrees of success/failure: {2}", result.Item1, result.Item2, result.Item3);
+            var result = CharacteristicChecks.DoCharacteristicCheck(Player.Ws.Value);
+            //rtbInformation.Text += String.Format("Result = {0}  Success? = {1}  Degrees of success/failure: {2}", result.Item1, result.Item2, result.Item3);
             rtbInformation.Text += Environment.NewLine;
+            var list = GlobalLists.AptitudesList();
+            Player.MovementSkills.Add(new Acrobatics(0, "The player attempts to jump"));
+
+            var xx = Player.MovementSkills.FirstOrDefault(x => x.Name.Contains("acrobatics"));
         }
     }
 }

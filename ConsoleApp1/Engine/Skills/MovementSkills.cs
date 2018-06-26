@@ -10,12 +10,14 @@ namespace Engine.Skills
 {
     public class MovementSkills
     {
+        public string Name { get; set; }
         public int Rank { get; set; }
         public string Description { get; set; }
-        public List<SkillModifier> SkillModifiers { get; set; }
+        public CharacterStat MainStat{ get; set; }
+        public List<SkillModifier> TotalSkillModifiers { get; set; }
 
         private int _value;
-        public int ModValue //this is the public value that is constantly displayed
+        public int ModifiedValue //this is the public value that is constantly displayed
         {
             get
             {
@@ -24,40 +26,86 @@ namespace Engine.Skills
             }
         }
 
+
         private int CalculateFinalValue()
         {
-            int finalValue = ModValue;
+            int finalValue = ModifiedValue;
 
-            for (int i = 0; i < SkillModifiers.Count; i++)
+            for (int i = 0; i < TotalSkillModifiers.Count; i++)
             {
-                finalValue += SkillModifiers[i].Value;
+                finalValue += TotalSkillModifiers[i].Value;
             }
 
+            switch (Rank)
+            {
+                case 0:
+                    finalValue = finalValue - 20;
+                    break;
+                case 1:
+                    finalValue = finalValue - 0;
+                    break;
+                case 2:
+                    finalValue = finalValue + 10;
+                    break;
+                case 3:
+                    finalValue = finalValue + 20;
+                    break;
+                case 4:
+                    finalValue = finalValue + 20;
+                    break;
+
+                default:
+                    break;
+            }
             return finalValue;
         }
 
+        //contstructor 
+        public MovementSkills(string name, int rank = 0, string description = "")
+        {
+            Name = name;
+            Rank = rank;
+            Description = description;
+            TotalSkillModifiers = new List<SkillModifier>() {
+            };
+        }
 
-        public MovementSkills(int rank = 0, string description = "")
+
+        public void AddModifier(SkillModifier mod)
+        {
+            this.TotalSkillModifiers.Add(mod);
+        }
+        public void RemoveModifier(SkillModifier mod)
+        {
+            this.TotalSkillModifiers.Remove(mod);
+        }
+        public void ModifyRank(bool isLevelUp)
+        {
+            if (isLevelUp && Rank !=4)
+            {
+                Rank += 1;
+            }
+            if(!isLevelUp)
+            {
+                Rank -= 1;
+            }
+        }
+    }
+
+
+
+
+    public class Acrobatics : MovementSkills
+    {
+        public Acrobatics(int rank = 0, string description = "") : base(rank, description)
         {
             Rank = rank;
             Description = description;
-            SkillModifiers = new List<SkillModifier>();
+        }
 
-        }
-        public void AddModifier(SkillModifier mod)
+        public Tuple<string, bool, int> AcrobaticsCheck()
         {
-            this.SkillModifiers.Add(mod);
+            return CharacteristicChecks.DoCharacteristicCheck(this.ModifiedValue);
         }
-        public void GainAptitude()
-        {
-            this.Rank += 1;
-            //if rank is 1, then add the trained modifier,
-            //if rank is 2, then add .....
-            this.SkillModifiers.Add(mod);
-
-        }
-    }
-    public class Acrobatics : MovementSkills
-    {
     }
 }

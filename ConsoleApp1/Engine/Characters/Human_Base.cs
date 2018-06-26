@@ -1,4 +1,5 @@
 ﻿using Engine.Characters.HomeWorlds;
+using Engine.Skills;
 using Engine.Statistics;
 using System;
 using System.Collections.Generic;
@@ -32,13 +33,14 @@ namespace Engine
         public int A_LeftLeg { get; set; }
         public int A_RightLeg { get; set; }
 
-        public HomeWorlds HomeWorld { get; set; }
+        public List<MovementSkills> MovementSkills { get; set; }
+        public HomeWorld HomeWorld { get; set; }
         public int CurrentPosition { get; set; }
 
 
         public Human_Base()
         {
-
+            MovementSkills = new List<MovementSkills>();
         }
         //public Human_Base(string name, int ws, int bs, int str, int t, int ag, int inte, int per, int wp, int fel, int ifl)
         //{

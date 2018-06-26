@@ -43,7 +43,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Actions\CharacteristicChecks.cs" />
+    <Compile Include="Skills\CharacteristicCheck.cs" />
     <Compile Include="Actions\DiceRolls.cs" />
     <Compile Include="Armour\Armour_base.cs" />
     <Compile Include="Characters\HomeWorlds\HomeWorlds.cs" />
@@ -54,7 +54,9 @@
     <Compile Include="Characters\NPC.cs" />
     <Compile Include="Characters\Player.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Skills\MovementSkills.cs" />
     <Compile Include="Statistics\CharacterStat.cs" />
+    <Compile Include="Statistics\SkillModifer.cs" />
     <Compile Include="Utilities\Constants\Constants.cs" />
     <Compile Include="Utilities\EnumUtility.cs" />
     <Compile Include="Utilities\ListGenerator.cs" />

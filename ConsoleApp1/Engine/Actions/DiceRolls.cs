@@ -9,20 +9,49 @@ namespace Engine.Actions
 {
     public static class DiceRolls
     {
+        //Die results to return object back to characteristic check
+        public class DieResult
+        {
+            public int[] Result{ get; set; }
+            public int IntValue { get; set; }
+            public string StrValue { get; set; }
+        }
+        public class D100Result:DieResult
+        {
+            public D100Result(int[] result, int intvalue, string strvalue)
+            {
+                Result = result;
+                IntValue = intvalue;
+                StrValue = strvalue;
+            }
+        }
 
-        public static int[] RollD100(Random rn)
+        //rolls die and returns three different values encapulated in an object
+        public static D100Result RollD100(Random rn)
         {
             //RNG.NumberBetween(1, 10);
             int[] die = new int[2];
-            die[0] = rn.Next(1, 10);//
-            die[1] = rn.Next(1, 10);//10
-            if (die[0] == 10)
+            die[0] = rn.Next(1, 10);//10
+            die[1] = rn.Next(1, 10);//10 = 100
+
+            string strDie = "";
+            int intDie = 0;
+
+            if (die[1] == 10 && die[0] == 1)
             {
-                die[0] = 0;
+                intDie = 1;
             }
-            return die;
+            if(die[1] == 10 && die[0] == 10)
+            {
+                intDie = 100;
+            }
+            strDie = die[1].ToString() + die[0].ToString();
+            intDie = Convert.ToInt32(strDie);
+            D100Result result = new D100Result(die, intDie, strDie);
+            return result;
 
         }
+
         public static int[] RollD10(int times, Random rn)
         {
             var results = new int[times];
@@ -33,7 +62,7 @@ namespace Engine.Actions
             return results;
         }
 
-        //takes the number of dice from the roll - i.e. selecting the top results out of 3 dice rolls.
+        //takes the number of dice from the roll - i.e. selecting the top results out of 3 dice rolls. Used in characteristic generation
         public static int[] TakeDice(int numDiceToTake, int[] result, bool takeHighest)
         {
             if (takeHighest)
