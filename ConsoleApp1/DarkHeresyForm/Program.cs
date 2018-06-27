@@ -4,6 +4,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using Engine;
+using Engine.Utilities.Constants;
 
 namespace DarkHeresyForm
 {
@@ -20,6 +21,9 @@ namespace DarkHeresyForm
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
             Application.Run(new splashscreen());
+
+            SkillModifiersLists.PopulateDifficulties();
+            SkillModifiersLists.PopulateAptitudesList();
 
         }
     }

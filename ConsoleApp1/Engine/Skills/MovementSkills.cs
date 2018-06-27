@@ -1,5 +1,6 @@
 ﻿using Engine.Actions;
 using Engine.Statistics;
+using Engine.Utilities.Constants;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -35,28 +36,6 @@ namespace Engine.Skills
             {
                 finalValue += TotalSkillModifiers[i].Value;
             }
-
-            switch (Rank)
-            {
-                case 0:
-                    finalValue = finalValue - 20;
-                    break;
-                case 1:
-                    finalValue = finalValue - 0;
-                    break;
-                case 2:
-                    finalValue = finalValue + 10;
-                    break;
-                case 3:
-                    finalValue = finalValue + 20;
-                    break;
-                case 4:
-                    finalValue = finalValue + 20;
-                    break;
-
-                default:
-                    break;
-            }
             return finalValue;
         }
 
@@ -66,8 +45,8 @@ namespace Engine.Skills
             Name = name;
             Rank = rank;
             Description = description;
-            TotalSkillModifiers = new List<SkillModifier>() {
-            };
+            TotalSkillModifiers = new List<SkillModifier>();
+            TotalSkillModifiers.Add(SkillModifiersLists.GetAptitudesById(rank));
         }
 
 
@@ -79,16 +58,28 @@ namespace Engine.Skills
         {
             this.TotalSkillModifiers.Remove(mod);
         }
-        public void ModifyRank(bool isLevelUp)
+
+        public bool ModifyRank(bool isLevelUp)
         {
-            if (isLevelUp && Rank !=4)
+            var result = true;
+            if(isLevelUp && Rank != 4)
             {
+                var currentAptitude = TotalSkillModifiers.Where(x => x.Id == Rank).FirstOrDefault();//finds the current aptidude
+                TotalSkillModifiers.Remove(currentAptitude);//removes this
+                TotalSkillModifiers.Add(SkillModifiersLists.AptitudesList.FirstOrDefault(x => x.Id == Rank + 1));//Replace with the next level up.
                 Rank += 1;
+                result = true;
+            }
+            else 
+            {
+                //return a warning
+                result = false;
             }
             if(!isLevelUp)
             {
                 Rank -= 1;
             }
+            return result;
         }
     }
 

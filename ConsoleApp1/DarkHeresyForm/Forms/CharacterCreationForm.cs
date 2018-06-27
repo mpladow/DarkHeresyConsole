@@ -231,10 +231,8 @@ namespace DarkHeresyForm
             var result = CharacteristicChecks.DoCharacteristicCheck(Player.Ws.Value);
             //rtbInformation.Text += String.Format("Result = {0}  Success? = {1}  Degrees of success/failure: {2}", result.Item1, result.Item2, result.Item3);
             rtbInformation.Text += Environment.NewLine;
-            var list = GlobalLists.AptitudesList();
+            var list = SkillModifiersLists.AptitudesList();
             Player.MovementSkills.Add(new Acrobatics(0, "The player attempts to jump"));
-
-            var xx = Player.MovementSkills.FirstOrDefault(x => x.Name.Contains("acrobatics"));
         }
     }
 }
