@@ -38,7 +38,10 @@ namespace Engine.Actions
 
             string strDie = "";
             int intDie = 0;
+            var strTens = "";
+            var strOnes = "";
 
+            //converts the die into readable ints
             if (die[1] == 10 && die[0] == 1)
             {
                 intDie = 1;
@@ -47,7 +50,15 @@ namespace Engine.Actions
             {
                 intDie = 100;
             }
-            strDie = die[1].ToString() + die[0].ToString();
+            if(die[1]==10 && die[0] != 10)
+            {
+                die[1] = 0;
+            }
+
+            strTens = die[1].ToString();
+            strOnes = die[0].ToString();
+
+            strDie = strTens + strOnes;
             intDie = Convert.ToInt32(strDie);
             D100Result result = new D100Result(die, intDie, strDie);
             return result;

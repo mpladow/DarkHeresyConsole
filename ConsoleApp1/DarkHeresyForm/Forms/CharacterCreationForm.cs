@@ -230,11 +230,12 @@ namespace DarkHeresyForm
         {
             //rtbInformation.Text += String.Format("Result = {0}  Success? = {1}  Degrees of success/failure: {2}", result.Item1, result.Item2, result.Item3);
             rtbInformation.Text += Environment.NewLine;
-            Player.MovementSkills.Add(new MovementSkills("Acrobatics", 0, "description"));
+            Player.MovementSkills.Add(new MovementSkills("Acrobatics", Player.Ag, 1,  "description"));
             var result = Player.ConductMovementCheck("Acrobatics");
-            var isSuccess = result.isSuccess ? "successful" : "unsuccessful";
+            var isSuccess = result.isSuccess ? "SUCCESSFUL" : "unsuccessful";
             var dof = result.isSuccess ? "success" : "failure";
-            rtbInformation.Text += String.Format("You rolled a {0}, and was a {1} to {2} degrees of {3}.", result.StrValue, isSuccess, result.DegreesofSuccess, dof);
+            rtbInformation.Text += String.Format("You attempt to use acrobatics. You are {0} so you require a roll below {1}...", SkillModifiersLists.GetAptitudesById(1).Description, 20);//need to get the aptitude level, and need to get the modified value required
+            rtbInformation.Text += String.Format("You rolled a {0}, and was {1} to {2} degrees of {3}.", result.StrValue, isSuccess, result.DegreesofSuccess, dof);
             rtbInformation.Text += Environment.NewLine;
 
         }

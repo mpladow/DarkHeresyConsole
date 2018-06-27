@@ -49,7 +49,8 @@ namespace Engine.Utilities.Constants
 
         public static SkillModifier GetAptitudesById(int id)
         {
-            return AptitudesList.Where(x => x.Id == id).FirstOrDefault();
+            var aptitude = AptitudesList.Where(x => x.Id == id).FirstOrDefault();
+            return aptitude;
         }
     }
 }

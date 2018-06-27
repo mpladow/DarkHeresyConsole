@@ -44,19 +44,7 @@ namespace Engine
             MovementSkills = new List<MovementSkills>();
         }
 
-        public D100Result ConductMovementCheck(string skill)
-        {
-            //the skill will always be in here, but just in case...
-            var skillInList = MovementSkills.Where(x => x.Name == skill).FirstOrDefault();
-            if (skillInList!= null)
-            {
-                return skillInList.ConductCheck();
-            }
-            else
-            {
-                throw new Exception();//
-            }
-        }
+       
 
         
         //public Human_Base(string name, int ws, int bs, int str, int t, int ag, int inte, int per, int wp, int fel, int ifl)

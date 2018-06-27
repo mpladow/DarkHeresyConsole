@@ -6,6 +6,7 @@ using System.Linq;
 using System.Reflection;
 using System.Text;
 using System.Threading.Tasks;
+using static Engine.Actions.DiceRolls;
 
 namespace Engine
 {
@@ -75,6 +76,18 @@ namespace Engine
             //}
         }
 
-       
+        public D100Result ConductMovementCheck(string skill)
+        {
+            D100Result result = null;
+            //the skill will always be in here, but just in case...
+            var skillInList = MovementSkills.Where(x => x.Name == skill).FirstOrDefault();
+            if (skillInList != null)
+            {
+                result = skillInList.ConductCheck();
+            }
+            return result;
+        }
+
+
     }
 }

@@ -31,7 +31,7 @@ namespace Engine.Skills
 
         private int CalculateFinalValue()
         {
-            int finalValue = ModifiedValue;
+            int finalValue = MainStat.BaseValue;
 
             for (int i = 0; i < TotalSkillModifiers.Count; i++)
             {
@@ -41,11 +41,12 @@ namespace Engine.Skills
         }
 
         //contstructor 
-        public MovementSkills(string name, int rank = 0, string description = "")
+        public MovementSkills(string name, CharacterStat stat, int rank = 0, string description = "")
         {
             Name = name;
             Rank = rank;
             Description = description;
+            MainStat = stat;
             TotalSkillModifiers = new List<SkillModifier>();
             TotalSkillModifiers.Add(SkillModifiersLists.GetAptitudesById(rank));
         }
@@ -93,16 +94,17 @@ namespace Engine.Skills
 
 
 
-    public class Acrobatics : MovementSkills
-    {
-        public Acrobatics(string name, int rank = 0, string description = ""): base(name, rank, description)
-        {
-            Name = name;
-            Rank = rank;
-            Description = description;
-            TotalSkillModifiers = new List<SkillModifier>();
-            TotalSkillModifiers.Add(SkillModifiersLists.GetAptitudesById(rank));
-        }
+    //public class Acrobatics : MovementSkills
+    //{
+    //    public MovementSkills(string name, CharacterStat stat, int rank = 0, string description = ""): base(name, stat, rank, description[p])
+    //    {
+    //        Name = name;
+    //        Rank = rank;
+    //        Description = description;
+    //        MainStat = stat;
+    //        TotalSkillModifiers = new List<SkillModifier>();
+    //        TotalSkillModifiers.Add(SkillModifiersLists.GetAptitudesById(rank));
+    //    }
 
-    }
+    //}
 }

@@ -20,10 +20,12 @@ namespace DarkHeresyForm
 
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new splashscreen());
 
             SkillModifiersLists.PopulateDifficulties();
             SkillModifiersLists.PopulateAptitudesList();
+            Application.Run(new splashscreen());
+
+
 
         }
     }

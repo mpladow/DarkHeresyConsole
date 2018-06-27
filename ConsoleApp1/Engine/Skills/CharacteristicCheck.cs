@@ -20,12 +20,11 @@ namespace Engine.Actions
             Random rn = new Random();
             var d100result = RollD100(rn);
 
-            var isSuccess = false;
             d100result.isSuccess = d100result.IntValue <= (modCharValue) ? true : false;
             int[] modcharArray = modCharValue.ToString().ToCharArray().Select(x => (int)Char.GetNumericValue(x)).ToArray();
             Array.Reverse(modcharArray);
             d100result.DegreesofSuccess= modcharArray[1] - d100result.Result[1];
-            isSuccess = d100result.IntValue == 1 ? true : isSuccess;//if the roll is a 1, then you automatically pass
+            d100result.isSuccess = d100result.IntValue == 1 ? true : d100result.isSuccess;//if the roll is a 1, then you automatically pass
             return d100result;
         }
     }
