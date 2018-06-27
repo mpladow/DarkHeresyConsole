@@ -228,11 +228,15 @@ namespace DarkHeresyForm
 
         private void button2_Click(object sender, EventArgs e)
         {
-            var result = CharacteristicChecks.DoCharacteristicCheck(Player.Ws.Value);
             //rtbInformation.Text += String.Format("Result = {0}  Success? = {1}  Degrees of success/failure: {2}", result.Item1, result.Item2, result.Item3);
             rtbInformation.Text += Environment.NewLine;
-            var list = SkillModifiersLists.AptitudesList();
-            Player.MovementSkills.Add(new Acrobatics(0, "The player attempts to jump"));
+            Player.MovementSkills.Add(new MovementSkills("Acrobatics", 0, "description"));
+            var result = Player.ConductMovementCheck("Acrobatics");
+            var isSuccess = result.isSuccess ? "successful" : "unsuccessful";
+            var dof = result.isSuccess ? "success" : "failure";
+            rtbInformation.Text += String.Format("You rolled a {0}, and was a {1} to {2} degrees of {3}.", result.StrValue, isSuccess, result.DegreesofSuccess, dof);
+            rtbInformation.Text += Environment.NewLine;
+
         }
     }
 }

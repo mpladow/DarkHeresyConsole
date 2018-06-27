@@ -18,3 +18,10 @@ C:\Users\Michael.LaDow\Projects\DarkHeresyConsole\ConsoleApp1\Engine\obj\Debug\E
 C:\Users\Michael.LaDow\Projects\DarkHeresyConsole\ConsoleApp1\Engine\obj\Debug\Engine.dll
 C:\Users\Michael.LaDow\Projects\DarkHeresyConsole\ConsoleApp1\Engine\obj\Debug\Engine.pdb
 C:\Users\mplad\Documents\GitHub\DarkHeresyConsole\ConsoleApp1\Engine\obj\Debug\Engine.csprojAssemblyReference.cache
+C:\Users\mplad\DarkHeresyConsole\ConsoleApp1\Engine\obj\Debug\Engine.dll
+C:\Users\mplad\DarkHeresyConsole\ConsoleApp1\Engine\obj\Debug\Engine.pdb
+C:\Users\mplad\DarkHeresyConsole\ConsoleApp1\Engine\bin\Debug\Engine.dll
+C:\Users\mplad\DarkHeresyConsole\ConsoleApp1\Engine\bin\Debug\Engine.pdb
+C:\Users\mplad\DarkHeresyConsole\ConsoleApp1\Engine\bin\Debug\System.ValueTuple.dll
+C:\Users\mplad\DarkHeresyConsole\ConsoleApp1\Engine\bin\Debug\System.ValueTuple.xml
+C:\Users\mplad\DarkHeresyConsole\ConsoleApp1\Engine\obj\Debug\Engine.csproj.CopyComplete

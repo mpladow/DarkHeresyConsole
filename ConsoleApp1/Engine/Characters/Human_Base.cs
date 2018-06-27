@@ -6,10 +6,11 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using static Engine.Actions.DiceRolls;
 
 namespace Engine
 {
-    public class Human_Base
+    public abstract class Human_Base
     {
 
         public string Name { get; set; }
@@ -42,6 +43,22 @@ namespace Engine
         {
             MovementSkills = new List<MovementSkills>();
         }
+
+        public D100Result ConductMovementCheck(string skill)
+        {
+            //the skill will always be in here, but just in case...
+            var skillInList = MovementSkills.Where(x => x.Name == skill).FirstOrDefault();
+            if (skillInList!= null)
+            {
+                return skillInList.ConductCheck();
+            }
+            else
+            {
+                throw new Exception();//
+            }
+        }
+
+        
         //public Human_Base(string name, int ws, int bs, int str, int t, int ag, int inte, int per, int wp, int fel, int ifl)
         //{
         //    Name = name;

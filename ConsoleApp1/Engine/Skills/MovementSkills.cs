@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using static Engine.Actions.DiceRolls;
 
 namespace Engine.Skills
 {
@@ -81,6 +82,12 @@ namespace Engine.Skills
             }
             return result;
         }
+
+
+        public D100Result ConductCheck()
+        {
+            return CharacteristicChecks.DoCharacteristicCheck(this.ModifiedValue);
+        }
     }
 
 
@@ -88,15 +95,14 @@ namespace Engine.Skills
 
     public class Acrobatics : MovementSkills
     {
-        public Acrobatics(int rank = 0, string description = "") : base(rank, description)
+        public Acrobatics(string name, int rank = 0, string description = ""): base(name, rank, description)
         {
+            Name = name;
             Rank = rank;
             Description = description;
+            TotalSkillModifiers = new List<SkillModifier>();
+            TotalSkillModifiers.Add(SkillModifiersLists.GetAptitudesById(rank));
         }
 
-        public Tuple<string, bool, int> AcrobaticsCheck()
-        {
-            return CharacteristicChecks.DoCharacteristicCheck(this.ModifiedValue);
-        }
     }
 }

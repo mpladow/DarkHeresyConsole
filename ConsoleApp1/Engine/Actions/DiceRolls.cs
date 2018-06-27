@@ -15,10 +15,12 @@ namespace Engine.Actions
             public int[] Result{ get; set; }
             public int IntValue { get; set; }
             public string StrValue { get; set; }
+            public bool isSuccess { get; set; }
+            public int DegreesofSuccess { get; set; }
         }
         public class D100Result:DieResult
         {
-            public D100Result(int[] result, int intvalue, string strvalue)
+            public D100Result(int[] result, int intvalue, string strvalue, bool isSuccess = false, int degreesofsuccess = 0 )
             {
                 Result = result;
                 IntValue = intvalue;

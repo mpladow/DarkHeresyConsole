@@ -5,23 +5,28 @@ using System.Linq;
 using System.Security.Cryptography;
 using System.Text;
 using System.Threading.Tasks;
+using static Engine.Actions.DiceRolls;
 
 namespace Engine.Actions
 {
     public static class CharacteristicChecks
     {
-        public static Tuple<string, bool, int> DoCharacteristicCheck(int modCharValue)
+        public class TestResult
+        {
+            public int MyProperty { get; set; }
+        }
+        public static D100Result DoCharacteristicCheck(int modCharValue)
         {
             Random rn = new Random();
-            var d100 = DiceRolls.RollD100(rn);
+            var d100result = RollD100(rn);
 
             var isSuccess = false;
-            isSuccess = d100.IntValue <= (modCharValue) ? true : false;
+            d100result.isSuccess = d100result.IntValue <= (modCharValue) ? true : false;
             int[] modcharArray = modCharValue.ToString().ToCharArray().Select(x => (int)Char.GetNumericValue(x)).ToArray();
             Array.Reverse(modcharArray);
-            var degreesOfSuccessOrFailure = modcharArray[1] - d100.Result[1];
-            isSuccess = d100.IntValue == 1 ? true : isSuccess;//if the roll is a 1, then you automatically pass
-            return Tuple.Create(d100.StrValue, isSuccess, degreesOfSuccessOrFailure);
+            d100result.DegreesofSuccess= modcharArray[1] - d100result.Result[1];
+            isSuccess = d100result.IntValue == 1 ? true : isSuccess;//if the roll is a 1, then you automatically pass
+            return d100result;
         }
     }
 }
