@@ -8,13 +8,37 @@ namespace Engine.Utilities.Constants
 {
     public static class Constants
     {
+        //availability 
+
+        public const int AvailUbiquitous= 1;
+        public const int AvailAbundant = 2;
+        public const int AvailPlentiful = 3;
+        public const int AvailCommon = 4;
+        public const int AvailAverage = 5;
+        public const int AvailScarce = 6;
+        public const int AvailRare = 7;
+        public const int AvailVeryRare = 8;
+        public const int AvailExtremelyRare = 9;
+        public const int AvailNearUnique = 2;
+        public const int AvailUnique = 3;
+
+        //craftsmanship
+        public const int Poor = 1;
+        public const int Common = 2;
+        public const int Good = 3;
+        public const int Best = 4;
+
+        //ranges
+        public const int ShortRange = 1;
+        public const int LongRange = 2;
+        public const int Extreme = 3;
+
+        //difficulties
         public const int Trivial = 0;
         public const int Ordinary = 1;
         public const int Hard = 2;
         public const int VeryHard = 3;
         public const int Punishing = 4;
-
-
 
         //rank ids
         public const int Unskilled = 0;
@@ -22,26 +46,6 @@ namespace Engine.Utilities.Constants
         public const int Trained = 2;
         public const int Experienced = 3;
         public const int Veteran = 4;
-
-        //public static List<(int value, string name)> GenerateDifficulties()
-        //{
-
-        //    var trivial = new Tuple<int, string>(60, "Trivial");
-        //    var Ordinary = new Tuple<int, string>(10, "Ordinary");
-        //    var Hard = new Tuple<int, string>(-10, "Hard");
-        //    var VeryHard = new Tuple<int, string>(-30, "Very Hard");
-        //    var Punishing = new Tuple<int, string>(-50, "Punishing");
-
-        //    var tupleList = new List<(int value, string name)>
-        //    {
-        //        (60, "Trivial"),
-        //        (10, "Ordinary"),
-        //        (-10, "Hard"),
-        //        (-30, "Very Hard"),
-        //        (-50, "Punishing")
-        //    };
-        //    return tupleList;
-        //}
 
     }
 }
