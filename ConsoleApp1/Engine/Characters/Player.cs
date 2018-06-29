@@ -36,46 +36,6 @@ namespace Engine
             }
         }
 
-        public static void AllocateValues(Player player)
-        {
-            //PropertyInfo[] pi = player .GetType().GetProperties();
-            //var statValue = 0;
-            ////TEST
-            //player.HomeWorld = "Feral World";
-            //for (int i = 0; i < 12; i++)   
-            //{
-            //    statValue = 0;
-            //    if (pi[i].PropertyType == typeof(int))//checks if the value is an int 
-            //    {
-            //        statValue = DiceRolls.RollD10(2, rn).Sum();
-            //        if(player.HomeWorld == "Feral World")
-            //        {
-            //            if(pi[i].Name == "Str")
-            //            {
-            //                int[] roll = DiceRolls.RollD10(3, rn);
-            //                statValue = DiceRolls.TakeDice(2, roll, true).Sum();
-            //            }
-            //            if (pi[i].Name == "T")
-            //            {
-            //                int[] roll = DiceRolls.RollD10(3, rn);
-            //                statValue = DiceRolls.TakeDice(2, roll, true).Sum();
-            //            }
-            //            if (pi[i].Name == "Inte")
-            //            {
-            //                int[] roll = DiceRolls.RollD10(3, rn);
-            //                statValue = DiceRolls.TakeDice(2, roll, false).Sum();
-            //            }
-            //        }
-            //        statValue += 25;
-            //        if (statValue >= 100)
-            //        {
-            //            statValue = 100;
-            //        }
-            //        pi[i].SetValue(player, statValue);
-            //    }  
-            //}
-        }
-
         public D100Result ConductMovementCheck(string skill)
         {
             D100Result result = null;

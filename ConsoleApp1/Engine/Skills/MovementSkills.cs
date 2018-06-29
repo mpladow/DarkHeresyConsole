@@ -10,55 +10,15 @@ using static Engine.Actions.DiceRolls;
 
 namespace Engine.Skills
 {
-    public class MovementSkills
+    public class MovementSkills:Skills_Base
     {
-        public string Name { get; set; }
         public int Rank { get; set; }
-        public string Description { get; set; }
-        public CharacterStat MainStat{ get; set; }
-        public List<SkillModifier> TotalSkillModifiers { get; set; }
 
-        private int _value;
-        public int ModifiedValue //this is the public value that is constantly displayed
-        {
-            get
-            {
-                _value = CalculateFinalValue();
-                return _value;
-            }
-        }
-
-
-        private int CalculateFinalValue()
-        {
-            int finalValue = MainStat.BaseValue;
-
-            for (int i = 0; i < TotalSkillModifiers.Count; i++)
-            {
-                finalValue += TotalSkillModifiers[i].Value;
-            }
-            return finalValue;
-        }
 
         //contstructor 
-        public MovementSkills(string name, CharacterStat stat, int rank = 0, string description = "")
+        public MovementSkills(string name, CharacterStat stat, int rank = 0, string description = ""): base(name, stat, description)
         {
-            Name = name;
-            Rank = rank;
-            Description = description;
-            MainStat = stat;
-            TotalSkillModifiers = new List<SkillModifier>();
             TotalSkillModifiers.Add(SkillModifiersLists.GetAptitudesById(rank));
-        }
-
-
-        public void AddModifier(SkillModifier mod)
-        {
-            this.TotalSkillModifiers.Add(mod);
-        }
-        public void RemoveModifier(SkillModifier mod)
-        {
-            this.TotalSkillModifiers.Remove(mod);
         }
 
         public bool ModifyRank(bool isLevelUp)
@@ -85,10 +45,6 @@ namespace Engine.Skills
         }
 
 
-        public D100Result ConductCheck()
-        {
-            return CharacteristicChecks.DoCharacteristicCheck(this.ModifiedValue);
-        }
     }
 
 
