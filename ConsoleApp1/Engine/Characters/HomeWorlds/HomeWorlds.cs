@@ -5,34 +5,28 @@ using System.ComponentModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using static Engine.Statistics.CharacterStat;
 
 namespace Engine.Characters.HomeWorlds
 {
     public class HomeWorld
     {
-        public enum enumHomeWorlds
-        {
-            FeralWorld,
-            HiveWorld,
-            HighBorn,
-            ForgeWorld,
-            ShrineWorld,
-            VoidBorn
-        }
+        public int Id { get; set; }
         public string Name { get; set; }
         public List<string> StatsAffectedPositive { get; set; }
         public List<string> StatsAffectedNegative { get; set; }
+        public int BaseWounds { get; set; }
         public string Description { get; set; }
 
-        public HomeWorld(string name, string description)
+        public HomeWorld(int id, string name, string description, int basewounds)
         {
+            Id = id;
             Name = name;
             Description = description;
+            BaseWounds = basewounds;
             StatsAffectedPositive = new List<string>();
             StatsAffectedNegative = new List<string>();
         }
-
-
     }
 
 

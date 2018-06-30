@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Engine.Utilities.Constants;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -23,6 +24,14 @@ namespace Engine.Statistics
         }
         private int _value;
         public string Name { get; set; }
+        public string MainAptitude
+        {
+            get
+            {
+                var value = ReturnStatAptitude(Name);
+                return value;
+            }
+        }
         public int BaseValue { get; set; }//this is set at the character creation and only changes when the character levels up
 
         public int Value //this is the public value that is constantly displayed
@@ -71,6 +80,44 @@ namespace Engine.Statistics
             }
         }
 
+        public string ReturnStatAptitude(string name)
+        {
+            var x = "";
+            switch (name)
+            {
+                case "Ws":
+                    x = ReadOnlyLists.AptitudesDict.FirstOrDefault(t => t.Key == 0).Value;
+                    break;
+                case "Bs":
+                    x = ReadOnlyLists.AptitudesDict.FirstOrDefault(t => t.Key == 1).Value;
+                    break;
+                case "Str":
+                    x = ReadOnlyLists.AptitudesDict.FirstOrDefault(t => t.Key == 0).Value;
+                    break;
+                case "T":
+                    x = ReadOnlyLists.AptitudesDict.FirstOrDefault(t => t.Key == 2).Value;
+                    break;
+                case "Ag":
+                    x = ReadOnlyLists.AptitudesDict.FirstOrDefault(t => t.Key == 1).Value;
+                    break;
+                case "Inte":
+                    x = ReadOnlyLists.AptitudesDict.FirstOrDefault(t => t.Key == 3).Value;
+                    break;
+                case "Per":
+                    x = ReadOnlyLists.AptitudesDict.FirstOrDefault(t => t.Key == 4).Value;
+                    break;
+                case "Wp":
+                    x = ReadOnlyLists.AptitudesDict.FirstOrDefault(t => t.Key == 5).Value;
+                    break;
+                case "Fel":
+                    x = ReadOnlyLists.AptitudesDict.FirstOrDefault(t => t.Key == 6).Value;
+                    break;
+                default:
+                    break;
+            }
+            return x;
+
+        }
         private int CalculateFinalValue()
         {
             int finalValue = BaseValue;

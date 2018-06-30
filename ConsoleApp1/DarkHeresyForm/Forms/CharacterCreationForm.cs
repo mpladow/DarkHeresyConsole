@@ -34,7 +34,7 @@ namespace DarkHeresyForm
                 Player newPlayer = new Player();
                 Player = newPlayer;
             }
-            HomeWorlds = ListGenerator.GenerateHomeWorldList();
+            HomeWorlds = ReadOnlyLists.PopulateHomeWorlds();
             cboHomeWorld.DataSource = HomeWorlds;
             cboHomeWorld.DisplayMember = "Name";
         }
@@ -132,30 +132,35 @@ namespace DarkHeresyForm
                         control.ForeColor = Color.DarkRed;
                     }
                 }
+                if(control.Name == "tbWounds")
+                {
+                    control.Text = player.Wounds.ToString();
+                }
             }
+            
         }
 
 
 
         static void SelectHomeWorld(Player player)
         {
-            List<Engine.Characters.HomeWorlds.HomeWorld> list = ListGenerator.GenerateHomeWorldList();
 
-            Random rn = new Random();
+
+            Cryptorandom rn = new Cryptorandom();
             var result = Convert.ToInt32(DiceRolls.RollD100(rn));
             if (result >= 1 && result <= 15)
 
-                player.HomeWorld = list.Where(x => x.Name == enumHomeWorlds.FeralWorld.ToString()).FirstOrDefault();
+                player.HomeWorld = ReadOnlyLists.GetHomeworldById(Constants.FeralWorld);
             if (result >= 16 && result <= 33)
-                player.HomeWorld = list.Where(x => x.Name == enumHomeWorlds.ForgeWorld.ToString()).FirstOrDefault();
+                player.HomeWorld = ReadOnlyLists.GetHomeworldById(Constants.ForgeWorld);
             if (result >= 34 && result <= 44)
-                player.HomeWorld = list.Where(x => x.Name == enumHomeWorlds.HighBorn.ToString()).FirstOrDefault();
+                player.HomeWorld = ReadOnlyLists.GetHomeworldById(Constants.HighBorn);
             if (result >= 45 && result <= 69)
-                player.HomeWorld = list.Where(x => x.Name == enumHomeWorlds.HiveWorld.ToString()).FirstOrDefault();
+                player.HomeWorld = ReadOnlyLists.GetHomeworldById(Constants.HiveWorld);
             if (result >= 70 && result <= 85)
-                player.HomeWorld = list.Where(x => x.Name == enumHomeWorlds.ShrineWorld.ToString()).FirstOrDefault();
+                player.HomeWorld = ReadOnlyLists.GetHomeworldById(Constants.ShrineWorld);
             if (result >= 86 && result <= 100)
-                player.HomeWorld = list.Where(x => x.Name == enumHomeWorlds.VoidBorn.ToString()).FirstOrDefault();
+                player.HomeWorld = ReadOnlyLists.GetHomeworldById(Constants.VoidBorn);
         }
 
         //static void ResetValues(Player player)
@@ -175,7 +180,7 @@ namespace DarkHeresyForm
         //}
         static void AllocateValues(Player player)
         {
-            Random rn = new Random();
+            Cryptorandom rn = new Cryptorandom();
             var enumPropertyNames = EnumUtility.GetValues<StatName>();//creates a list of characteristic enums
             var playerProperties = player.GetType().GetProperties().Where(x => x.PropertyType == typeof(CharacterStat)).ToList(); //uses reflection to get the property types in 
             //casts this object into a list
@@ -213,6 +218,8 @@ namespace DarkHeresyForm
                     }
                 }
             }
+            player.Wounds = DiceRolls.RollD5(1, rn)[0]+ player.HomeWorld.BaseWounds;
+            player.XP = Constants.StartingExperience;
         }
         private void cboHomeWorld_SelectedIndexChanged(object sender, EventArgs e)
         {
@@ -230,14 +237,25 @@ namespace DarkHeresyForm
         {
             //rtbInformation.Text += String.Format("Result = {0}  Success? = {1}  Degrees of success/failure: {2}", result.Item1, result.Item2, result.Item3);
             rtbInformation.Text += Environment.NewLine;
-            Player.MovementSkills.Add(new MovementSkills("Acrobatics", Player.Ag, 1,  "description"));
+            Player.MovementSkills.Add(new SkillsWithRank("Acrobatics", "description", Player.Ag, 1.0));
             var result = Player.ConductMovementCheck("Acrobatics");
             var isSuccess = result.isSuccess ? "SUCCESSFUL" : "unsuccessful";
             var dof = result.isSuccess ? "success" : "failure";
-            rtbInformation.Text += String.Format("You attempt to use acrobatics. You are {0} so you require a roll below {1}...", SkillModifiersLists.GetAptitudesById(1).Description, 20);//need to get the aptitude level, and need to get the modified value required
+            rtbInformation.Text += String.Format("You attempt to use acrobatics. You are {0} so you require a roll below {1}...", ReadOnlyLists.GetSkillLevelsById(1).Description, 20);//need to get the aptitude level, and need to get the modified value required
             rtbInformation.Text += String.Format("You rolled a {0}, and was {1} to {2} degrees of {3}.", result.StrValue, isSuccess, result.DegreesofSuccess, dof);
             rtbInformation.Text += Environment.NewLine;
 
+        }
+
+        private void CharacterCreationForm_Load(object sender, EventArgs e)
+        {
+
+        }
+
+
+        private void btnCheckAptitudes_Click(object sender, EventArgs e)
+        {
+            tbAptitude.Text = Player.Bs.MainAptitude;
         }
     }
 }

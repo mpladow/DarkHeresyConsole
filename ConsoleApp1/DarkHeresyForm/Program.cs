@@ -21,8 +21,9 @@ namespace DarkHeresyForm
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
 
-            SkillModifiersLists.PopulateDifficulties();
-            SkillModifiersLists.PopulateAptitudesList();
+            ReadOnlyLists.PopulateDifficulties();
+            ReadOnlyLists.PopulateSkillLevels();
+            ReadOnlyLists.PopulateAptitudesDictionary();
             Application.Run(new splashscreen());
 
 

@@ -1,4 +1,5 @@
 ﻿using Engine.Actions;
+using Engine.Utilities;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -35,7 +36,7 @@ namespace Engine.World_Objects
 
         private int CalculateDamage(int dietoroll = 1)
         {
-            Random rn = new Random();
+            Cryptorandom rn = new Cryptorandom();
             var roll = DiceRolls.RollD10(dietoroll, rn);
             var x = roll[0];
 

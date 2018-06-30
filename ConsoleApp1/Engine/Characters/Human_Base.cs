@@ -26,6 +26,7 @@ namespace Engine
         public CharacterStat Wp { get; set; }
         public CharacterStat Fel { get; set; }
         public CharacterStat Ifl { get; set; }
+        public int Wounds { get; set; }
 
         public int A_Head { get; set; }
         public int A_Body { get; set; }
@@ -34,14 +35,14 @@ namespace Engine
         public int A_LeftLeg { get; set; }
         public int A_RightLeg { get; set; }
 
-        public List<MovementSkills> MovementSkills { get; set; }
+        public List<SkillsWithRank> MovementSkills { get; set; }
         public HomeWorld HomeWorld { get; set; }
         public int CurrentPosition { get; set; }
 
-
+        public int XP { get; set; }
         public Human_Base()
         {
-            MovementSkills = new List<MovementSkills>();
+            MovementSkills = new List<SkillsWithRank>();
         }
 
        

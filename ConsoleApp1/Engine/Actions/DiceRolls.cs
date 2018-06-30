@@ -29,7 +29,7 @@ namespace Engine.Actions
         }
 
         //rolls die and returns three different values encapulated in an object
-        public static D100Result RollD100(Random rn)
+        public static D100Result RollD100(Cryptorandom rn)
         {
             //RNG.NumberBetween(1, 10);
             int[] die = new int[2];
@@ -65,7 +65,7 @@ namespace Engine.Actions
 
         }
 
-        public static int[] RollD10(int times, Random rn)
+        public static int[] RollD10(int times, Cryptorandom rn)
         {
             var results = new int[times];
             for (int i = 0; i < times; i++)
@@ -74,6 +74,17 @@ namespace Engine.Actions
             }
             return results;
         }
+
+        public static int[] RollD5(int times, Cryptorandom rn)
+        {
+            var results = new int[times];
+            for (int i = 0; i < times; i++)
+            {
+                results[i] = rn.Next(1, 5);
+            }
+            return results;
+        }
+
 
         //takes the number of dice from the roll - i.e. selecting the top results out of 3 dice rolls. Used in characteristic generation
         public static int[] TakeDice(int numDiceToTake, int[] result, bool takeHighest)

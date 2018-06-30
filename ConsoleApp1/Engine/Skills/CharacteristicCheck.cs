@@ -15,9 +15,10 @@ namespace Engine.Actions
         {
             public int MyProperty { get; set; }
         }
+
         public static D100Result DoCharacteristicCheck(int modCharValue)
         {
-            Random rn = new Random();
+            Cryptorandom rn = new Cryptorandom();
             var d100result = RollD100(rn);
 
             d100result.isSuccess = d100result.IntValue <= (modCharValue) ? true : false;

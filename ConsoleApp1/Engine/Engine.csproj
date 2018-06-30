@@ -59,8 +59,9 @@
     <Compile Include="Skills\SkillModifer.cs" />
     <Compile Include="Skills\Skills_Base.cs" />
     <Compile Include="Statistics\CharacterStat.cs" />
-    <Compile Include="Utilities\Constants\Constants.cs" />
-    <Compile Include="Utilities\Constants\SkillModifiersLists.cs" />
+    <Compile Include="Utilities\Lists\Constants.cs" />
+    <Compile Include="Utilities\Lists\ReadOnlyLists.cs" />
+    <Compile Include="Utilities\Cryptorandom.cs" />
     <Compile Include="Utilities\EnumUtility.cs" />
     <Compile Include="Utilities\Utilities.cs" />
     <Compile Include="Utilities\ListGenerator.cs" />
@@ -74,7 +75,6 @@
     <Compile Include="World_Objects\Weapons\Melee.cs" />
     <Compile Include="World_Objects\Weapons\BasicRanged.cs" />
     <Compile Include="World_Objects\WorldObject_base.cs" />
-    <Compile Include="_Enums.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />

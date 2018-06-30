@@ -8,8 +8,16 @@ namespace Engine.Utilities.Constants
 {
     public static class Constants
     {
-        //availability 
+        public const int StartingExperience = 1000;
+        //homeworlds
+        public const int FeralWorld = 1;
+        public const int HiveWorld = 2;
+        public const int HighBorn = 3;
+        public const int ForgeWorld = 4;
+        public const int ShrineWorld = 5;
+        public const int VoidBorn = 6;
 
+        //availability 
         public const int AvailUbiquitous= 1;
         public const int AvailAbundant = 2;
         public const int AvailPlentiful = 3;
@@ -46,6 +54,8 @@ namespace Engine.Utilities.Constants
         public const int Trained = 2;
         public const int Experienced = 3;
         public const int Veteran = 4;
+
+
 
     }
 }
