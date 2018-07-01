@@ -1,4 +1,5 @@
 ﻿using Engine.Actions;
+using Engine.Characters.CharacterCreation;
 using Engine.Characters.HomeWorlds;
 using Engine.Skills;
 using Engine.Statistics;
@@ -21,6 +22,7 @@ namespace Engine
         public string Name { get; set; }
 
         public List<CharacterStat> Stats { get; set; }
+
         public int Wounds { get; set; }
 
         public int A_Head { get; set; }
@@ -34,7 +36,10 @@ namespace Engine
         public List<Skills_Base> CombatSkills { get; set; }
         public List<SkillsWithRank> InteractionSkills { get; set; }
 
+        public List<string> Aptitudes { get; set; }
+
         public HomeWorld HomeWorld { get; set; }
+        public Background Background { get; set; }
         public int CurrentPosition { get; set; }
 
         public int XP { get; set; }
@@ -53,9 +58,9 @@ namespace Engine
             Stats.Add(new CharacterStat(Constants.Ifl));
 
             MovementSkills = ReadOnlyLists.MovementSkillsList;
-            AllocateSkills();
-            //CombatSkills = new List<Skills_Base>();
-            //InteractionSkills = new List<SkillsWithRank>();//not yet implemented
+            CombatSkills = new List<Skills_Base>();
+            InteractionSkills = new List<SkillsWithRank>();
+            Aptitudes = new List<string>();
         }
 
         public CharacterStat GetCharacterStatByName(string name)
@@ -77,6 +82,7 @@ namespace Engine
             }
             XP = Constants.StartingExperience;
         }
+
         public void UpdateHomeWorldCharacteristicBonuses()
         {
             Cryptorandom rn = new Cryptorandom();
@@ -88,7 +94,7 @@ namespace Engine
                 {
                     if (stat.Name == posStat)
                     {
-                        stat.BaseValue = Constants.StartingValue+5;//resets basevaluee to 25
+                        stat.BaseValue = Constants.StartingValue;//resets basevaluee to 25
                         int[] roll = RollD10(3, rn);
                         stat.BaseValue += TakeDice(2, roll, true).Sum();
                     }
@@ -106,6 +112,7 @@ namespace Engine
                     }
                 }
             }
+            this.Aptitudes.Add(HomeWorld.AptitudeBonus);
 
         }
 
@@ -129,7 +136,7 @@ namespace Engine
             }
         }
 
-        public void AllocateStartingSkills(int[] ids)//pass in the starting skills based on the role and allocate starting ranks
+        public void AllocateStartingSkills(int[] ids)
         {
             foreach (var id in ids)
             {

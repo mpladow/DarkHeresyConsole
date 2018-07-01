@@ -43,10 +43,11 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Characters\CharacterCreation\Background.cs" />
     <Compile Include="Skills\CharacteristicCheck.cs" />
     <Compile Include="Actions\DiceRolls.cs" />
     <Compile Include="Armour\Armour_base.cs" />
-    <Compile Include="Characters\HomeWorlds\HomeWorlds.cs" />
+    <Compile Include="Characters\CharacterCreation\HomeWorlds.cs" />
     <Compile Include="Inventory.cs" />
     <Compile Include="Characters\Human_Base.cs" />
     <Compile Include="Locations\Location.cs" />

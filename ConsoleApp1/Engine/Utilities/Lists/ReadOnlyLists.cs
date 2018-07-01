@@ -8,6 +8,7 @@ using Engine.Utilities.Constants;
 using Engine.Characters.HomeWorlds;
 using static Engine.Statistics.CharacterStat;
 using Engine.Skills;
+using Engine.Characters.CharacterCreation;
 
 namespace Engine.Utilities.Constants
 {
@@ -16,8 +17,10 @@ namespace Engine.Utilities.Constants
         public static readonly List<SkillModifier> DifficultiesList = new List<SkillModifier>();
         public static readonly List<SkillModifier> SkillLevelsList = new List<SkillModifier>();
         public static readonly List<HomeWorld> HomeWorlds = new List<HomeWorld>();
+        public static readonly List<Background> Backgrounds = new List<Background>();
         public static readonly List<SkillsWithRank> MovementSkillsList = new List<SkillsWithRank>();
         public static readonly List<SkillsWithRank> InteractionSkillsList = new List<SkillsWithRank>();
+        public static readonly List<SkillsWithRank> GeneralSkillsList = new List<SkillsWithRank>();
         public static readonly List<Skills_Base> CombatSkillsList = new List<Skills_Base>();
 
         public static readonly Dictionary<int, string> AptitudesDict = new Dictionary<int, string>();
@@ -43,40 +46,71 @@ namespace Engine.Utilities.Constants
         }
 
         //Homeworlds
+        public static List<Background> PopulateBackgrounds()
+        {
+            var adeptusArbites = new Background(1, "Adeptus Arbites", "Lawbringers of the imperium.");
+            adeptusArbites.StartingSkills.Add(GeneralSkillsList.FirstOrDefault(x => x.Id == 1));//adds awareness
+            adeptusArbites.StartingSkills.Add(InteractionSkillsList.FirstOrDefault(x => x.Id == 4));//adds inquiry
+            adeptusArbites.StartingSkills.Add(InteractionSkillsList.FirstOrDefault(x => x.Id == 5));//interrogate
+            adeptusArbites.StartingSkills.Add(InteractionSkillsList.FirstOrDefault(x => x.Id == 6));//intimidate
+            adeptusArbites.StartingSkills.Add(InteractionSkillsList.FirstOrDefault(x => x.Id == 7));//scrutiny
+            adeptusArbites.StartingAptitudes.Add(Constants.Offence);
+            adeptusArbites.StartingAptitudes.Add(Constants.Defence);
+            Backgrounds.Add(adeptusArbites);
+
+            var imperialGuard = new Background(2, "Imperial Guard", "Specialists in combat.");
+            imperialGuard.StartingSkills.Add(GeneralSkillsList.FirstOrDefault(x => x.Id == 2));//adds command
+            imperialGuard.StartingSkills.Add(MovementSkillsList.FirstOrDefault(x => x.Id == 1));//adds Athletics
+            imperialGuard.StartingSkills.Add(GeneralSkillsList.FirstOrDefault(x => x.Id == 3));//adds medicae
+            imperialGuard.StartingAptitudes.Add(Constants.Fieldcraft);
+            imperialGuard.StartingAptitudes.Add(Constants.Leadership);
+            Backgrounds.Add(imperialGuard);
+
+            var outcast = new Background(2, "Outcast", "A rogue with ties to the underworld.");
+            outcast.StartingSkills.Add(MovementSkillsList.FirstOrDefault(x => x.Id == 2));//adds acrobatics
+            outcast.StartingSkills.Add(MovementSkillsList.FirstOrDefault(x => x.Id == 3));//adds stealth
+            outcast.StartingSkills.Add(InteractionSkillsList.FirstOrDefault(x => x.Id == 3));//adds Deceive
+            outcast.StartingSkills.Add(CombatSkillsList.FirstOrDefault(x => x.Id == 1));//adds Dodge
+            outcast.StartingAptitudes.Add(Constants.Fieldcraft);
+            outcast.StartingAptitudes.Add(Constants.Leadership);
+            Backgrounds.Add(outcast);
+
+            return Backgrounds;
+        }
         public static List<HomeWorld> PopulateHomeWorlds()
         {
-            var FeralWorld = new Characters.HomeWorlds.HomeWorld(1, "FeralWorld", "A feral world", 9);
+            var FeralWorld = new HomeWorld(1, "FeralWorld", "A feral world", 9, Constants.T);
             FeralWorld.StatsAffectedPositive.Add(Constants.Str);
             FeralWorld.StatsAffectedPositive.Add(Constants.T);
             FeralWorld.StatsAffectedNegative.Add(Constants.Inte);
             HomeWorlds.Add(FeralWorld);
 
-            var HiveWorld = new Characters.HomeWorlds.HomeWorld(2, "HiveWorld", "A hive world", 8);
+            var HiveWorld = new Characters.HomeWorlds.HomeWorld(2, "HiveWorld", "A hive world", 8, Constants.Per);
             HiveWorld.StatsAffectedPositive.Add(Constants.Ag);
             HiveWorld.StatsAffectedPositive.Add(Constants.Per);
             HiveWorld.StatsAffectedNegative.Add(Constants.Wp);
             HomeWorlds.Add(HiveWorld);
 
-            var HighBorn = new Characters.HomeWorlds.HomeWorld(3, "HighBorn", "A High Born from an ecclessiarchal world.", 9);
+            var HighBorn = new Characters.HomeWorlds.HomeWorld(3, "HighBorn", "A High Born from an ecclessiarchal world.", 9, Constants.Fel);
             HighBorn.StatsAffectedPositive.Add(Constants.Fel);
             HighBorn.StatsAffectedPositive.Add(Constants.Ifl);
             HighBorn.StatsAffectedNegative.Add(Constants.T);
             HomeWorlds.Add(HighBorn);
 
 
-            var ForgeWorld = new Characters.HomeWorlds.HomeWorld(4, "ForgeWorld", "An industrial forge world", 8);
+            var ForgeWorld = new Characters.HomeWorlds.HomeWorld(4, "ForgeWorld", "An industrial forge world", 8, Constants.Inte );
             ForgeWorld.StatsAffectedPositive.Add(Constants.Inte);
             ForgeWorld.StatsAffectedPositive.Add(Constants.T);
             ForgeWorld.StatsAffectedNegative.Add(Constants.Fel);
             HomeWorlds.Add(ForgeWorld);
 
-            var ShrineWorld = new Characters.HomeWorlds.HomeWorld(5, "ShrineWorld", "A shrine world", 7);
+            var ShrineWorld = new Characters.HomeWorlds.HomeWorld(5, "ShrineWorld", "A shrine world", 7, Constants.Wp);
             ShrineWorld.StatsAffectedPositive.Add(Constants.Fel);
             ShrineWorld.StatsAffectedPositive.Add(Constants.Wp);
             ShrineWorld.StatsAffectedNegative.Add(Constants.Per);
             HomeWorlds.Add(ShrineWorld);
 
-            var VoidBorn = new Characters.HomeWorlds.HomeWorld(6, "VoidBorn", "A void-born", 7);
+            var VoidBorn = new Characters.HomeWorlds.HomeWorld(6, "VoidBorn", "A void-born", 7, Constants.Inte);
             VoidBorn.StatsAffectedPositive.Add(Constants.Inte);
             VoidBorn.StatsAffectedPositive.Add(Constants.Wp);
             VoidBorn.StatsAffectedNegative.Add(Constants.Str);
@@ -125,7 +159,8 @@ namespace Engine.Utilities.Constants
                 "Psyker",
                 "Social",
                 "Tech",
-                "Leadership"
+                "Leadership",
+
             };
 
             for (int i = 0; i < aptitudes.Length; i++)
@@ -144,19 +179,20 @@ namespace Engine.Utilities.Constants
 
         public static void PopulateSkills()
         {
-            var athletics = new SkillsWithRank(1, "Athletics", "(Toughness) Control and direct vehicles and equipment.");
+            var athletics = new SkillsWithRank(1, "Athletics", "(Toughness) Using physically demanding tasks.");
             MovementSkillsList.Add(athletics);
 
             var acrobatics = new SkillsWithRank(2, "Acrobatics", "(Agility) Navigating through environments gracefully. Keeping balance. Jumping");
             MovementSkillsList.Add(acrobatics);
 
-            var stealth = new SkillsWithRank(3, "Stealth", "(Agility) Control and direct vehicles and equipment.");
+            var stealth = new SkillsWithRank(3, "Stealth", "(Agility) Attempt to hide from enemies and move unseen.");
             MovementSkillsList.Add(stealth);
 
             var operate = new SkillsWithRank(4, "Operate", "(Agility) Control and direct vehicles and equipment.",0.5);
             MovementSkillsList.Add(operate);
 
 
+            //interaction skills
             var charm = new SkillsWithRank(1, "Charm", "(Fellowship) Sway people towards a certain disposition. Gather information. Distract someone");
             InteractionSkillsList.Add(charm);
 
@@ -181,6 +217,19 @@ namespace Engine.Utilities.Constants
             var scrutiny = new SkillsWithRank(7, "Scrutiny", "(Perception) Interpret other peoples words and actions. Judging their mood.", isopposedcheck: true);//opposed by deceive
             InteractionSkillsList.Add(scrutiny);
 
+            //general skills
+            var awareness = new SkillsWithRank(1, "Awareness", "(Perception) Attempting to spot items and individuals that are hidden.", isopposedcheck: true); //opposed by stealth against NPCS
+            GeneralSkillsList.Add(awareness);
+
+            var command = new SkillsWithRank(2, "Command", "(Fellowship) Attempt to boost morale of allies, or order an npc to do something for them.");
+            GeneralSkillsList.Add(command);
+
+            var medicae = new SkillsWithRank(3, "Medicae", "(Intelligence) Heal wounds and diagnosing afflictions.");
+            GeneralSkillsList.Add(medicae);
+
+            //combat skills
+            var Dodge = new SkillsWithRank(1, "Dodge", "(Agility) Attempt to dodge a ranged or melee attack. Avoid hazards.");
+            CombatSkillsList.Add(Dodge);
         }
 
         public static SkillsWithRank GetMovementSkillById(int id, Human_Base player = null)

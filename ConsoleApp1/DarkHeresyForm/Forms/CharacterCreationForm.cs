@@ -37,6 +37,8 @@ namespace DarkHeresyForm
             HomeWorlds = ReadOnlyLists.PopulateHomeWorlds();
             cboHomeWorld.DataSource = HomeWorlds;
             cboHomeWorld.DisplayMember = "Name";
+            cboBackgrounds.DataSource = ReadOnlyLists.Backgrounds;
+            cboBackgrounds.DisplayMember = "Name";
         }
 
         private void richTextBox1_TextChanged(object sender, EventArgs e)
@@ -67,8 +69,8 @@ namespace DarkHeresyForm
 
             int[] startingSkillsIds = { 1, 2 };
             Player.AllocateStartingSkills(startingSkillsIds);
-            rtbInformation.Text += Environment.NewLine;
-            rtbInformation.Text += String.Format("Character Statistics have been generated.");
+            rtbCharacterHomeWorld.Text += Environment.NewLine;
+            rtbCharacterHomeWorld.Text += String.Format("Character Statistics have been generated.");
             UpdateDisplay(panelPlayerStats, Player);
             //btnGenerateHomeworld.Hide();
         }
@@ -146,11 +148,23 @@ namespace DarkHeresyForm
             }
         }
 
+        //comboboxes
         private void cboHomeWorld_SelectedIndexChanged(object sender, EventArgs e)
         {
             var selection = cboHomeWorld.SelectedItem;
             Player.HomeWorld = (HomeWorld)selection;
-            rtbInformation.Text = Player.HomeWorld.Description;
+            rtbCharacterHomeWorld.Text = Player.HomeWorld.Description;
+        }
+
+        private void cboBackgrounds_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            var selection = cboBackgrounds.SelectedItem;
+            Player.Background = (Engine.Characters.CharacterCreation.Background)selection;
+            rtbBackground.Text = Player.Background.Description;
+            rtbBackground.Text += Environment.NewLine;
+            rtbBackground.Text += "Skills include:";
+            rtbBackground.Text += Environment.NewLine;
+            Player.Background.StartingSkills.ForEach(x => rtbBackground.Text += String.Format("{0} ", x.Name));
         }
 
         private void btnSelectHomeWorld_Click(object sender, EventArgs e)
@@ -161,14 +175,14 @@ namespace DarkHeresyForm
         private void button2_Click(object sender, EventArgs e)
         {
             //rtbInformation.Text += String.Format("Result = {0}  Success? = {1}  Degrees of success/failure: {2}", result.Item1, result.Item2, result.Item3);
-            rtbInformation.Text += Environment.NewLine;
+            rtbCharacterHomeWorld.Text += Environment.NewLine;
             //Player.MovementSkills.Add(new SkillsWithRank("Acrobatics", "description", Player.Ag, 1.0));
             var result = Player.ConductMovementCheck("Acrobatics");
             var isSuccess = result.isSuccess ? "SUCCESSFUL" : "unsuccessful";
             var dof = result.isSuccess ? "success" : "failure";
-            rtbInformation.Text += String.Format("You attempt to use acrobatics. You are {0} so you require a roll below {1}...", ReadOnlyLists.GetSkillLevelsById(1).Description, 20);//need to get the aptitude level, and need to get the modified value required
-            rtbInformation.Text += String.Format("You rolled a {0}, and was {1} to {2} degrees of {3}.", result.StrValue, isSuccess, result.DegreesofSuccess, dof);
-            rtbInformation.Text += Environment.NewLine;
+            rtbCharacterHomeWorld.Text += String.Format("You attempt to use acrobatics. You are {0} so you require a roll below {1}...", ReadOnlyLists.GetSkillLevelsById(1).Description, 20);//need to get the aptitude level, and need to get the modified value required
+            rtbCharacterHomeWorld.Text += String.Format("You rolled a {0}, and was {1} to {2} degrees of {3}.", result.StrValue, isSuccess, result.DegreesofSuccess, dof);
+            rtbCharacterHomeWorld.Text += Environment.NewLine;
 
         }
 
@@ -187,5 +201,6 @@ namespace DarkHeresyForm
         {
 
         }
+
     }
 }

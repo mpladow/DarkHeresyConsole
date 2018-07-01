@@ -15,10 +15,11 @@ namespace Engine.Characters.HomeWorlds
         public string Name { get; set; }
         public List<string> StatsAffectedPositive { get; set; }
         public List<string> StatsAffectedNegative { get; set; }
+        public string AptitudeBonus { get; set; }
         public int BaseWounds { get; set; }
         public string Description { get; set; }
 
-        public HomeWorld(int id, string name, string description, int basewounds)
+        public HomeWorld(int id, string name, string description, int basewounds, string aptitude)
         {
             Id = id;
             Name = name;
@@ -26,6 +27,7 @@ namespace Engine.Characters.HomeWorlds
             BaseWounds = basewounds;
             StatsAffectedPositive = new List<string>();
             StatsAffectedNegative = new List<string>();
+            AptitudeBonus = aptitude;
         }
     }
 

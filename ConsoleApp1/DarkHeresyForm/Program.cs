@@ -25,6 +25,7 @@ namespace DarkHeresyForm
             ReadOnlyLists.PopulateSkillLevels();
             ReadOnlyLists.PopulateSkills();
             ReadOnlyLists.PopulateAptitudesDictionary();
+            ReadOnlyLists.PopulateBackgrounds();
 
             Application.Run(new splashscreen());
 
