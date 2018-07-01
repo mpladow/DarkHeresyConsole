@@ -12,18 +12,21 @@ namespace Engine.Skills
 {
     public abstract class Skills_Base
     {
+        public int Id { get; set; }
         public string Name { get; set; }
         public string Description { get; set; }
         public CharacterStat MainStat { get; set; }
         public List<SkillModifier> TotalSkillModifiers { get; set; }
         public bool IsOpposedCheck { get; set; }
 
-        private int _value;
+       
         public int ModifiedValue //this is the public value that is constantly displayed
         {
             get
             {
-                _value = CalculateFinalValue();
+                var _value = CalculateFinalValue();
+                _value = _value > 100? 100: _value;//sets limites between 100 and 1
+                _value = _value < 0 ? 1 : _value;
                 return _value;
             }
         }
@@ -44,8 +47,9 @@ namespace Engine.Skills
 
         //contstructors
         //uses for asigning the main stat characteristic value
-        public Skills_Base(string name, CharacterStat stat, string description, bool isopposedcheck = false, double actioncost = 1)
+        public Skills_Base(int id, string name, CharacterStat stat, string description, bool isopposedcheck = false, double actioncost = 1)
         {
+            Id = id;
             Name = name;
             Description = description;
             MainStat = stat;
@@ -55,8 +59,9 @@ namespace Engine.Skills
         }
         //used for populating lists of skills, blind to any characters
 
-        public Skills_Base(string name, string description, bool isopposedcheck = false, double actioncost = 1)
+        public Skills_Base(int id, string name, string description, bool isopposedcheck = false, double actioncost = 1)
         {
+            Id = id;
             Name = name;
             Description = description;
             IsOpposedCheck = isopposedcheck;

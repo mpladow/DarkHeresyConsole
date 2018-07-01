@@ -9,6 +9,19 @@ namespace Engine.Utilities.Constants
     public static class Constants
     {
         public const int StartingExperience = 1000;
+
+        public const int StartingValue = 25;
+
+        public const string Ws = "Ws";
+        public const string Bs = "Bs";
+        public const string Str = "Str";
+        public const string T = "T";
+        public const string Ag = "Ag";
+        public const string Inte = "Inte";
+        public const string Per = "Per";
+        public const string Wp = "Wp";
+        public const string Fel = "Fel";
+        public const string Ifl = "Ifl";
         //homeworlds
         public const int FeralWorld = 1;
         public const int HiveWorld = 2;

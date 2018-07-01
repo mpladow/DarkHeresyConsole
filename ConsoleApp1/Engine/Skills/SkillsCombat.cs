@@ -8,18 +8,18 @@ using System.Threading.Tasks;
 
 namespace Engine.Skills
 {
-    public class InvestigationSkills:Skills_Base
+    public class SkillsCombat : Skills_Base
     {
         public int Rank { get; set; }
 
 
         //contstructor 
-        public InvestigationSkills(int id, string name, string description, CharacterStat stat, double actioncost = 1, int rank = 0, bool isopposedcheck = false) : base(id, name, stat, description, isopposedcheck, actioncost)
+        public SkillsCombat(int id, string name, string description, CharacterStat stat, double actioncost = 1, int rank = 0, bool isopposedcheck = false) : base(id, name, stat, description, isopposedcheck, actioncost)
         {
             TotalSkillModifiers.Add(ReadOnlyLists.GetSkillLevelsById(rank));
         }
         //contstructor 
-        public InvestigationSkills(int id, string name, string description, double actioncost = 1, int rank = 0, bool isopposedcheck = false) : base(id, name, description, isopposedcheck, actioncost)
+        public SkillsCombat(int id, string name, string description, double actioncost = 1, int rank = 0, bool isopposedcheck = false) : base(id, name, description, isopposedcheck, actioncost)
         {
             TotalSkillModifiers.Add(ReadOnlyLists.GetSkillLevelsById(rank));
         }
@@ -50,6 +50,4 @@ namespace Engine.Skills
 
 
     }
-
 }
-

@@ -7,16 +7,16 @@ using System.Threading.Tasks;
 
 namespace Engine.Skills
 {
-    public class CombatSkills : Skills_Base
-    {
-        //contstructor 
-        public CombatSkills(string name, CharacterStat stat, string description = "") 
-            : base(name, stat, description)
-        {
+    //public class CombatSkills : Skills_Base
+    //{
+    //    ////contstructor 
+    //    //public CombatSkills(string name, CharacterStat stat, string description = "") 
+    //    //    : base(name, stat, description)
+    //    //{
 
-        }
+    //    //}
 
-    }
+    //}
 
 
 

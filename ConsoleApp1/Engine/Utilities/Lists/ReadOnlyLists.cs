@@ -16,8 +16,10 @@ namespace Engine.Utilities.Constants
         public static readonly List<SkillModifier> DifficultiesList = new List<SkillModifier>();
         public static readonly List<SkillModifier> SkillLevelsList = new List<SkillModifier>();
         public static readonly List<HomeWorld> HomeWorlds = new List<HomeWorld>();
-        public static readonly List<Skills_Base> MovementSkillsList = new List<Skills_Base>();
-        public static readonly List<Skills_Base> InteractionSkillsList = new List<Skills_Base>();
+        public static readonly List<SkillsWithRank> MovementSkillsList = new List<SkillsWithRank>();
+        public static readonly List<SkillsWithRank> InteractionSkillsList = new List<SkillsWithRank>();
+        public static readonly List<Skills_Base> CombatSkillsList = new List<Skills_Base>();
+
         public static readonly Dictionary<int, string> AptitudesDict = new Dictionary<int, string>();
 
         //Difficulties
@@ -44,40 +46,40 @@ namespace Engine.Utilities.Constants
         public static List<HomeWorld> PopulateHomeWorlds()
         {
             var FeralWorld = new Characters.HomeWorlds.HomeWorld(1, "FeralWorld", "A feral world", 9);
-            FeralWorld.StatsAffectedPositive.Add(StatName.Str.ToString());
-            FeralWorld.StatsAffectedPositive.Add(StatName.T.ToString());
-            FeralWorld.StatsAffectedNegative.Add(StatName.Inte.ToString());
+            FeralWorld.StatsAffectedPositive.Add(Constants.Str);
+            FeralWorld.StatsAffectedPositive.Add(Constants.T);
+            FeralWorld.StatsAffectedNegative.Add(Constants.Inte);
             HomeWorlds.Add(FeralWorld);
 
             var HiveWorld = new Characters.HomeWorlds.HomeWorld(2, "HiveWorld", "A hive world", 8);
-            HiveWorld.StatsAffectedPositive.Add(StatName.Ag.ToString());
-            HiveWorld.StatsAffectedPositive.Add(StatName.Per.ToString());
-            HiveWorld.StatsAffectedNegative.Add(StatName.Wp.ToString());
+            HiveWorld.StatsAffectedPositive.Add(Constants.Ag);
+            HiveWorld.StatsAffectedPositive.Add(Constants.Per);
+            HiveWorld.StatsAffectedNegative.Add(Constants.Wp);
             HomeWorlds.Add(HiveWorld);
 
             var HighBorn = new Characters.HomeWorlds.HomeWorld(3, "HighBorn", "A High Born from an ecclessiarchal world.", 9);
-            HighBorn.StatsAffectedPositive.Add(StatName.Fel.ToString());
-            HighBorn.StatsAffectedPositive.Add(StatName.Ifl.ToString());
-            HighBorn.StatsAffectedNegative.Add(StatName.T.ToString());
+            HighBorn.StatsAffectedPositive.Add(Constants.Fel);
+            HighBorn.StatsAffectedPositive.Add(Constants.Ifl);
+            HighBorn.StatsAffectedNegative.Add(Constants.T);
             HomeWorlds.Add(HighBorn);
 
 
             var ForgeWorld = new Characters.HomeWorlds.HomeWorld(4, "ForgeWorld", "An industrial forge world", 8);
-            ForgeWorld.StatsAffectedPositive.Add(StatName.Inte.ToString());
-            ForgeWorld.StatsAffectedPositive.Add(StatName.T.ToString());
-            ForgeWorld.StatsAffectedNegative.Add(StatName.Fel.ToString());
+            ForgeWorld.StatsAffectedPositive.Add(Constants.Inte);
+            ForgeWorld.StatsAffectedPositive.Add(Constants.T);
+            ForgeWorld.StatsAffectedNegative.Add(Constants.Fel);
             HomeWorlds.Add(ForgeWorld);
 
             var ShrineWorld = new Characters.HomeWorlds.HomeWorld(5, "ShrineWorld", "A shrine world", 7);
-            ShrineWorld.StatsAffectedPositive.Add(StatName.Fel.ToString());
-            ShrineWorld.StatsAffectedPositive.Add(StatName.Wp.ToString());
-            ShrineWorld.StatsAffectedNegative.Add(StatName.Per.ToString());
+            ShrineWorld.StatsAffectedPositive.Add(Constants.Fel);
+            ShrineWorld.StatsAffectedPositive.Add(Constants.Wp);
+            ShrineWorld.StatsAffectedNegative.Add(Constants.Per);
             HomeWorlds.Add(ShrineWorld);
 
             var VoidBorn = new Characters.HomeWorlds.HomeWorld(6, "VoidBorn", "A void-born", 7);
-            VoidBorn.StatsAffectedPositive.Add(StatName.Inte.ToString());
-            VoidBorn.StatsAffectedPositive.Add(StatName.Wp.ToString());
-            VoidBorn.StatsAffectedNegative.Add(StatName.Str.ToString());
+            VoidBorn.StatsAffectedPositive.Add(Constants.Inte);
+            VoidBorn.StatsAffectedPositive.Add(Constants.Wp);
+            VoidBorn.StatsAffectedNegative.Add(Constants.Str);
             HomeWorlds.Add(VoidBorn);
             return HomeWorlds;
         }
@@ -104,7 +106,7 @@ namespace Engine.Utilities.Constants
             SkillLevelsList.Add(veteran);
         }
 
-        public static SkillModifier GetSkillLevelsById(int id)
+        public static SkillModifier GetSkillLevelsById(int id, Player player = null)
         {
             var aptitude = SkillLevelsList.Where(x => x.Id == id).FirstOrDefault();
             return aptitude;
@@ -142,42 +144,68 @@ namespace Engine.Utilities.Constants
 
         public static void PopulateSkills()
         {
-            var athletics = new SkillsWithRank("Athletics", "(Toughness) Control and direct vehicles and equipment.");
+            var athletics = new SkillsWithRank(1, "Athletics", "(Toughness) Control and direct vehicles and equipment.");
             MovementSkillsList.Add(athletics);
 
-            var acrobatics = new SkillsWithRank("Acrobatics", "(Agility) Navigating through environments gracefully. Keeping balance. Jumping");
+            var acrobatics = new SkillsWithRank(2, "Acrobatics", "(Agility) Navigating through environments gracefully. Keeping balance. Jumping");
             MovementSkillsList.Add(acrobatics);
 
-            var stealth = new SkillsWithRank("Stealth", "(Toughness) Control and direct vehicles and equipment.");
+            var stealth = new SkillsWithRank(3, "Stealth", "(Agility) Control and direct vehicles and equipment.");
             MovementSkillsList.Add(stealth);
 
-            var operate = new SkillsWithRank("Operate", "(Agility) Control and direct vehicles and equipment.",0.5);
+            var operate = new SkillsWithRank(4, "Operate", "(Agility) Control and direct vehicles and equipment.",0.5);
             MovementSkillsList.Add(operate);
 
-            var charm = new SkillsWithRank("Charm", "(Fellowship) Sway people towards a certain disposition. Gather information. Distract someone");
+
+            var charm = new SkillsWithRank(1, "Charm", "(Fellowship) Sway people towards a certain disposition. Gather information. Distract someone");
             InteractionSkillsList.Add(charm);
 
-            var commerce = new SkillsWithRank("Commerce", "(Intelligence) Evaluating item worth. Attempting to track down a rare item in a market");
+            var commerce = new SkillsWithRank(2, "Commerce", "(Intelligence) Evaluating item worth. Attempting to track down a rare item in a market");
             InteractionSkillsList.Add(commerce);
 
             //var commonLore = new SkillsWithRank("Common Lore", "(Intelligence) Control and direct vehicles and equipment.", 0);
             //MovementSkillsList.Add(commonLore);requires more complicated information
 
-            var deceive = new SkillsWithRank("Deceive", "(Fellowship) Attempt to lie and mislead. Attempt to disguise yourself", isopposedcheck: true);
+            var deceive = new SkillsWithRank(3, "Deceive", "(Fellowship) Attempt to lie and mislead. Attempt to disguise yourself", isopposedcheck: true);
             InteractionSkillsList.Add(deceive);
 
-            var inquiry = new SkillsWithRank("Inquiry", "(Fellowship) Attempt to gain further information on locations, gossip, attitudes towards leaders, etc", actioncost: 60);
+            var inquiry = new SkillsWithRank(4, "Inquiry", "(Fellowship) Attempt to gain further information on locations, gossip, attitudes towards leaders, etc", actioncost: 60);
             InteractionSkillsList.Add(inquiry);
 
-            var interrogation = new SkillsWithRank("Interrogation", "(Fellowship) Attempt to lie and mislead. Attempt to disguise yourself", isopposedcheck: true);
+            var interrogation = new SkillsWithRank(5, "Interrogation", "(Willpower) Attempt to lie and mislead. Attempt to disguise yourself", isopposedcheck: true);//opposed by willpower - will require further methods to complete 
             InteractionSkillsList.Add(interrogation);
 
-            var intimidate = new SkillsWithRank("Intimidate", "(Fellowship) Attempt to lie and mislead. Attempt to disguise yourself", isopposedcheck: true);
+            var intimidate = new SkillsWithRank(6, "Intimidate", "(Strength) Attempt to lie and mislead. Attempt to disguise yourself", isopposedcheck: true);//opposed by willpower
             InteractionSkillsList.Add(intimidate);
 
-            var scrutiny = new SkillsWithRank("Scrutiny", "(Perception) Interpret other peoples words and actions. Judging their mood.", isopposedcheck: true);//opposed by deceive
+            var scrutiny = new SkillsWithRank(7, "Scrutiny", "(Perception) Interpret other peoples words and actions. Judging their mood.", isopposedcheck: true);//opposed by deceive
             InteractionSkillsList.Add(scrutiny);
 
+        }
+
+        public static SkillsWithRank GetMovementSkillById(int id, Human_Base player = null)
+        {
+            if (player!= null)
+            {
+                return player.MovementSkills.FirstOrDefault(x => x.Id == id);
+            }
+            else return MovementSkillsList.FirstOrDefault(x => x.Id == id);
+        }
+        public static SkillsWithRank GetInteractionSkillById(int id, Human_Base player = null)
+        {
+            if (player != null)
+            {
+                return player.InteractionSkills.FirstOrDefault(x => x.Id == id);
+            }
+            else return InteractionSkillsList.FirstOrDefault(x => x.Id == id);
+        }
+        public static Skills_Base GetComabtSkillById(int id, Human_Base player = null)
+        {
+            if (player != null)
+            {
+                return player.CombatSkills.FirstOrDefault(x => x.Id == id);
+            }
+            else return CombatSkillsList.FirstOrDefault(x => x.Id == id);
         }
 
     }

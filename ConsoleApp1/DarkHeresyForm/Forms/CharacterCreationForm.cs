@@ -65,16 +65,22 @@ namespace DarkHeresyForm
 
             //SelectHomeWorld(this.Player);
 
-            AllocateValues(Player);
+            Player.AllocateValues();
+            Player.AllocateSkills();
+            int[] startingSkillsIds = { 1, 2 };
+            Player.AllocateStartingSkills(startingSkillsIds);
             rtbInformation.Text += Environment.NewLine;
             rtbInformation.Text += String.Format("Character Statistics have been generated.");
             UpdateDisplay(panelPlayerStats, Player);
+            UpdateSkillsDisplay(panelSkills, Player);
 
-            btnGenerateHomeworld.Hide();
-            cboHomeWorld.Enabled = false;            //create new button and replace the current one.
+            //btnGenerateHomeworld.Hide();
+            //cboHomeWorld.Enabled = false;            //create new button and replace the current one.
             //CreateFormButton("GenerateStatistics", new Point(93, 259), new Size(142, 23), b_AllocateValues, panelInformation);
 
         }
+
+
 
 
         //button bindings to be assigned dynamically
@@ -102,125 +108,66 @@ namespace DarkHeresyForm
         //this will update the display on the page and fill in the details generated
         void UpdateDisplay(Panel panel, Player player)
         {
-
-            var playerProperties = player.GetType().GetProperties().Where(x => x.PropertyType == typeof(CharacterStat)).ToList();//finds the properties of the player
-            var children = panel.Controls.OfType<TextBox>();//
-            var enumPropertyNames = EnumUtility.GetValues<StatName>();
-            foreach (Control control in children)
+            if(player.Ws != null)
             {
-                //if this text box contains the appropriate statistic, then update the text
-                foreach (var stat in enumPropertyNames)
+                var playerProperties = player.GetType().GetProperties().Where(x => x.PropertyType == typeof(CharacterStat)).ToList();//finds the properties of the player
+                var children = panel.Controls.OfType<TextBox>();//
+                var enumPropertyNames = EnumUtility.GetValues<StatName>();
+                foreach (Control control in children)
                 {
-                    if (control.Name.Contains(stat.ToString()))
+                    control.ForeColor = Color.Black;
+                    //if this text box contains the appropriate statistic, then update the text
+                    foreach (var stat in enumPropertyNames)
                     {
-                        var pi = playerProperties.Where(x => x.Name == stat.ToString()).FirstOrDefault();
-                        var prop = (CharacterStat)pi.GetValue(player);//gets the property from the player object
-                        control.Text = prop.Value.ToString();//sets this value to the control text
+                        if (control.Name.Contains(stat.ToString()))
+                        {
+                            var pi = playerProperties.Where(x => x.Name == stat.ToString()).FirstOrDefault();
+                            var prop = (CharacterStat)pi.GetValue(player);//gets the property from the player object
+                            control.Text = prop.Value.ToString();//sets this value to the control text
+                        }
                     }
-                }
-                foreach (var strength in player.HomeWorld.StatsAffectedPositive)
-                {
-                    if (control.Name.Contains(strength))
+                    foreach (var strength in player.HomeWorld.StatsAffectedPositive)
                     {
-                        control.ForeColor = Color.DarkSeaGreen;
+                        if (control.Name.Contains(strength))
+                        {
+                            control.ForeColor = Color.DarkSeaGreen;
+                        }
                     }
-                }
-                foreach (var weakness in player.HomeWorld.StatsAffectedNegative)
-                {
-                    if (control.Name.Contains(weakness))
+                    foreach (var weakness in player.HomeWorld.StatsAffectedNegative)
                     {
-                        control.ForeColor = Color.DarkRed;
+                        if (control.Name.Contains(weakness))
+                        {
+                            control.ForeColor = Color.DarkRed;
+                        }
                     }
-                }
-                if(control.Name == "tbWounds")
-                {
-                    control.Text = player.Wounds.ToString();
+                    if (control.Name == "tbWounds")
+                    {
+                        control.Text = player.Wounds.ToString();
+                    }
                 }
             }
             
+
         }
-
-
-
-        static void SelectHomeWorld(Player player)
+        void UpdateSkillsDisplay(Panel panel, Player player)
         {
-
-
-            Cryptorandom rn = new Cryptorandom();
-            var result = Convert.ToInt32(DiceRolls.RollD100(rn));
-            if (result >= 1 && result <= 15)
-
-                player.HomeWorld = ReadOnlyLists.GetHomeworldById(Constants.FeralWorld);
-            if (result >= 16 && result <= 33)
-                player.HomeWorld = ReadOnlyLists.GetHomeworldById(Constants.ForgeWorld);
-            if (result >= 34 && result <= 44)
-                player.HomeWorld = ReadOnlyLists.GetHomeworldById(Constants.HighBorn);
-            if (result >= 45 && result <= 69)
-                player.HomeWorld = ReadOnlyLists.GetHomeworldById(Constants.HiveWorld);
-            if (result >= 70 && result <= 85)
-                player.HomeWorld = ReadOnlyLists.GetHomeworldById(Constants.ShrineWorld);
-            if (result >= 86 && result <= 100)
-                player.HomeWorld = ReadOnlyLists.GetHomeworldById(Constants.VoidBorn);
-        }
-
-        //static void ResetValues(Player player)
-        //{
-        //    PropertyInfo[] pi = player.GetType().GetProperties();
-        //    for (int i = 0; i < pi.Length; i++)
-        //    {
-        //        if (pi[i].PropertyType == typeof(int))
-        //        {
-        //            pi[i].SetValue(player, 0);
-        //        }
-        //        if (pi[i].PropertyType == typeof(string))
-        //        {
-        //            pi[i].SetValue(player, "");
-        //        }
-        //    }
-        //}
-        static void AllocateValues(Player player)
-        {
-            Cryptorandom rn = new Cryptorandom();
-            var enumPropertyNames = EnumUtility.GetValues<StatName>();//creates a list of characteristic enums
-            var playerProperties = player.GetType().GetProperties().Where(x => x.PropertyType == typeof(CharacterStat)).ToList(); //uses reflection to get the property types in 
-            //casts this object into a list
-
-            foreach (var prop in playerProperties)
+            var children = panel.Controls.OfType<TextBox>();
+            foreach (var control in children)
             {
-                foreach (var name in enumPropertyNames)
+                foreach (var skill in player.MovementSkills)
                 {
-                    var statValue = 25;
-                    if (name.ToString() == prop.Name)
+                    if (control.Name.Contains(skill.Name) && (control.Name.Contains("Rank")))
                     {
-                        statValue += DiceRolls.RollD10(2, rn).Sum();
-                        if (player.HomeWorld != null)
+                        control.Text = skill.Rank.ToString();
+                    }
+                    else if (control.Name.Contains(skill.Name) && (control.Name.Contains("Base")))
                         {
-                            foreach (var stat in player.HomeWorld.StatsAffectedPositive)
-                            {
-                                if (stat == prop.Name)
-                                {
-                                    int[] roll = DiceRolls.RollD10(3, rn);
-                                    statValue += DiceRolls.TakeDice(2, roll, true).Sum();
-                                };
-                            }
-                            foreach (var stat in player.HomeWorld.StatsAffectedNegative)
-                            {
-                                if (stat == prop.Name)
-                                {
-                                    int[] roll = DiceRolls.RollD10(3, rn);
-                                    statValue += DiceRolls.TakeDice(2, roll, false).Sum();
-                                }
-                            }
-                        }
-                        CharacterStat _stat = new CharacterStat(name.ToString(), statValue);
-                        prop.SetValue(player, _stat);
-
+                        control.Text = skill.ModifiedValue.ToString();
                     }
                 }
             }
-            player.Wounds = DiceRolls.RollD5(1, rn)[0]+ player.HomeWorld.BaseWounds;
-            player.XP = Constants.StartingExperience;
         }
+     
         private void cboHomeWorld_SelectedIndexChanged(object sender, EventArgs e)
         {
             var selection = cboHomeWorld.SelectedItem;
@@ -237,7 +184,7 @@ namespace DarkHeresyForm
         {
             //rtbInformation.Text += String.Format("Result = {0}  Success? = {1}  Degrees of success/failure: {2}", result.Item1, result.Item2, result.Item3);
             rtbInformation.Text += Environment.NewLine;
-            Player.MovementSkills.Add(new SkillsWithRank("Acrobatics", "description", Player.Ag, 1.0));
+            //Player.MovementSkills.Add(new SkillsWithRank("Acrobatics", "description", Player.Ag, 1.0));
             var result = Player.ConductMovementCheck("Acrobatics");
             var isSuccess = result.isSuccess ? "SUCCESSFUL" : "unsuccessful";
             var dof = result.isSuccess ? "success" : "failure";
@@ -255,7 +202,12 @@ namespace DarkHeresyForm
 
         private void btnCheckAptitudes_Click(object sender, EventArgs e)
         {
-            tbAptitude.Text = Player.Bs.MainAptitude;
+           
+        }
+
+        private void label16_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }

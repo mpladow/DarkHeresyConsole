@@ -55,7 +55,9 @@
     <Compile Include="Characters\Player.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Skills\CombatSkills.cs" />
-    <Compile Include="Skills\MovementSkills.cs" />
+    <Compile Include="Skills\InvestigationSkills.cs" />
+    <Compile Include="Skills\SkillsCombat.cs" />
+    <Compile Include="Skills\SkillsWithRank.cs" />
     <Compile Include="Skills\SkillModifer.cs" />
     <Compile Include="Skills\Skills_Base.cs" />
     <Compile Include="Statistics\CharacterStat.cs" />
