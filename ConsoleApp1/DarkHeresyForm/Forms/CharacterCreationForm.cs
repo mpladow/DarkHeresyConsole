@@ -62,26 +62,16 @@ namespace DarkHeresyForm
         //FUNCTIONS FOR THE CLASS
         private void btnGenerateHomeworld_Click(object sender, EventArgs e)
         {
-
-            //SelectHomeWorld(this.Player);
-
             Player.AllocateValues();
-            Player.AllocateSkills();
+            Player.UpdateHomeWorldCharacteristicBonuses();
+
             int[] startingSkillsIds = { 1, 2 };
             Player.AllocateStartingSkills(startingSkillsIds);
             rtbInformation.Text += Environment.NewLine;
             rtbInformation.Text += String.Format("Character Statistics have been generated.");
             UpdateDisplay(panelPlayerStats, Player);
-            UpdateSkillsDisplay(panelSkills, Player);
-
             //btnGenerateHomeworld.Hide();
-            //cboHomeWorld.Enabled = false;            //create new button and replace the current one.
-            //CreateFormButton("GenerateStatistics", new Point(93, 259), new Size(142, 23), b_AllocateValues, panelInformation);
-
         }
-
-
-
 
         //button bindings to be assigned dynamically
         //private void b_AllocateValues(object sender, EventArgs e)
@@ -108,46 +98,34 @@ namespace DarkHeresyForm
         //this will update the display on the page and fill in the details generated
         void UpdateDisplay(Panel panel, Player player)
         {
-            if(player.Ws != null)
+            var children = panel.Controls.OfType<TextBox>();
+
+            foreach (var textbox in children)
             {
-                var playerProperties = player.GetType().GetProperties().Where(x => x.PropertyType == typeof(CharacterStat)).ToList();//finds the properties of the player
-                var children = panel.Controls.OfType<TextBox>();//
-                var enumPropertyNames = EnumUtility.GetValues<StatName>();
-                foreach (Control control in children)
+                textbox.ForeColor = Color.Black;
+                foreach (var stat in player.Stats)
                 {
-                    control.ForeColor = Color.Black;
-                    //if this text box contains the appropriate statistic, then update the text
-                    foreach (var stat in enumPropertyNames)
+
+                    if (textbox.Name.Contains(stat.Name))
                     {
-                        if (control.Name.Contains(stat.ToString()))
+                        textbox.Text = stat.Value.ToString();
+                    }
+                    foreach (var posStat in player.HomeWorld.StatsAffectedPositive)
+                    {
+                        if (textbox.Name.Contains(posStat))
                         {
-                            var pi = playerProperties.Where(x => x.Name == stat.ToString()).FirstOrDefault();
-                            var prop = (CharacterStat)pi.GetValue(player);//gets the property from the player object
-                            control.Text = prop.Value.ToString();//sets this value to the control text
+                            textbox.ForeColor = Color.DarkSeaGreen;
                         }
                     }
-                    foreach (var strength in player.HomeWorld.StatsAffectedPositive)
+                    foreach (var negStat in player.HomeWorld.StatsAffectedNegative)
                     {
-                        if (control.Name.Contains(strength))
+                        if (textbox.Name.Contains(negStat))
                         {
-                            control.ForeColor = Color.DarkSeaGreen;
+                            textbox.ForeColor = Color.DarkRed;
                         }
-                    }
-                    foreach (var weakness in player.HomeWorld.StatsAffectedNegative)
-                    {
-                        if (control.Name.Contains(weakness))
-                        {
-                            control.ForeColor = Color.DarkRed;
-                        }
-                    }
-                    if (control.Name == "tbWounds")
-                    {
-                        control.Text = player.Wounds.ToString();
                     }
                 }
             }
-            
-
         }
         void UpdateSkillsDisplay(Panel panel, Player player)
         {
@@ -161,13 +139,13 @@ namespace DarkHeresyForm
                         control.Text = skill.Rank.ToString();
                     }
                     else if (control.Name.Contains(skill.Name) && (control.Name.Contains("Base")))
-                        {
+                    {
                         control.Text = skill.ModifiedValue.ToString();
                     }
                 }
             }
         }
-     
+
         private void cboHomeWorld_SelectedIndexChanged(object sender, EventArgs e)
         {
             var selection = cboHomeWorld.SelectedItem;
@@ -202,7 +180,7 @@ namespace DarkHeresyForm
 
         private void btnCheckAptitudes_Click(object sender, EventArgs e)
         {
-           
+
         }
 
         private void label16_Click(object sender, EventArgs e)

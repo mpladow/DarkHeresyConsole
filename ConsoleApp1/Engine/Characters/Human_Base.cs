@@ -21,16 +21,6 @@ namespace Engine
         public string Name { get; set; }
 
         public List<CharacterStat> Stats { get; set; }
-        public CharacterStat Ws { get; set; }
-        public CharacterStat Bs { get; set; }
-        public CharacterStat Str { get; set; }
-        public CharacterStat T { get; set; }
-        public CharacterStat Ag { get; set; }
-        public CharacterStat Inte { get; set; }
-        public CharacterStat Per { get; set; }
-        public CharacterStat Wp { get; set; }
-        public CharacterStat Fel { get; set; }
-        public CharacterStat Ifl { get; set; }
         public int Wounds { get; set; }
 
         public int A_Head { get; set; }
@@ -63,8 +53,9 @@ namespace Engine
             Stats.Add(new CharacterStat(Constants.Ifl));
 
             MovementSkills = ReadOnlyLists.MovementSkillsList;
-            CombatSkills = new List<Skills_Base>();
-            InteractionSkills = new List<SkillsWithRank>();
+            AllocateSkills();
+            //CombatSkills = new List<Skills_Base>();
+            //InteractionSkills = new List<SkillsWithRank>();//not yet implemented
         }
 
         public CharacterStat GetCharacterStatByName(string name)
@@ -86,57 +77,6 @@ namespace Engine
             }
             XP = Constants.StartingExperience;
         }
-        //public void AllocateValues()
-        //{
-        //    Cryptorandom rn = new Cryptorandom();
-        //    var enumPropertyNames = EnumUtility.GetValues<StatName>();//creates a list of characteristic enums
-        //    var playerProperties = GetType().GetProperties().Where(x => x.PropertyType == typeof(CharacterStat)).ToList(); //uses reflection to get the property types in 
-        //    //casts this object into a list
-
-        //    foreach (var prop in playerProperties)
-        //    {
-        //        foreach (var name in enumPropertyNames)
-        //        {
-        //            var statValue = 25;
-        //            if (name.ToString() == prop.Name)
-        //            {
-        //                statValue += DiceRolls.RollD10(2, rn).Sum();
-        //                statValue = UpdateHomeWorldCharacteristicBonuses(name, prop, statValue);
-        //                CharacterStat _stat = new CharacterStat(name.ToString(), statValue);
-        //                prop.SetValue(this, _stat);
-
-        //            }
-        //        }
-        //    }
-        //    Wounds = DiceRolls.RollD5(1, rn)[0] + HomeWorld.BaseWounds;
-        //    XP = Constants.StartingExperience;
-        //}
-
-        //public int UpdateHomeWorldCharacteristicBonuses(StatName name, PropertyInfo prop, int basestat)
-        //{
-
-        //    Cryptorandom rn = new Cryptorandom();
-        //    if (HomeWorld != null)
-        //    {
-        //        foreach (var stat in HomeWorld.StatsAffectedPositive)
-        //        {
-        //            if (stat == prop.Name)
-        //            {
-        //                int[] roll = RollD10(3, rn);
-        //                basestat += TakeDice(2, roll, true).Sum();
-        //            };
-        //        }
-        //        foreach (var stat in HomeWorld.StatsAffectedNegative)
-        //        {
-        //            if (stat == prop.Name)
-        //            {
-        //                int[] roll = RollD10(3, rn);
-        //                basestat += TakeDice(2, roll, false).Sum();
-        //            }
-        //        }
-        //    }
-        //    return basestat;
-        //}
         public void UpdateHomeWorldCharacteristicBonuses()
         {
             Cryptorandom rn = new Cryptorandom();
@@ -148,7 +88,7 @@ namespace Engine
                 {
                     if (stat.Name == posStat)
                     {
-                        stat.BaseValue = Constants.StartingValue;//resets basevaluee to 25
+                        stat.BaseValue = Constants.StartingValue+5;//resets basevaluee to 25
                         int[] roll = RollD10(3, rn);
                         stat.BaseValue += TakeDice(2, roll, true).Sum();
                     }
@@ -189,7 +129,7 @@ namespace Engine
             }
         }
 
-        public void AllocateStartingSkills(int[] ids)
+        public void AllocateStartingSkills(int[] ids)//pass in the starting skills based on the role and allocate starting ranks
         {
             foreach (var id in ids)
             {

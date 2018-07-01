@@ -203,25 +203,25 @@ namespace Engine.Utilities
         }
 
 
-        public static void ShowCharacterStats(Player player)
-        {
-            for (int i = 0; i < 50; i++)
-            {
-                Console.Write("+");
-            }
-            Console.WriteLine("");
-            Console.WriteLine("Character Stats:");
-            Console.WriteLine("{0}", player.Name);
-            Console.WriteLine("Home World: {0}", player.HomeWorld);
-            Console.WriteLine("Weapon Skill:   {0}             Intelligence: {1}", player.Ws, player.Inte);
-            Console.WriteLine("Balistic Skill: {0}             Perception:   {1}", player.Bs, player.Per);
-            Console.WriteLine("Strength:       {0}             Willpower:    {1}", player.Str, player.Wp);
-            Console.WriteLine("Toughness:      {0}             Fellowship:   {1}", player.T, player.Fel);
-            Console.WriteLine("Agility :       {0}             Influence:    {1} \r\n", player.Ag, player.Ifl);
-            for (int i = 0; i < 50; i++)
-            {
-                Console.Write("+");
-            }
-        }
+        //public static void ShowCharacterStats(Player player)
+        //{
+        //    for (int i = 0; i < 50; i++)
+        //    {
+        //        Console.Write("+");
+        //    }
+        //    Console.WriteLine("");
+        //    Console.WriteLine("Character Stats:");
+        //    Console.WriteLine("{0}", player.Name);
+        //    Console.WriteLine("Home World: {0}", player.HomeWorld);
+        //    Console.WriteLine("Weapon Skill:   {0}             Intelligence: {1}", player.Ws, player.Inte);
+        //    Console.WriteLine("Balistic Skill: {0}             Perception:   {1}", player.Bs, player.Per);
+        //    Console.WriteLine("Strength:       {0}             Willpower:    {1}", player.Str, player.Wp);
+        //    Console.WriteLine("Toughness:      {0}             Fellowship:   {1}", player.T, player.Fel);
+        //    Console.WriteLine("Agility :       {0}             Influence:    {1} \r\n", player.Ag, player.Ifl);
+        //    for (int i = 0; i < 50; i++)
+        //    {
+        //        Console.Write("+");
+        //    }
+        //}
     }
 }
