@@ -68,7 +68,20 @@ namespace Engine.Utilities.Constants
         public const int Experienced = 3;
         public const int Veteran = 4;
 
-
+        //aptitudes
+        public const string Offence = "Offence";
+        public const string Finesse = "Finessev";
+        public const string Defence = "Defence";
+        public const string Knowledge = "Knowledge";
+        public const string Fieldcraft = "Fieldcraft";
+        public const string Psyker = "Psyker";
+        public const string Social = "Social";
+        public const string Tech = "Tech";
+        public const string Leadership = "Leadership";
+        public const string Perception = "Perception";
+        public const string Willpower = "Willpower";
+        public const string Intelligence = "Intelligence";
+        public const string Fellowship = "Fellowship";
 
     }
 }

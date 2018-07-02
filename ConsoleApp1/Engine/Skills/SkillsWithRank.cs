@@ -10,7 +10,7 @@ using static Engine.Actions.DiceRolls;
 
 namespace Engine.Skills
 {
-    public class SkillsWithRank:Skills_Base
+    public class SkillsWithRank:Skill_Base
     {
         public int Rank { get; set; }
 

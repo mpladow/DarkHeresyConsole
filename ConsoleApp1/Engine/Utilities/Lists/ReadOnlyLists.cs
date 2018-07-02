@@ -18,6 +18,7 @@ namespace Engine.Utilities.Constants
         public static readonly List<SkillModifier> SkillLevelsList = new List<SkillModifier>();
         public static readonly List<HomeWorld> HomeWorlds = new List<HomeWorld>();
         public static readonly List<Background> Backgrounds = new List<Background>();
+        public static readonly List<Role> Roles = new List<Role>();
         public static readonly List<SkillsWithRank> MovementSkillsList = new List<SkillsWithRank>();
         public static readonly List<SkillsWithRank> InteractionSkillsList = new List<SkillsWithRank>();
         public static readonly List<SkillsWithRank> GeneralSkillsList = new List<SkillsWithRank>();
@@ -45,7 +46,12 @@ namespace Engine.Utilities.Constants
             return DifficultiesList.Where(x => x.Id == id).FirstOrDefault();
         }
 
-        //Homeworlds
+        //Roles
+        public static List<Role> PopulateRoles()
+        {
+            var 
+        }
+       //Backgrounds
         public static List<Background> PopulateBackgrounds()
         {
             var adeptusArbites = new Background(1, "Adeptus Arbites", "Lawbringers of the imperium.");
@@ -77,6 +83,7 @@ namespace Engine.Utilities.Constants
 
             return Backgrounds;
         }
+        //Homeworlds
         public static List<HomeWorld> PopulateHomeWorlds()
         {
             var FeralWorld = new HomeWorld(1, "FeralWorld", "A feral world", 9, Constants.T);

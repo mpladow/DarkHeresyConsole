@@ -33,7 +33,7 @@ namespace Engine
         public int A_RightLeg { get; set; }
 
         public List<SkillsWithRank> MovementSkills { get; set; }
-        public List<Skills_Base> CombatSkills { get; set; }
+        public List<Skill_Base> CombatSkills { get; set; }
         public List<SkillsWithRank> InteractionSkills { get; set; }
 
         public List<string> Aptitudes { get; set; }
@@ -58,7 +58,7 @@ namespace Engine
             Stats.Add(new CharacterStat(Constants.Ifl));
 
             MovementSkills = ReadOnlyLists.MovementSkillsList;
-            CombatSkills = new List<Skills_Base>();
+            CombatSkills = new List<Skill_Base>();
             InteractionSkills = new List<SkillsWithRank>();
             Aptitudes = new List<string>();
         }
