@@ -9,6 +9,7 @@ using static Engine.Statistics.CharacterStat;
 
 namespace Engine.Characters.HomeWorlds
 {
+    [Serializable]
     public class HomeWorld
     {
         public int Id { get; set; }

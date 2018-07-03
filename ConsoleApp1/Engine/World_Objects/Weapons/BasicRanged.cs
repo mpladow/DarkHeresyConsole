@@ -7,17 +7,18 @@ using System.Threading.Tasks;
 
 namespace Engine.World_Objects
 {
+    [Serializable]
     public class BasicRanged:Weapon_base
     {
 
         public int Range { get; set; }
         public int RateOfFire { get; set; }
         public int ClipCapacity { get; set; }
-        public int ReloadRate { get; set; }
+        public double ReloadRate { get; set; }
         public bool IsJammed { get; set; }
 
-        public BasicRanged(int id, string name, int penetration, int availability, int craftsmanship, int weight, int baseDamage, bool isDamaged, SpecialAbilities special, int range, int rateOfFire, int clipCapacity, int reloadRate, bool isJammed)
-            : base(id, name, penetration, availability, craftsmanship, weight, baseDamage, isDamaged, special)
+        public BasicRanged(int id, string name, string description, int penetration, int availability, double weight, int baseDamage,  int range, int rateOfFire, int clipCapacity, double reloadRate, bool isDamaged = false, string craftsmanship = "", bool isJammed = false)
+            : base( id, name, description, penetration, availability, craftsmanship, weight, baseDamage, isDamaged)
         {
             Range = range;
             RateOfFire = rateOfFire;

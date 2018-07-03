@@ -10,7 +10,8 @@ using static Engine.Actions.DiceRolls;
 
 namespace Engine.Skills
 {
-    public abstract class Skills_Base
+    [Serializable]
+    public abstract class Skill_Base
     {
         public int Id { get; set; }
         public string Name { get; set; }
@@ -47,7 +48,7 @@ namespace Engine.Skills
 
         //contstructors
         //uses for asigning the main stat characteristic value
-        public Skills_Base(int id, string name, CharacterStat stat, string description, bool isopposedcheck = false, double actioncost = 1)
+        public Skill_Base(int id, string name, CharacterStat stat, string description, bool isopposedcheck = false, double actioncost = 1)
         {
             Id = id;
             Name = name;
@@ -59,7 +60,7 @@ namespace Engine.Skills
         }
         //used for populating lists of skills, blind to any characters
 
-        public Skills_Base(int id, string name, string description, bool isopposedcheck = false, double actioncost = 1)
+        public Skill_Base(int id, string name, string description, bool isopposedcheck = false, double actioncost = 1)
         {
             Id = id;
             Name = name;

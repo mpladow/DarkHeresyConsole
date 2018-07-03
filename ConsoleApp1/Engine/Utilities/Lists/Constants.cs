@@ -70,7 +70,7 @@ namespace Engine.Utilities.Constants
 
         //aptitudes
         public const string Offence = "Offence";
-        public const string Finesse = "Finessev";
+        public const string Finesse = "Finesse";
         public const string Defence = "Defence";
         public const string Knowledge = "Knowledge";
         public const string Fieldcraft = "Fieldcraft";

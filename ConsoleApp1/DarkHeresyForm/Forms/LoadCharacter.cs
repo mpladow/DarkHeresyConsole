@@ -18,6 +18,7 @@ namespace DarkHeresyForm.Forms
         {
             InitializeComponent();
             listSavedCharacters.DataSource = SaveLoad.savePlayers;
+            
             listSavedCharacters.DisplayMember = "Name";
         }
 
@@ -29,40 +30,51 @@ namespace DarkHeresyForm.Forms
         }
         void UpdateDisplay(Panel panel, Player player)
         {
-            var children = panel.Controls.OfType<TextBox>();
-
-            foreach (var textbox in children)
+            if(player!= null)
             {
-                textbox.ForeColor = Color.Black;
-                foreach (var stat in player.Stats)
-                {
+                var children = panel.Controls.OfType<TextBox>();
 
-                    if (textbox.Name.Contains(stat.Name))
+                foreach (var textbox in children)
+                {
+                    textbox.ForeColor = Color.Black;
+                    if (textbox.Name.Contains("Name"))
+                        textbox.Text = player.Name;
+                    if (textbox.Name.Contains("Wounds"))
+                        textbox.Text = player.Wounds.ToString();
+                    if (textbox.Name.Contains("Xp"))
+                        textbox.Text = player.XP.ToString();
+                    foreach (var stat in player.Stats)
                     {
-                        textbox.Text = stat.Value.ToString();
-                    }
-                    foreach (var posStat in player.HomeWorld.StatsAffectedPositive)
-                    {
-                        if (textbox.Name.Contains(posStat))
+
+                        if (textbox.Name.Contains(stat.Name))
                         {
-                            textbox.ForeColor = Color.DarkSeaGreen;
+                            textbox.Text = stat.Value.ToString();
                         }
-                    }
-                    foreach (var negStat in player.HomeWorld.StatsAffectedNegative)
-                    {
-                        if (textbox.Name.Contains(negStat))
+                        foreach (var posStat in player.HomeWorld.StatsAffectedPositive)
                         {
-                            textbox.ForeColor = Color.DarkRed;
+                            if (textbox.Name.Contains(posStat))
+                            {
+                                textbox.ForeColor = Color.DarkSeaGreen;
+                            }
+                        }
+                        foreach (var negStat in player.HomeWorld.StatsAffectedNegative)
+                        {
+                            if (textbox.Name.Contains(negStat))
+                            {
+                                textbox.ForeColor = Color.DarkRed;
+                            }
                         }
                     }
                 }
             }
+
         }
 
         private void btnLoadCharacter_Click(object sender, EventArgs e)
         {
             CharacterCreationForm characterCreationForm = new CharacterCreationForm((Player)listSavedCharacters.SelectedItem);
             characterCreationForm.Show();
+            Close();
         }
 
         private void btnDeleteCharacter_Click(object sender, EventArgs e)
@@ -71,7 +83,10 @@ namespace DarkHeresyForm.Forms
             Player selectedPlayer = (Player)listSavedCharacters.SelectedItem;
             SaveLoad.Delete(selectedPlayer);
             var c = SaveLoad.savePlayers;
+            
             listSavedCharacters.EndUpdate();
+            listSavedCharacters.DataSource = null;
+            listSavedCharacters.DataSource = SaveLoad.savePlayers;
         }
     }
 }

@@ -46,3 +46,4 @@ C:\Users\mplad\DarkHeresyConsole\ConsoleApp1\DarkHeresyForm\bin\Debug\System.Val
 C:\Users\mplad\DarkHeresyConsole\ConsoleApp1\DarkHeresyForm\bin\Debug\Engine.pdb
 C:\Users\mplad\DarkHeresyConsole\ConsoleApp1\DarkHeresyForm\bin\Debug\System.ValueTuple.xml
 C:\Users\mplad\DarkHeresyConsole\ConsoleApp1\DarkHeresyForm\obj\Debug\DarkHeresyForm.csproj.CopyComplete
+C:\Users\mplad\DarkHeresyConsole\ConsoleApp1\DarkHeresyForm\obj\Debug\DarkHeresyForm.Forms.LoadCharacter.resources

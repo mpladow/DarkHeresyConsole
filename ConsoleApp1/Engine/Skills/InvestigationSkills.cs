@@ -8,7 +8,8 @@ using System.Threading.Tasks;
 
 namespace Engine.Skills
 {
-    public class InvestigationSkills:Skills_Base
+    [Serializable]
+    public class InvestigationSkills:Skill_Base
     {
         public int Rank { get; set; }
 

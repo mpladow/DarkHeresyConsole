@@ -9,6 +9,7 @@ using Engine.Characters.HomeWorlds;
 using static Engine.Statistics.CharacterStat;
 using Engine.Skills;
 using Engine.Characters.CharacterCreation;
+using Engine.World_Objects;
 
 namespace Engine.Utilities.Constants
 {
@@ -18,11 +19,13 @@ namespace Engine.Utilities.Constants
         public static readonly List<SkillModifier> SkillLevelsList = new List<SkillModifier>();
         public static readonly List<HomeWorld> HomeWorlds = new List<HomeWorld>();
         public static readonly List<Background> Backgrounds = new List<Background>();
-        public static readonly List<Role> Roles = new List<Role>();
+        public static readonly List<BasicRanged> BasicRangedWeapons = new List<BasicRanged>();
+
+        //public static readonly List<Role> Roles = new List<Role>();
         public static readonly List<SkillsWithRank> MovementSkillsList = new List<SkillsWithRank>();
         public static readonly List<SkillsWithRank> InteractionSkillsList = new List<SkillsWithRank>();
         public static readonly List<SkillsWithRank> GeneralSkillsList = new List<SkillsWithRank>();
-        public static readonly List<Skills_Base> CombatSkillsList = new List<Skills_Base>();
+        public static readonly List<Skill_Base> CombatSkillsList = new List<Skill_Base>();
 
         public static readonly Dictionary<int, string> AptitudesDict = new Dictionary<int, string>();
 
@@ -45,12 +48,22 @@ namespace Engine.Utilities.Constants
         {
             return DifficultiesList.Where(x => x.Id == id).FirstOrDefault();
         }
-
-        //Roles
-        public static List<Role> PopulateRoles()
+        //Weapons
+        public static void PopulateRangedWeapons()
         {
-            var 
+            var laspistol = new BasicRanged(1, "Laspistol","A basic weapon of the imperium, common with the imperial guard", 0, Constants.Common, 1.5, 2, Constants.ShortRange, 2, 30, .5);
+            BasicRangedWeapons.Add(laspistol);
         }
+
+        public static BasicRanged GetRangedById(int id)
+        {
+            return BasicRangedWeapons.FirstOrDefault(x => x.Id == id);
+        }
+        //Roles
+        //public static List<Role> PopulateRoles()
+        //{
+        //    var 
+        //}
        //Backgrounds
         public static List<Background> PopulateBackgrounds()
         {
@@ -62,6 +75,7 @@ namespace Engine.Utilities.Constants
             adeptusArbites.StartingSkills.Add(InteractionSkillsList.FirstOrDefault(x => x.Id == 7));//scrutiny
             adeptusArbites.StartingAptitudes.Add(Constants.Offence);
             adeptusArbites.StartingAptitudes.Add(Constants.Defence);
+            adeptusArbites.StartingEquipment.Add(GetRangedById(1));
             Backgrounds.Add(adeptusArbites);
 
             var imperialGuard = new Background(2, "Imperial Guard", "Specialists in combat.");
@@ -255,7 +269,7 @@ namespace Engine.Utilities.Constants
             }
             else return InteractionSkillsList.FirstOrDefault(x => x.Id == id);
         }
-        public static Skills_Base GetComabtSkillById(int id, Human_Base player = null)
+        public static Skill_Base GetComabtSkillById(int id, Human_Base player = null)
         {
             if (player != null)
             {

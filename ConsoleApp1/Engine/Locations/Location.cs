@@ -7,6 +7,7 @@ using System.Threading.Tasks;
 
 namespace Engine
 {
+    [Serializable]
     public class Location
     {
         public string Name { get; set; }

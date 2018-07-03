@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 
 namespace Engine.Statistics
 {
+    [Serializable]
     public class SkillModifier
     {
         public int Id { get; set; }

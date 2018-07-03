@@ -4,6 +4,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using Engine;
+using Engine.Utilities;
 using Engine.Utilities.Constants;
 
 namespace DarkHeresyForm
@@ -25,8 +26,12 @@ namespace DarkHeresyForm
             ReadOnlyLists.PopulateSkillLevels();
             ReadOnlyLists.PopulateSkills();
             ReadOnlyLists.PopulateAptitudesDictionary();
+            ReadOnlyLists.PopulateRangedWeapons();
             ReadOnlyLists.PopulateBackgrounds();
+            ReadOnlyLists.PopulateHomeWorlds();
+           
 
+            SaveLoad.Load();
             Application.Run(new splashscreen());
 
 

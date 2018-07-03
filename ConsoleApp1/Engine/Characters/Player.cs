@@ -10,9 +10,10 @@ using static Engine.Actions.DiceRolls;
 
 namespace Engine
 {
+    [Serializable]
     public class Player:Human_Base
     {
-
+        
         public Location CurrentLocation { get; set; }
 
         public Player()

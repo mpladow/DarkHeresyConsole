@@ -48,7 +48,6 @@
             this.label5 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
-            this.tbCharacterName = new System.Windows.Forms.RichTextBox();
             this.label2 = new System.Windows.Forms.Label();
             this.label27 = new System.Windows.Forms.Label();
             this.tbWounds = new System.Windows.Forms.TextBox();
@@ -58,6 +57,9 @@
             this.panelCharacterLoad = new System.Windows.Forms.Panel();
             this.btnLoadCharacter = new System.Windows.Forms.Button();
             this.btnDeleteCharacter = new System.Windows.Forms.Button();
+            this.tbCharacterName = new System.Windows.Forms.TextBox();
+            this.label1 = new System.Windows.Forms.Label();
+            this.tbXp = new System.Windows.Forms.TextBox();
             this.panelCharacterLoad.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -241,15 +243,6 @@
             this.label3.TabIndex = 29;
             this.label3.Text = "WS";
             // 
-            // tbCharacterName
-            // 
-            this.tbCharacterName.Location = new System.Drawing.Point(54, 30);
-            this.tbCharacterName.Margin = new System.Windows.Forms.Padding(4);
-            this.tbCharacterName.Name = "tbCharacterName";
-            this.tbCharacterName.Size = new System.Drawing.Size(248, 29);
-            this.tbCharacterName.TabIndex = 50;
-            this.tbCharacterName.Text = "";
-            // 
             // label2
             // 
             this.label2.AutoSize = true;
@@ -263,7 +256,7 @@
             // label27
             // 
             this.label27.AutoSize = true;
-            this.label27.Location = new System.Drawing.Point(124, 241);
+            this.label27.Location = new System.Drawing.Point(29, 237);
             this.label27.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label27.Name = "label27";
             this.label27.Size = new System.Drawing.Size(60, 17);
@@ -272,7 +265,7 @@
             // 
             // tbWounds
             // 
-            this.tbWounds.Location = new System.Drawing.Point(195, 237);
+            this.tbWounds.Location = new System.Drawing.Point(100, 233);
             this.tbWounds.Margin = new System.Windows.Forms.Padding(4);
             this.tbWounds.Name = "tbWounds";
             this.tbWounds.Size = new System.Drawing.Size(36, 22);
@@ -308,6 +301,8 @@
             // 
             // panelCharacterLoad
             // 
+            this.panelCharacterLoad.Controls.Add(this.label1);
+            this.panelCharacterLoad.Controls.Add(this.tbXp);
             this.panelCharacterLoad.Controls.Add(this.tbCharacterName);
             this.panelCharacterLoad.Controls.Add(this.label3);
             this.panelCharacterLoad.Controls.Add(this.HomeWorld);
@@ -359,6 +354,31 @@
             this.btnDeleteCharacter.UseVisualStyleBackColor = true;
             this.btnDeleteCharacter.Click += new System.EventHandler(this.btnDeleteCharacter_Click);
             // 
+            // tbCharacterName
+            // 
+            this.tbCharacterName.Location = new System.Drawing.Point(35, 39);
+            this.tbCharacterName.Name = "tbCharacterName";
+            this.tbCharacterName.Size = new System.Drawing.Size(284, 22);
+            this.tbCharacterName.TabIndex = 55;
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(196, 233);
+            this.label1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(26, 17);
+            this.label1.TabIndex = 57;
+            this.label1.Text = "XP";
+            // 
+            // tbXp
+            // 
+            this.tbXp.Location = new System.Drawing.Point(230, 234);
+            this.tbXp.Margin = new System.Windows.Forms.Padding(4);
+            this.tbXp.Name = "tbXp";
+            this.tbXp.Size = new System.Drawing.Size(90, 22);
+            this.tbXp.TabIndex = 56;
+            // 
             // LoadCharacter
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -397,7 +417,6 @@
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.RichTextBox tbCharacterName;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label27;
         private System.Windows.Forms.TextBox tbWounds;
@@ -407,5 +426,8 @@
         private System.Windows.Forms.Panel panelCharacterLoad;
         private System.Windows.Forms.Button btnLoadCharacter;
         private System.Windows.Forms.Button btnDeleteCharacter;
+        private System.Windows.Forms.TextBox tbCharacterName;
+        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.TextBox tbXp;
     }
 }

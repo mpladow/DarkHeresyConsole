@@ -10,6 +10,7 @@ using static Engine.Actions.DiceRolls;
 
 namespace Engine.Skills
 {
+    [Serializable]
     public class SkillsWithRank:Skill_Base
     {
         public int Rank { get; set; }

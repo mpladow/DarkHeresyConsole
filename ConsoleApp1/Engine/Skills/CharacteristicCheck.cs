@@ -9,6 +9,7 @@ using static Engine.Actions.DiceRolls;
 
 namespace Engine.Actions
 {
+    [Serializable]
     public static class CharacteristicChecks
     {
         public class TestResult

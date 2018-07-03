@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 
 namespace Engine
 {
+    [Serializable]
     class Room:Location
     {
         public int Size { get; set; }

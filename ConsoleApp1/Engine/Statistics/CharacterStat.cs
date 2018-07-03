@@ -7,6 +7,7 @@ using System.Threading.Tasks;
 
 namespace Engine.Statistics
 {
+    [Serializable]
     public class CharacterStat
     {
         public enum StatName
@@ -132,7 +133,7 @@ namespace Engine.Statistics
         //should be able to add and remove modifiers
         //should be able to calculate final values
     }
-
+    [Serializable]
     public class StatModifier
     {
         public string Name;

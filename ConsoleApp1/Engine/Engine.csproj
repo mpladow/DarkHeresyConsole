@@ -60,12 +60,13 @@
     <Compile Include="Skills\SkillsCombat.cs" />
     <Compile Include="Skills\SkillsWithRank.cs" />
     <Compile Include="Skills\SkillModifer.cs" />
-    <Compile Include="Skills\Skills_Base.cs" />
+    <Compile Include="Skills\Skill_Base.cs" />
     <Compile Include="Statistics\CharacterStat.cs" />
     <Compile Include="Utilities\Lists\Constants.cs" />
     <Compile Include="Utilities\Lists\ReadOnlyLists.cs" />
     <Compile Include="Utilities\Cryptorandom.cs" />
     <Compile Include="Utilities\EnumUtility.cs" />
+    <Compile Include="Utilities\SaveLoad.cs" />
     <Compile Include="Utilities\Utilities.cs" />
     <Compile Include="Utilities\ListGenerator.cs" />
     <Compile Include="Utilities\RNG.cs" />
@@ -74,6 +75,7 @@
     <Compile Include="World_Objects\Door.cs" />
     <Compile Include="World_Objects\Item_base.cs" />
     <Compile Include="World_Objects\Potion.cs" />
+    <Compile Include="World_Objects\Weapons\IWeapon.cs" />
     <Compile Include="World_Objects\Weapons\Weapon_base.cs" />
     <Compile Include="World_Objects\Weapons\Melee.cs" />
     <Compile Include="World_Objects\Weapons\BasicRanged.cs" />
@@ -81,6 +83,9 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Locations\Utilities\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

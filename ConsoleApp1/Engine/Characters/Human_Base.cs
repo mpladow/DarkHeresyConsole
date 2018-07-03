@@ -16,6 +16,7 @@ using static Engine.Statistics.CharacterStat;
 
 namespace Engine
 {
+    [Serializable]
     public abstract class Human_Base
     {
 

@@ -1,4 +1,5 @@
-﻿using System;
+﻿using DarkHeresyForm.Forms;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -26,6 +27,12 @@ namespace DarkHeresyForm
         private void btnClose_Click(object sender, EventArgs e)
         {
             Application.Exit();
+        }
+
+        private void btnLoadCharacter_Click(object sender, EventArgs e)
+        {
+            LoadCharacter loadCharacter = new LoadCharacter();
+            loadCharacter.Show();
         }
     }
 }
