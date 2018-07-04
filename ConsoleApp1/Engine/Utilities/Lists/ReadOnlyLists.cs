@@ -257,7 +257,8 @@ namespace Engine.Utilities.Constants
         {
             if (player!= null)
             {
-                return player.MovementSkills.FirstOrDefault(x => x.Id == id);
+                var j = player.MovementSkills.FirstOrDefault(x => x.Id == id);
+                return j;
             }
             else return MovementSkillsList.FirstOrDefault(x => x.Id == id);
         }

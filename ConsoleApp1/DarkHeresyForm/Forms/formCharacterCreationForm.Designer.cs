@@ -41,7 +41,7 @@
             this.label10 = new System.Windows.Forms.Label();
             this.label11 = new System.Windows.Forms.Label();
             this.label12 = new System.Windows.Forms.Label();
-            this.btnGenerateHomeworld = new System.Windows.Forms.Button();
+            this.btnSelectHomeworld = new System.Windows.Forms.Button();
             this.panelPlayerStats = new System.Windows.Forms.Panel();
             this.label27 = new System.Windows.Forms.Label();
             this.tbWounds = new System.Windows.Forms.TextBox();
@@ -242,16 +242,16 @@
             this.label12.TabIndex = 14;
             this.label12.Text = "Ifl";
             // 
-            // btnGenerateHomeworld
+            // btnSelectHomeworld
             // 
-            this.btnGenerateHomeworld.Location = new System.Drawing.Point(80, 486);
-            this.btnGenerateHomeworld.Margin = new System.Windows.Forms.Padding(4);
-            this.btnGenerateHomeworld.Name = "btnGenerateHomeworld";
-            this.btnGenerateHomeworld.Size = new System.Drawing.Size(189, 41);
-            this.btnGenerateHomeworld.TabIndex = 15;
-            this.btnGenerateHomeworld.Text = "Select Homeworld";
-            this.btnGenerateHomeworld.UseVisualStyleBackColor = true;
-            this.btnGenerateHomeworld.Click += new System.EventHandler(this.btnGenerateHomeworld_Click);
+            this.btnSelectHomeworld.Location = new System.Drawing.Point(83, 488);
+            this.btnSelectHomeworld.Margin = new System.Windows.Forms.Padding(4);
+            this.btnSelectHomeworld.Name = "btnSelectHomeworld";
+            this.btnSelectHomeworld.Size = new System.Drawing.Size(189, 41);
+            this.btnSelectHomeworld.TabIndex = 15;
+            this.btnSelectHomeworld.Text = "Select Homeworld";
+            this.btnSelectHomeworld.UseVisualStyleBackColor = true;
+            this.btnSelectHomeworld.Click += new System.EventHandler(this.btnSelectHomeworld_Click_1);
             // 
             // panelPlayerStats
             // 
@@ -260,7 +260,7 @@
             this.panelPlayerStats.Controls.Add(this.cboHomeWorld);
             this.panelPlayerStats.Controls.Add(this.tbStatIfl);
             this.panelPlayerStats.Controls.Add(this.tbStatFel);
-            this.panelPlayerStats.Controls.Add(this.btnGenerateHomeworld);
+            this.panelPlayerStats.Controls.Add(this.btnSelectHomeworld);
             this.panelPlayerStats.Controls.Add(this.tbStatWp);
             this.panelPlayerStats.Controls.Add(this.tbStatPer);
             this.panelPlayerStats.Controls.Add(this.tbStatInte);
@@ -897,7 +897,7 @@
         private System.Windows.Forms.Label label10;
         private System.Windows.Forms.Label label11;
         private System.Windows.Forms.Label label12;
-        private System.Windows.Forms.Button btnGenerateHomeworld;
+        private System.Windows.Forms.Button btnSelectHomeworld;
         private System.Windows.Forms.Panel panelPlayerStats;
         private System.Windows.Forms.TextBox tbStatIfl;
         private System.Windows.Forms.TextBox tbStatFel;

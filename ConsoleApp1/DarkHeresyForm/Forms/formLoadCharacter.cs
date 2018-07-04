@@ -12,9 +12,9 @@ using System.Windows.Forms;
 
 namespace DarkHeresyForm.Forms
 {
-    public partial class LoadCharacter : Form
+    public partial class formLoadCharacter : Form
     {
-        public LoadCharacter()
+        public formLoadCharacter()
         {
             InitializeComponent();
             listSavedCharacters.DataSource = SaveLoad.savePlayers;

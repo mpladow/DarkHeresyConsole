@@ -1,6 +1,6 @@
 ﻿namespace DarkHeresyForm.Forms
 {
-    partial class LoadCharacter
+    partial class formLoadCharacter
     {
         /// <summary>
         /// Required designer variable.
@@ -55,11 +55,11 @@
             this.tbHomeWorld = new System.Windows.Forms.TextBox();
             this.listSavedCharacters = new System.Windows.Forms.ListBox();
             this.panelCharacterLoad = new System.Windows.Forms.Panel();
-            this.btnLoadCharacter = new System.Windows.Forms.Button();
-            this.btnDeleteCharacter = new System.Windows.Forms.Button();
-            this.tbCharacterName = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
             this.tbXp = new System.Windows.Forms.TextBox();
+            this.tbCharacterName = new System.Windows.Forms.TextBox();
+            this.btnLoadCharacter = new System.Windows.Forms.Button();
+            this.btnDeleteCharacter = new System.Windows.Forms.Button();
             this.panelCharacterLoad.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -334,33 +334,6 @@
             this.panelCharacterLoad.Size = new System.Drawing.Size(343, 297);
             this.panelCharacterLoad.TabIndex = 56;
             // 
-            // btnLoadCharacter
-            // 
-            this.btnLoadCharacter.Location = new System.Drawing.Point(258, 456);
-            this.btnLoadCharacter.Name = "btnLoadCharacter";
-            this.btnLoadCharacter.Size = new System.Drawing.Size(137, 34);
-            this.btnLoadCharacter.TabIndex = 57;
-            this.btnLoadCharacter.Text = "Load Character";
-            this.btnLoadCharacter.UseVisualStyleBackColor = true;
-            this.btnLoadCharacter.Click += new System.EventHandler(this.btnLoadCharacter_Click);
-            // 
-            // btnDeleteCharacter
-            // 
-            this.btnDeleteCharacter.Location = new System.Drawing.Point(433, 456);
-            this.btnDeleteCharacter.Name = "btnDeleteCharacter";
-            this.btnDeleteCharacter.Size = new System.Drawing.Size(155, 34);
-            this.btnDeleteCharacter.TabIndex = 58;
-            this.btnDeleteCharacter.Text = "Delete Character";
-            this.btnDeleteCharacter.UseVisualStyleBackColor = true;
-            this.btnDeleteCharacter.Click += new System.EventHandler(this.btnDeleteCharacter_Click);
-            // 
-            // tbCharacterName
-            // 
-            this.tbCharacterName.Location = new System.Drawing.Point(35, 39);
-            this.tbCharacterName.Name = "tbCharacterName";
-            this.tbCharacterName.Size = new System.Drawing.Size(284, 22);
-            this.tbCharacterName.TabIndex = 55;
-            // 
             // label1
             // 
             this.label1.AutoSize = true;
@@ -379,11 +352,38 @@
             this.tbXp.Size = new System.Drawing.Size(90, 22);
             this.tbXp.TabIndex = 56;
             // 
+            // tbCharacterName
+            // 
+            this.tbCharacterName.Location = new System.Drawing.Point(35, 39);
+            this.tbCharacterName.Name = "tbCharacterName";
+            this.tbCharacterName.Size = new System.Drawing.Size(284, 22);
+            this.tbCharacterName.TabIndex = 55;
+            // 
+            // btnLoadCharacter
+            // 
+            this.btnLoadCharacter.Location = new System.Drawing.Point(235, 479);
+            this.btnLoadCharacter.Name = "btnLoadCharacter";
+            this.btnLoadCharacter.Size = new System.Drawing.Size(137, 34);
+            this.btnLoadCharacter.TabIndex = 57;
+            this.btnLoadCharacter.Text = "Edit Character";
+            this.btnLoadCharacter.UseVisualStyleBackColor = true;
+            this.btnLoadCharacter.Click += new System.EventHandler(this.btnLoadCharacter_Click);
+            // 
+            // btnDeleteCharacter
+            // 
+            this.btnDeleteCharacter.Location = new System.Drawing.Point(442, 479);
+            this.btnDeleteCharacter.Name = "btnDeleteCharacter";
+            this.btnDeleteCharacter.Size = new System.Drawing.Size(155, 34);
+            this.btnDeleteCharacter.TabIndex = 58;
+            this.btnDeleteCharacter.Text = "Delete Character";
+            this.btnDeleteCharacter.UseVisualStyleBackColor = true;
+            this.btnDeleteCharacter.Click += new System.EventHandler(this.btnDeleteCharacter_Click);
+            // 
             // LoadCharacter
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(831, 538);
+            this.ClientSize = new System.Drawing.Size(846, 551);
             this.Controls.Add(this.btnDeleteCharacter);
             this.Controls.Add(this.btnLoadCharacter);
             this.Controls.Add(this.panelCharacterLoad);

@@ -1,4 +1,7 @@
-﻿using Engine.Statistics;
+﻿using Engine.Actions;
+using Engine.Statistics;
+using Engine.Utilities;
+using Engine.Utilities.Constants;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -30,7 +33,28 @@ namespace Engine.Characters.HomeWorlds
             StatsAffectedNegative = new List<string>();
             AptitudeBonus = aptitude;
         }
+
+        public HomeWorld RandomlySelectHomeWorld()//used for random generation.
+        {
+            HomeWorld homeworldRandom = null;
+            Cryptorandom rn = new Cryptorandom();
+            var result = Convert.ToInt32(DiceRolls.RollD100(rn));
+            if (result >= 1 && result <= 15)
+                homeworldRandom = ReadOnlyLists.GetHomeworldById(Constants.FeralWorld);
+            if (result >= 16 && result <= 33)
+                homeworldRandom = ReadOnlyLists.GetHomeworldById(Constants.ForgeWorld);
+            if (result >= 34 && result <= 44)
+                homeworldRandom = ReadOnlyLists.GetHomeworldById(Constants.HighBorn);
+            if (result >= 45 && result <= 69)
+                homeworldRandom = ReadOnlyLists.GetHomeworldById(Constants.HiveWorld);
+            if (result >= 70 && result <= 85)
+                homeworldRandom = ReadOnlyLists.GetHomeworldById(Constants.ShrineWorld);
+            if (result >= 86 && result <= 100)
+                homeworldRandom = ReadOnlyLists.GetHomeworldById(Constants.VoidBorn);
+            return homeworldRandom;
+        }
     }
+
 
 
 }

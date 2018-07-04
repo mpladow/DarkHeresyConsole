@@ -35,6 +35,7 @@ namespace Engine
 
         public List<SkillsWithRank> MovementSkills { get; set; }
         public List<Skill_Base> CombatSkills { get; set; }
+        public List<SkillsWithRank> GeneralSkills { get; set; }
         public List<SkillsWithRank> InteractionSkills { get; set; }
 
         public List<string> Aptitudes { get; set; }
@@ -44,6 +45,8 @@ namespace Engine
         public int CurrentPosition { get; set; }
 
         public int XP { get; set; }
+
+        //constructor
         public Human_Base()
         {
             Stats = new List<CharacterStat>();
@@ -59,8 +62,9 @@ namespace Engine
             Stats.Add(new CharacterStat(Constants.Ifl));
 
             MovementSkills = ReadOnlyLists.MovementSkillsList;
-            CombatSkills = new List<Skill_Base>();
-            InteractionSkills = new List<SkillsWithRank>();
+            CombatSkills = ReadOnlyLists.CombatSkillsList;
+            GeneralSkills = ReadOnlyLists.GeneralSkillsList;
+            InteractionSkills = ReadOnlyLists.InteractionSkillsList;
             Aptitudes = new List<string>();
         }
 
@@ -77,11 +81,12 @@ namespace Engine
                 value += RollD10(2, rn).Sum();
                 stat.BaseValue = value;
             }
-            if(HomeWorld!= null)
+            if (HomeWorld != null)
             {
                 Wounds = RollD5(1, rn)[0] + HomeWorld.BaseWounds;
             }
             XP = Constants.StartingExperience;
+            SetPlayerMainStatOntoSkill();//sets the base value to the skill once the initial values have been set
         }
 
         public void UpdateHomeWorldCharacteristicBonuses()
@@ -117,11 +122,10 @@ namespace Engine
 
         }
 
-        public void AllocateSkills()
+        public void SetPlayerMainStatOntoSkill()
         {
             foreach (var skill in MovementSkills)
             {
-                //for each skill, map 
                 while (skill.MainStat == null)
                 {
                     skill.MainStat = skill.Description.Contains("(Toughness)") ? GetCharacterStatByName(Constants.T) : skill.MainStat;
@@ -133,36 +137,52 @@ namespace Engine
                     skill.MainStat = skill.Description.Contains("(Perception)") ? GetCharacterStatByName(Constants.Per) : skill.MainStat;
                     skill.MainStat = skill.Description.Contains("(Strength)") ? GetCharacterStatByName(Constants.Str) : skill.MainStat;
                 }
-
+            }
+            foreach (var skill in GeneralSkills)
+            {
+                while (skill.MainStat == null)
+                {
+                    skill.MainStat = skill.Description.Contains("(Toughness)") ? GetCharacterStatByName(Constants.T) : skill.MainStat;
+                    skill.MainStat = skill.Description.Contains("(Agility)") ? GetCharacterStatByName(Constants.Ag) : skill.MainStat;
+                    skill.MainStat = skill.Description.Contains("(Fellowship)") ? GetCharacterStatByName(Constants.Fel) : skill.MainStat;
+                    skill.MainStat = skill.Description.Contains("(Agility)") ? GetCharacterStatByName(Constants.Ag) : skill.MainStat;
+                    skill.MainStat = skill.Description.Contains("(Intelligence)") ? GetCharacterStatByName(Constants.Inte) : skill.MainStat;
+                    skill.MainStat = skill.Description.Contains("(Willpower)") ? GetCharacterStatByName(Constants.Wp) : skill.MainStat;
+                    skill.MainStat = skill.Description.Contains("(Perception)") ? GetCharacterStatByName(Constants.Per) : skill.MainStat;
+                    skill.MainStat = skill.Description.Contains("(Strength)") ? GetCharacterStatByName(Constants.Str) : skill.MainStat;
+                }
+            }
+            foreach (var skill in InteractionSkills)
+            {
+                while (skill.MainStat == null)
+                {
+                    skill.MainStat = skill.Description.Contains("(Toughness)") ? GetCharacterStatByName(Constants.T) : skill.MainStat;
+                    skill.MainStat = skill.Description.Contains("(Agility)") ? GetCharacterStatByName(Constants.Ag) : skill.MainStat;
+                    skill.MainStat = skill.Description.Contains("(Fellowship)") ? GetCharacterStatByName(Constants.Fel) : skill.MainStat;
+                    skill.MainStat = skill.Description.Contains("(Agility)") ? GetCharacterStatByName(Constants.Ag) : skill.MainStat;
+                    skill.MainStat = skill.Description.Contains("(Intelligence)") ? GetCharacterStatByName(Constants.Inte) : skill.MainStat;
+                    skill.MainStat = skill.Description.Contains("(Willpower)") ? GetCharacterStatByName(Constants.Wp) : skill.MainStat;
+                    skill.MainStat = skill.Description.Contains("(Perception)") ? GetCharacterStatByName(Constants.Per) : skill.MainStat;
+                    skill.MainStat = skill.Description.Contains("(Strength)") ? GetCharacterStatByName(Constants.Str) : skill.MainStat;
+                }
             }
         }
 
-        public void AllocateStartingSkills(int[] ids)
+        public void SetPlayerStartingSkillsLevel(int[] ids)//this gets set after the user selects their background, which determines their starting skill proficiencies
         {
             foreach (var id in ids)
             {
                 var skill = ReadOnlyLists.GetMovementSkillById(id, this);
-                skill.ModifyRank(true);
+                if (skill.Rank >= 1)
+                {
+                    skill.ModifyRank(false);
+                }
+                else
+                {
+                    skill.ModifyRank(true);
+                }
+                
             }
-        }
-
-        public void RandomlySelectHomeWorld()//used for random generation.
-        {
-            Cryptorandom rn = new Cryptorandom();
-            var result = Convert.ToInt32(DiceRolls.RollD100(rn));
-            if (result >= 1 && result <= 15)
-
-                HomeWorld = ReadOnlyLists.GetHomeworldById(Constants.FeralWorld);
-            if (result >= 16 && result <= 33)
-                HomeWorld = ReadOnlyLists.GetHomeworldById(Constants.ForgeWorld);
-            if (result >= 34 && result <= 44)
-                HomeWorld = ReadOnlyLists.GetHomeworldById(Constants.HighBorn);
-            if (result >= 45 && result <= 69)
-                HomeWorld = ReadOnlyLists.GetHomeworldById(Constants.HiveWorld);
-            if (result >= 70 && result <= 85)
-                HomeWorld = ReadOnlyLists.GetHomeworldById(Constants.ShrineWorld);
-            if (result >= 86 && result <= 100)
-                HomeWorld = ReadOnlyLists.GetHomeworldById(Constants.VoidBorn);
         }
     }
 }

@@ -34,6 +34,12 @@ namespace DarkHeresyForm
                 Player newPlayer = new Player();
                 Player = newPlayer;
             }
+            else
+            {
+                Player = player;
+                UpdateDisplay(panelPlayerStats, Player);
+
+            }
             cboHomeWorld.DataSource = ReadOnlyLists.HomeWorlds;
             cboHomeWorld.DisplayMember = "Name";
             cboBackground.DataSource = ReadOnlyLists.Backgrounds;
@@ -61,25 +67,27 @@ namespace DarkHeresyForm
         }
 
         //FUNCTIONS FOR THE CLASS
-        private void btnGenerateHomeworld_Click(object sender, EventArgs e)
+
+        private void btnSelectHomeworld_Click_1(object sender, EventArgs e)
         {
             Player.AllocateValues();
+            Player.SetPlayerMainStatOntoSkill();
             Player.UpdateHomeWorldCharacteristicBonuses();
 
-            int[] startingSkillsIds = { 1, 2 };
-            Player.AllocateStartingSkills(startingSkillsIds);
+            int[] startingMovementSkillsIds = { 1, 2 };
+            Player.SetPlayerStartingSkillsLevel(startingMovementSkillsIds);
             rtbInformation.Text += Environment.NewLine;
             rtbInformation.Text += String.Format("Character Statistics have been generated.");
             UpdateDisplay(panelPlayerStats, Player);
             if (cboHomeWorld.Enabled)
             {
                 cboHomeWorld.Enabled = false;
-                btnGenerateHomeworld.Text = "Selected";
+                btnSelectHomeworld.Text = "Selected";
             }
             else
             {
                 cboHomeWorld.Enabled = true;
-                btnGenerateHomeworld.Text = "Select HomeWorld";
+                btnSelectHomeworld.Text = "Select HomeWorld";
             };
         }
 
@@ -158,14 +166,17 @@ namespace DarkHeresyForm
 
         private void cboHomeWorld_SelectedIndexChanged(object sender, EventArgs e)
         {
-            var selection = cboHomeWorld.SelectedItem;
-            Player.HomeWorld = (HomeWorld)selection;
-            rtbInformation.Text = Player.HomeWorld.Description;
+            if (Player != null)
+            {
+                var selection = cboHomeWorld.SelectedItem;
+                Player.HomeWorld = (HomeWorld)selection;
+                rtbInformation.Text = Player.HomeWorld.Description;
+            }
         }
 
         private void btnSelectHomeWorld_Click(object sender, EventArgs e)
         {
-            
+
         }
 
         private void button2_Click(object sender, EventArgs e)
@@ -226,6 +237,7 @@ namespace DarkHeresyForm
                 cboBackground.Enabled = true;
                 btnSelectBackground.Text = "Select Background";
             };
+            UpdateSkillsDisplay(panelSkills, Player);
         }
 
         private void cboBackground_SelectedIndexChanged(object sender, EventArgs e)
@@ -243,6 +255,5 @@ namespace DarkHeresyForm
                 }
             }
         }
-
     }
 }

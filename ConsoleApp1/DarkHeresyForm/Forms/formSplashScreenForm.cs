@@ -31,7 +31,7 @@ namespace DarkHeresyForm
 
         private void btnLoadCharacter_Click(object sender, EventArgs e)
         {
-            LoadCharacter loadCharacter = new LoadCharacter();
+            formLoadCharacter loadCharacter = new formLoadCharacter();
             loadCharacter.Show();
         }
     }

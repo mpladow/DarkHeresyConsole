@@ -33,12 +33,13 @@
             this.btnLoad = new System.Windows.Forms.Button();
             this.btnClose = new System.Windows.Forms.Button();
             this.btnLoadCharacter = new System.Windows.Forms.Button();
+            this.btnStart = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // btnCreateCharacter
             // 
             this.btnCreateCharacter.Location = new System.Drawing.Point(376, 197);
-            this.btnCreateCharacter.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btnCreateCharacter.Margin = new System.Windows.Forms.Padding(4);
             this.btnCreateCharacter.Name = "btnCreateCharacter";
             this.btnCreateCharacter.Size = new System.Drawing.Size(144, 49);
             this.btnCreateCharacter.TabIndex = 0;
@@ -48,17 +49,17 @@
             // 
             // rtbInput
             // 
-            this.rtbInput.Location = new System.Drawing.Point(68, 210);
-            this.rtbInput.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.rtbInput.Location = new System.Drawing.Point(53, 197);
+            this.rtbInput.Margin = new System.Windows.Forms.Padding(4);
             this.rtbInput.Name = "rtbInput";
-            this.rtbInput.Size = new System.Drawing.Size(251, 117);
+            this.rtbInput.Size = new System.Drawing.Size(251, 152);
             this.rtbInput.TabIndex = 1;
             this.rtbInput.Text = "";
             // 
             // btnLoad
             // 
             this.btnLoad.Location = new System.Drawing.Point(316, 464);
-            this.btnLoad.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btnLoad.Margin = new System.Windows.Forms.Padding(4);
             this.btnLoad.Name = "btnLoad";
             this.btnLoad.Size = new System.Drawing.Size(144, 44);
             this.btnLoad.TabIndex = 2;
@@ -67,8 +68,8 @@
             // 
             // btnClose
             // 
-            this.btnClose.Location = new System.Drawing.Point(376, 305);
-            this.btnClose.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btnClose.Location = new System.Drawing.Point(376, 358);
+            this.btnClose.Margin = new System.Windows.Forms.Padding(4);
             this.btnClose.Name = "btnClose";
             this.btnClose.Size = new System.Drawing.Size(144, 44);
             this.btnClose.TabIndex = 3;
@@ -79,7 +80,7 @@
             // btnLoadCharacter
             // 
             this.btnLoadCharacter.Location = new System.Drawing.Point(376, 254);
-            this.btnLoadCharacter.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btnLoadCharacter.Margin = new System.Windows.Forms.Padding(4);
             this.btnLoadCharacter.Name = "btnLoadCharacter";
             this.btnLoadCharacter.Size = new System.Drawing.Size(144, 44);
             this.btnLoadCharacter.TabIndex = 4;
@@ -87,11 +88,22 @@
             this.btnLoadCharacter.UseVisualStyleBackColor = true;
             this.btnLoadCharacter.Click += new System.EventHandler(this.btnLoadCharacter_Click);
             // 
+            // btnStart
+            // 
+            this.btnStart.Location = new System.Drawing.Point(376, 306);
+            this.btnStart.Margin = new System.Windows.Forms.Padding(4);
+            this.btnStart.Name = "btnStart";
+            this.btnStart.Size = new System.Drawing.Size(144, 44);
+            this.btnStart.TabIndex = 5;
+            this.btnStart.Text = "Start Mission";
+            this.btnStart.UseVisualStyleBackColor = true;
+            // 
             // splashscreen
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(592, 592);
+            this.Controls.Add(this.btnStart);
             this.Controls.Add(this.btnLoadCharacter);
             this.Controls.Add(this.btnClose);
             this.Controls.Add(this.btnLoad);
@@ -111,6 +123,7 @@
         private System.Windows.Forms.Button btnLoad;
         private System.Windows.Forms.Button btnClose;
         private System.Windows.Forms.Button btnLoadCharacter;
+        private System.Windows.Forms.Button btnStart;
     }
 }
 
