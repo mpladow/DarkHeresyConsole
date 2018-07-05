@@ -25,3 +25,12 @@ C:\Users\mplad\DarkHeresyConsole\ConsoleApp1\Engine\bin\Debug\Engine.pdb
 C:\Users\mplad\DarkHeresyConsole\ConsoleApp1\Engine\bin\Debug\System.ValueTuple.dll
 C:\Users\mplad\DarkHeresyConsole\ConsoleApp1\Engine\bin\Debug\System.ValueTuple.xml
 C:\Users\mplad\DarkHeresyConsole\ConsoleApp1\Engine\obj\Debug\Engine.csproj.CopyComplete
+C:\Users\Michael.LaDow\Projects\DHSimulator\ConsoleApp1\Engine\bin\Debug\Engine.dll
+C:\Users\Michael.LaDow\Projects\DHSimulator\ConsoleApp1\Engine\bin\Debug\Engine.pdb
+C:\Users\Michael.LaDow\Projects\DHSimulator\ConsoleApp1\Engine\bin\Debug\System.ValueTuple.dll
+C:\Users\Michael.LaDow\Projects\DHSimulator\ConsoleApp1\Engine\bin\Debug\System.ValueTuple.xml
+C:\Users\Michael.LaDow\Projects\DHSimulator\ConsoleApp1\Engine\obj\Debug\Engine.csprojAssemblyReference.cache
+C:\Users\Michael.LaDow\Projects\DHSimulator\ConsoleApp1\Engine\obj\Debug\Engine.csproj.CoreCompileInputs.cache
+C:\Users\Michael.LaDow\Projects\DHSimulator\ConsoleApp1\Engine\obj\Debug\Engine.csproj.CopyComplete
+C:\Users\Michael.LaDow\Projects\DHSimulator\ConsoleApp1\Engine\obj\Debug\Engine.dll
+C:\Users\Michael.LaDow\Projects\DHSimulator\ConsoleApp1\Engine\obj\Debug\Engine.pdb
