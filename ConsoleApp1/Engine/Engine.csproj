@@ -43,13 +43,13 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Characters\BodyLocation.cs" />
     <Compile Include="Characters\CharacterCreation\Background.cs" />
     <Compile Include="Skills\CharacteristicCheck.cs" />
     <Compile Include="Actions\DiceRolls.cs" />
-    <Compile Include="Armour\Armour_base.cs" />
     <Compile Include="Characters\CharacterCreation\HomeWorlds.cs" />
     <Compile Include="Inventory.cs" />
-    <Compile Include="Characters\Human_Base.cs" />
+    <Compile Include="Characters\Character_base.cs" />
     <Compile Include="Locations\Location.cs" />
     <Compile Include="Locations\Room.cs" />
     <Compile Include="Characters\NPC.cs" />
@@ -63,7 +63,8 @@
     <Compile Include="Skills\Skill_Base.cs" />
     <Compile Include="Statistics\CharacterStat.cs" />
     <Compile Include="Utilities\Lists\Constants.cs" />
-    <Compile Include="Utilities\Lists\ReadOnlyLists.cs" />
+    <Compile Include="Utilities\Lists\EnemyGeneration.cs" />
+    <Compile Include="Utilities\Lists\World.cs" />
     <Compile Include="Utilities\Cryptorandom.cs" />
     <Compile Include="Utilities\EnumUtility.cs" />
     <Compile Include="Utilities\SaveLoad.cs" />
@@ -75,6 +76,7 @@
     <Compile Include="World_Objects\Door.cs" />
     <Compile Include="World_Objects\Item_base.cs" />
     <Compile Include="World_Objects\Potion.cs" />
+    <Compile Include="World_Objects\ProtectiveGear\Armour.cs" />
     <Compile Include="World_Objects\Weapons\IWeapon.cs" />
     <Compile Include="World_Objects\Weapons\Weapon_base.cs" />
     <Compile Include="World_Objects\Weapons\Melee.cs" />

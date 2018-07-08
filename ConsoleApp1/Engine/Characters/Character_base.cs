@@ -1,10 +1,12 @@
 ﻿using Engine.Actions;
+using Engine.Characters;
 using Engine.Characters.CharacterCreation;
 using Engine.Characters.HomeWorlds;
 using Engine.Skills;
 using Engine.Statistics;
 using Engine.Utilities;
 using Engine.Utilities.Constants;
+using Engine.World_Objects;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -17,7 +19,7 @@ using static Engine.Statistics.CharacterStat;
 namespace Engine
 {
     [Serializable]
-    public abstract class Human_Base
+    public abstract class Character_base
     {
 
         public string Name { get; set; }
@@ -26,6 +28,7 @@ namespace Engine
 
         public int Wounds { get; set; }
 
+        public List<BodyLocation>BodyLocations { get; set; }
         public int A_Head { get; set; }
         public int A_Body { get; set; }
         public int A_LeftArm { get; set; }
@@ -39,6 +42,8 @@ namespace Engine
         public List<SkillsWithRank> InteractionSkills { get; set; }
 
         public List<string> Aptitudes { get; set; }
+        public List<Weapon_base> Weapons{ get; set; }
+
 
         public HomeWorld HomeWorld { get; set; }
         public Background Background { get; set; }
@@ -47,7 +52,7 @@ namespace Engine
         public int XP { get; set; }
 
         //constructor
-        public Human_Base()
+        public Character_base()
         {
             Stats = new List<CharacterStat>();
             Stats.Add(new CharacterStat(Constants.Ws));
@@ -61,11 +66,14 @@ namespace Engine
             Stats.Add(new CharacterStat(Constants.Fel));
             Stats.Add(new CharacterStat(Constants.Ifl));
 
-            MovementSkills = ReadOnlyLists.MovementSkillsList;
-            CombatSkills = ReadOnlyLists.CombatSkillsList;
-            GeneralSkills = ReadOnlyLists.GeneralSkillsList;
-            InteractionSkills = ReadOnlyLists.InteractionSkillsList;
+            BodyLocations = new List<BodyLocation>() { new}
+
+            MovementSkills = World.MovementSkillsList;
+            CombatSkills = World.CombatSkillsList;
+            GeneralSkills = World.GeneralSkillsList;
+            InteractionSkills = World.InteractionSkillsList;
             Aptitudes = new List<string>();
+            Weapons = new List<Weapon_base>();
         }
 
         public CharacterStat GetCharacterStatByName(string name)
@@ -172,7 +180,7 @@ namespace Engine
         {
             foreach (var id in ids)
             {
-                var skill = ReadOnlyLists.GetMovementSkillById(id, this);
+                var skill = World.GetMovementSkillById(id, this);
                 if (skill.Rank >= 1)
                 {
                     skill.ModifyRank(false);

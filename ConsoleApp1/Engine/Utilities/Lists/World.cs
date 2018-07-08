@@ -10,16 +10,19 @@ using static Engine.Statistics.CharacterStat;
 using Engine.Skills;
 using Engine.Characters.CharacterCreation;
 using Engine.World_Objects;
+using Engine.World_Objects.ProtectiveGear;
 
 namespace Engine.Utilities.Constants
 {
-    public static class ReadOnlyLists
+    public static class World
     {
         public static readonly List<SkillModifier> DifficultiesList = new List<SkillModifier>();
         public static readonly List<SkillModifier> SkillLevelsList = new List<SkillModifier>();
         public static readonly List<HomeWorld> HomeWorlds = new List<HomeWorld>();
         public static readonly List<Background> Backgrounds = new List<Background>();
         public static readonly List<BasicRanged> BasicRangedWeapons = new List<BasicRanged>();
+        public static readonly List<Melee> BasicMeleeWeapons = new List<Melee>();
+        public static readonly List<World_Objects.ProtectiveGear.Armour> BasicArmour = new List<World_Objects.ProtectiveGear.Armour>();
 
         //public static readonly List<Role> Roles = new List<Role>();
         public static readonly List<SkillsWithRank> MovementSkillsList = new List<SkillsWithRank>();
@@ -51,20 +54,32 @@ namespace Engine.Utilities.Constants
         //Weapons
         public static void PopulateRangedWeapons()
         {
-            var laspistol = new BasicRanged(1, "Laspistol","A basic weapon of the imperium, common with the imperial guard", 0, Constants.Common, 1.5, 2, Constants.ShortRange, 2, 30, .5);
+            var laspistol = new BasicRanged(1, "Laspistol", "A basic weapon of the imperium, common with the imperial guard", 0, Constants.Common, 1.5, 2, Constants.ShortRange, 2, 30, .5);
             BasicRangedWeapons.Add(laspistol);
+        }
+
+        public static void PopulateMeleeWeapons()
+        {
+            var sword = new Melee(1, "Sword", "A common sword", 0, Constants.Common, 3, 0);
+            BasicMeleeWeapons.Add(sword);
         }
 
         public static BasicRanged GetRangedById(int id)
         {
             return BasicRangedWeapons.FirstOrDefault(x => x.Id == id);
         }
+        //ProtectiveGear ---------------
+
+        //public static PopulateProtectiveGear()
+        //{
+        //    var heavyLeathers = new Armour(1, "Heavy Leathers", "Heavy leather armour that covers the ARMS and BODY.", new List<string> { "A_LeftArm", "A_RightArm", "A_Body"},1, )
+        //}
         //Roles
         //public static List<Role> PopulateRoles()
         //{
         //    var 
         //}
-       //Backgrounds
+        //Backgrounds
         public static List<Background> PopulateBackgrounds()
         {
             var adeptusArbites = new Background(1, "Adeptus Arbites", "Lawbringers of the imperium.");
@@ -119,7 +134,7 @@ namespace Engine.Utilities.Constants
             HomeWorlds.Add(HighBorn);
 
 
-            var ForgeWorld = new Characters.HomeWorlds.HomeWorld(4, "ForgeWorld", "An industrial forge world", 8, Constants.Inte );
+            var ForgeWorld = new Characters.HomeWorlds.HomeWorld(4, "ForgeWorld", "An industrial forge world", 8, Constants.Inte);
             ForgeWorld.StatsAffectedPositive.Add(Constants.Inte);
             ForgeWorld.StatsAffectedPositive.Add(Constants.T);
             ForgeWorld.StatsAffectedNegative.Add(Constants.Fel);
@@ -175,7 +190,7 @@ namespace Engine.Utilities.Constants
                 "Offence",
                 "Finesse",
                 "Defence",
-                "Knowledge", 
+                "Knowledge",
                 "Fieldcraft",
                 "Psyker",
                 "Social",
@@ -190,10 +205,10 @@ namespace Engine.Utilities.Constants
                 {
                     if (i == j)
                         AptitudesDict[i] = aptitudes[j];
-                    if(i < j)
-                    break;
+                    if (i < j)
+                        break;
                 }
-            };          
+            };
         }
 
         //Skills
@@ -209,7 +224,7 @@ namespace Engine.Utilities.Constants
             var stealth = new SkillsWithRank(3, "Stealth", "(Agility) Attempt to hide from enemies and move unseen.");
             MovementSkillsList.Add(stealth);
 
-            var operate = new SkillsWithRank(4, "Operate", "(Agility) Control and direct vehicles and equipment.",0.5);
+            var operate = new SkillsWithRank(4, "Operate", "(Agility) Control and direct vehicles and equipment.", 0.5);
             MovementSkillsList.Add(operate);
 
 
@@ -253,16 +268,16 @@ namespace Engine.Utilities.Constants
             CombatSkillsList.Add(Dodge);
         }
 
-        public static SkillsWithRank GetMovementSkillById(int id, Human_Base player = null)
+        public static SkillsWithRank GetMovementSkillById(int id, Character_base player = null)
         {
-            if (player!= null)
+            if (player != null)
             {
                 var j = player.MovementSkills.FirstOrDefault(x => x.Id == id);
                 return j;
             }
             else return MovementSkillsList.FirstOrDefault(x => x.Id == id);
         }
-        public static SkillsWithRank GetInteractionSkillById(int id, Human_Base player = null)
+        public static SkillsWithRank GetInteractionSkillById(int id, Character_base player = null)
         {
             if (player != null)
             {
@@ -270,7 +285,7 @@ namespace Engine.Utilities.Constants
             }
             else return InteractionSkillsList.FirstOrDefault(x => x.Id == id);
         }
-        public static Skill_Base GetComabtSkillById(int id, Human_Base player = null)
+        public static Skill_Base GetComabtSkillById(int id, Character_base player = null)
         {
             if (player != null)
             {
@@ -281,4 +296,3 @@ namespace Engine.Utilities.Constants
 
     }
 }
-  

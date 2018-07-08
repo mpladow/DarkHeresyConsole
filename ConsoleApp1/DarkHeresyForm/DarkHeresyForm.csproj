@@ -48,34 +48,52 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Forms\LoadCharacter.cs">
+    <Compile Include="Forms\formCharacterCreationForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Forms\LoadCharacter.Designer.cs">
-      <DependentUpon>LoadCharacter.cs</DependentUpon>
+    <Compile Include="Forms\formCharacterCreationForm.Designer.cs">
+      <DependentUpon>formCharacterCreationForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="Forms\SplashScreenForm.cs">
+    <Compile Include="Forms\formCombat.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Forms\SplashScreenForm.Designer.cs">
-      <DependentUpon>SplashScreenForm.cs</DependentUpon>
+    <Compile Include="Forms\formCombat.Designer.cs">
+      <DependentUpon>formCombat.cs</DependentUpon>
     </Compile>
-    <Compile Include="Forms\CharacterCreationForm.cs">
+    <Compile Include="Forms\formLoadCharacter.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Forms\CharacterCreationForm.Designer.cs">
-      <DependentUpon>CharacterCreationForm.cs</DependentUpon>
+    <Compile Include="Forms\formLoadCharacter.Designer.cs">
+      <DependentUpon>formLoadCharacter.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\formMain.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\formMain.Designer.cs">
+      <DependentUpon>formMain.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\formSplashScreenForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\formSplashScreenForm.Designer.cs">
+      <DependentUpon>formSplashScreenForm.cs</DependentUpon>
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <EmbeddedResource Include="Forms\LoadCharacter.resx">
-      <DependentUpon>LoadCharacter.cs</DependentUpon>
+    <EmbeddedResource Include="Forms\formCharacterCreationForm.resx">
+      <DependentUpon>formCharacterCreationForm.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Forms\SplashScreenForm.resx">
-      <DependentUpon>SplashScreenForm.cs</DependentUpon>
+    <EmbeddedResource Include="Forms\formCombat.resx">
+      <DependentUpon>formCombat.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Forms\CharacterCreationForm.resx">
-      <DependentUpon>CharacterCreationForm.cs</DependentUpon>
+    <EmbeddedResource Include="Forms\formLoadCharacter.resx">
+      <DependentUpon>formLoadCharacter.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\formMain.resx">
+      <DependentUpon>formMain.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\formSplashScreenForm.resx">
+      <DependentUpon>formSplashScreenForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>

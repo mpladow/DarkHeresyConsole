@@ -87,31 +87,31 @@ namespace Engine.Statistics
             switch (name)
             {
                 case "Ws":
-                    x = ReadOnlyLists.AptitudesDict.FirstOrDefault(t => t.Key == 0).Value;
+                    x = World.AptitudesDict.FirstOrDefault(t => t.Key == 0).Value;
                     break;
                 case "Bs":
-                    x = ReadOnlyLists.AptitudesDict.FirstOrDefault(t => t.Key == 1).Value;
+                    x = World.AptitudesDict.FirstOrDefault(t => t.Key == 1).Value;
                     break;
                 case "Str":
-                    x = ReadOnlyLists.AptitudesDict.FirstOrDefault(t => t.Key == 0).Value;
+                    x = World.AptitudesDict.FirstOrDefault(t => t.Key == 0).Value;
                     break;
                 case "T":
-                    x = ReadOnlyLists.AptitudesDict.FirstOrDefault(t => t.Key == 2).Value;
+                    x = World.AptitudesDict.FirstOrDefault(t => t.Key == 2).Value;
                     break;
                 case "Ag":
-                    x = ReadOnlyLists.AptitudesDict.FirstOrDefault(t => t.Key == 1).Value;
+                    x = World.AptitudesDict.FirstOrDefault(t => t.Key == 1).Value;
                     break;
                 case "Inte":
-                    x = ReadOnlyLists.AptitudesDict.FirstOrDefault(t => t.Key == 3).Value;
+                    x = World.AptitudesDict.FirstOrDefault(t => t.Key == 3).Value;
                     break;
                 case "Per":
-                    x = ReadOnlyLists.AptitudesDict.FirstOrDefault(t => t.Key == 4).Value;
+                    x = World.AptitudesDict.FirstOrDefault(t => t.Key == 4).Value;
                     break;
                 case "Wp":
-                    x = ReadOnlyLists.AptitudesDict.FirstOrDefault(t => t.Key == 5).Value;
+                    x = World.AptitudesDict.FirstOrDefault(t => t.Key == 5).Value;
                     break;
                 case "Fel":
-                    x = ReadOnlyLists.AptitudesDict.FirstOrDefault(t => t.Key == 6).Value;
+                    x = World.AptitudesDict.FirstOrDefault(t => t.Key == 6).Value;
                     break;
                 default:
                     break;

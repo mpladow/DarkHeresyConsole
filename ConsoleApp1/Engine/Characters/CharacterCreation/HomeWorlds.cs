@@ -40,17 +40,17 @@ namespace Engine.Characters.HomeWorlds
             Cryptorandom rn = new Cryptorandom();
             var result = Convert.ToInt32(DiceRolls.RollD100(rn));
             if (result >= 1 && result <= 15)
-                homeworldRandom = ReadOnlyLists.GetHomeworldById(Constants.FeralWorld);
+                homeworldRandom = World.GetHomeworldById(Constants.FeralWorld);
             if (result >= 16 && result <= 33)
-                homeworldRandom = ReadOnlyLists.GetHomeworldById(Constants.ForgeWorld);
+                homeworldRandom = World.GetHomeworldById(Constants.ForgeWorld);
             if (result >= 34 && result <= 44)
-                homeworldRandom = ReadOnlyLists.GetHomeworldById(Constants.HighBorn);
+                homeworldRandom = World.GetHomeworldById(Constants.HighBorn);
             if (result >= 45 && result <= 69)
-                homeworldRandom = ReadOnlyLists.GetHomeworldById(Constants.HiveWorld);
+                homeworldRandom = World.GetHomeworldById(Constants.HiveWorld);
             if (result >= 70 && result <= 85)
-                homeworldRandom = ReadOnlyLists.GetHomeworldById(Constants.ShrineWorld);
+                homeworldRandom = World.GetHomeworldById(Constants.ShrineWorld);
             if (result >= 86 && result <= 100)
-                homeworldRandom = ReadOnlyLists.GetHomeworldById(Constants.VoidBorn);
+                homeworldRandom = World.GetHomeworldById(Constants.VoidBorn);
             return homeworldRandom;
         }
     }

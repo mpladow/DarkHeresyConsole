@@ -10,7 +10,8 @@ namespace Engine.World_Objects.Weapons
     {
         int CalculateDamage(int dicetoroll);
 
-        void EquipWeapon();
+        void EquipWeapon(Character_base character);
+
 
         void ReadyWeapon();
 

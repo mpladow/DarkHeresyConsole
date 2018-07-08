@@ -47,9 +47,15 @@ namespace Engine.World_Objects
             return x;
         }
 
-        public void EquipWeapon()
+        public void EquipWeapon(Character_base player)
         {
-            throw new NotImplementedException();
+            player.Weapons.Add(this);
+        }
+        public void UnequipWeapon(Character_base player)
+        {
+            var weaponInInventory = player.Weapons.FirstOrDefault(x => x.Id == this.Id);
+            if (weaponInInventory!=null)
+                player.Weapons.Remove(weaponInInventory);
         }
 
         public void ReadyWeapon()

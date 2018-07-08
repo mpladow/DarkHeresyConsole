@@ -4,9 +4,10 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Engine
+namespace Engine.Utilities.Lists
 {
-    public class NPC:Character_base
+    public class EnemyGeneration
     {
+        public List<Character_base>
     }
 }

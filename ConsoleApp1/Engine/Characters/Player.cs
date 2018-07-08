@@ -11,7 +11,7 @@ using static Engine.Actions.DiceRolls;
 namespace Engine
 {
     [Serializable]
-    public class Player:Human_Base
+    public class Player:Character_base
     {
         
         public Location CurrentLocation { get; set; }

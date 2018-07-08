@@ -22,13 +22,13 @@ namespace DarkHeresyForm
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
 
-            ReadOnlyLists.PopulateDifficulties();
-            ReadOnlyLists.PopulateSkillLevels();
-            ReadOnlyLists.PopulateSkills();
-            ReadOnlyLists.PopulateAptitudesDictionary();
-            ReadOnlyLists.PopulateRangedWeapons();
-            ReadOnlyLists.PopulateBackgrounds();
-            ReadOnlyLists.PopulateHomeWorlds();
+            World.PopulateDifficulties();
+            World.PopulateSkillLevels();
+            World.PopulateSkills();
+            World.PopulateAptitudesDictionary();
+            World.PopulateRangedWeapons();
+            World.PopulateBackgrounds();
+            World.PopulateHomeWorlds();
            
 
             SaveLoad.Load();

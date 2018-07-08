@@ -6,6 +6,7 @@ using Engine.Skills;
 using Engine.Statistics;
 using Engine.Utilities;
 using Engine.Utilities.Constants;
+using Engine.World_Objects;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -17,7 +18,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using static Engine.Characters.HomeWorlds.HomeWorld;
-using static Engine.Human_Base;
+using static Engine.Character_base;
 using static Engine.Statistics.CharacterStat;
 
 namespace DarkHeresyForm
@@ -40,10 +41,12 @@ namespace DarkHeresyForm
                 UpdateDisplay(panelPlayerStats, Player);
 
             }
-            cboHomeWorld.DataSource = ReadOnlyLists.HomeWorlds;
+            cboHomeWorld.DataSource = World.HomeWorlds;
             cboHomeWorld.DisplayMember = "Name";
-            cboBackground.DataSource = ReadOnlyLists.Backgrounds;
+            cboBackground.DataSource = World.Backgrounds;
             cboBackground.DisplayMember = "Name";
+            cboWeapons.DataSource = Player.Weapons.Count > 0? Player.Weapons:null;
+            cboWeapons.DisplayMember = "Name";
         }
 
         private void richTextBox1_TextChanged(object sender, EventArgs e)
@@ -187,7 +190,7 @@ namespace DarkHeresyForm
             var result = Player.ConductMovementCheck("Acrobatics");
             var isSuccess = result.isSuccess ? "SUCCESSFUL" : "unsuccessful";
             var dof = result.isSuccess ? "success" : "failure";
-            rtbInformation.Text += String.Format("You attempt to use acrobatics. You are {0} so you require a roll below {1}...", ReadOnlyLists.GetSkillLevelsById(1).Description, 20);//need to get the aptitude level, and need to get the modified value required
+            rtbInformation.Text += String.Format("You attempt to use acrobatics. You are {0} so you require a roll below {1}...", World.GetSkillLevelsById(1).Description, 20);//need to get the aptitude level, and need to get the modified value required
             rtbInformation.Text += String.Format("You rolled a {0}, and was {1} to {2} degrees of {3}.", result.StrValue, isSuccess, result.DegreesofSuccess, dof);
             rtbInformation.Text += Environment.NewLine;
 
@@ -227,7 +230,24 @@ namespace DarkHeresyForm
 
         private void btnSelectBackground_Click(object sender, EventArgs e)
         {
-            if (cboBackground.Enabled)
+            var selected = cboBackground.Enabled;
+
+            if (selected)
+            {
+                foreach (var weapon in Player.Background.StartingEquipment)
+                {
+                    weapon.EquipWeapon(Player);
+                }
+            }
+            else
+            {
+                foreach (var weapon in Player.Background.StartingEquipment)
+                {
+                    weapon.UnequipWeapon(Player);
+                }
+            }
+
+            if (selected)
             {
                 cboBackground.Enabled = false;
                 btnSelectBackground.Text = "Selected";
@@ -236,8 +256,10 @@ namespace DarkHeresyForm
             {
                 cboBackground.Enabled = true;
                 btnSelectBackground.Text = "Select Background";
+
             };
             UpdateSkillsDisplay(panelSkills, Player);
+
         }
 
         private void cboBackground_SelectedIndexChanged(object sender, EventArgs e)
@@ -253,6 +275,15 @@ namespace DarkHeresyForm
                     rtbBackgroundText.Text += item.Name;
                     rtbBackgroundText.Text += Environment.NewLine;
                 }
+            }
+        }
+
+        private void cboWeapons_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if(Player != null)
+            {
+                var selection = (Weapon_base)cboWeapons.SelectedItem;
+                rtbEquipment.Text += Player.Weapons.FirstOrDefault(x => x == selection).Description;
             }
         }
     }
