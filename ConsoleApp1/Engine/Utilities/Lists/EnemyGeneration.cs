@@ -8,6 +8,5 @@ namespace Engine.Utilities.Lists
 {
     public class EnemyGeneration
     {
-        public List<Character_base>
     }
 }

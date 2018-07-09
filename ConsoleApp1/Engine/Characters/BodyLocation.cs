@@ -10,9 +10,9 @@ namespace Engine.Characters
     {
         public string Name { get; set; }
         public int AP { get; set; }
-        public int IsWounded { get; set; }
+        public bool IsWounded { get; set; }
 
-        public BodyLocation(string name, int aP, int isWounded)
+        public BodyLocation(string name, int aP = 0, bool isWounded = false)
         {
             Name = name;
             AP = aP;

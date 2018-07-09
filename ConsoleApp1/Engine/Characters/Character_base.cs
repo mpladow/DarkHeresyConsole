@@ -66,7 +66,14 @@ namespace Engine
             Stats.Add(new CharacterStat(Constants.Fel));
             Stats.Add(new CharacterStat(Constants.Ifl));
 
-            BodyLocations = new List<BodyLocation>() { new}
+            BodyLocations = new List<BodyLocation>()
+            { new BodyLocation("A_Head")
+                , new BodyLocation("A_Body")
+                , new BodyLocation("A_LeftArm")
+                , new BodyLocation("A_RightArm")
+                , new BodyLocation("A_LeftLeg")
+                , new BodyLocation("A_RightLeg")
+            };
 
             MovementSkills = World.MovementSkillsList;
             CombatSkills = World.CombatSkillsList;
