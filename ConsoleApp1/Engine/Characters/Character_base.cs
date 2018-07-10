@@ -28,7 +28,7 @@ namespace Engine
 
         public int Wounds { get; set; }
 
-        public List<BodyLocation>BodyLocations { get; set; }
+        public List<BodyLocation> BodyLocations { get; set; }
         public int A_Head { get; set; }
         public int A_Body { get; set; }
         public int A_LeftArm { get; set; }
@@ -37,12 +37,14 @@ namespace Engine
         public int A_RightLeg { get; set; }
 
         public List<SkillsWithRank> MovementSkills { get; set; }
-        public List<Skill_Base> CombatSkills { get; set; }
+        public List<SkillsWithRank> CombatSkills { get; set; }
         public List<SkillsWithRank> GeneralSkills { get; set; }
         public List<SkillsWithRank> InteractionSkills { get; set; }
 
+
+
         public List<string> Aptitudes { get; set; }
-        public List<Weapon_base> Weapons{ get; set; }
+        public List<Weapon_base> Weapons { get; set; }
 
 
         public HomeWorld HomeWorld { get; set; }
@@ -81,12 +83,16 @@ namespace Engine
             InteractionSkills = World.InteractionSkillsList;
             Aptitudes = new List<string>();
             Weapons = new List<Weapon_base>();
+            SetPlayerMainStatOntoSkill();
         }
 
+        //quickly search for stat by name
         public CharacterStat GetCharacterStatByName(string name)
         {
             return Stats.FirstOrDefault(x => x.Name == name);
         }
+
+        //Character Setup
         public void AllocateValues()
         {
             Cryptorandom rn = new Cryptorandom();
@@ -104,6 +110,31 @@ namespace Engine
             SetPlayerMainStatOntoSkill();//sets the base value to the skill once the initial values have been set
         }
 
+        public void SetPlayerMainStatOntoSkill()
+        {
+            var totalSkills = new List<SkillsWithRank>();
+            totalSkills.AddRange(MovementSkills);
+            totalSkills.AddRange(GeneralSkills);
+            totalSkills.AddRange(InteractionSkills);
+            totalSkills.AddRange(CombatSkills);
+
+            foreach (var skill in totalSkills)
+            {
+                while (skill.MainStat == null)
+                {
+                    skill.MainStat = skill.Description.Contains("(Toughness)") ? GetCharacterStatByName(Constants.T) : skill.MainStat;
+                    skill.MainStat = skill.Description.Contains("(Agility)") ? GetCharacterStatByName(Constants.Ag) : skill.MainStat;
+                    skill.MainStat = skill.Description.Contains("(Fellowship)") ? GetCharacterStatByName(Constants.Fel) : skill.MainStat;
+                    skill.MainStat = skill.Description.Contains("(Agility)") ? GetCharacterStatByName(Constants.Ag) : skill.MainStat;
+                    skill.MainStat = skill.Description.Contains("(Intelligence)") ? GetCharacterStatByName(Constants.Inte) : skill.MainStat;
+                    skill.MainStat = skill.Description.Contains("(Willpower)") ? GetCharacterStatByName(Constants.Wp) : skill.MainStat;
+                    skill.MainStat = skill.Description.Contains("(Perception)") ? GetCharacterStatByName(Constants.Per) : skill.MainStat;
+                    skill.MainStat = skill.Description.Contains("(Strength)") ? GetCharacterStatByName(Constants.Str) : skill.MainStat;
+                }
+            }
+        }
+
+        //
         public void UpdateHomeWorldCharacteristicBonuses()
         {
             Cryptorandom rn = new Cryptorandom();
@@ -115,7 +146,7 @@ namespace Engine
                 {
                     if (stat.Name == posStat)
                     {
-                        stat.BaseValue = Constants.StartingValue;//resets basevaluee to 25
+                        stat.BaseValue = Constants.StartingValue + 5;//rests basevaluee to 25
                         int[] roll = RollD10(3, rn);
                         stat.BaseValue += TakeDice(2, roll, true).Sum();
                     }
@@ -127,7 +158,7 @@ namespace Engine
                 {
                     if (stat.Name == negStat)
                     {
-                        stat.BaseValue = Constants.StartingValue;//resets basevaluee to 25
+                        stat.BaseValue = Constants.StartingValue - 5;//resets basevaluee to 25
                         int[] roll = RollD10(3, rn);
                         stat.BaseValue += TakeDice(2, roll, false).Sum();
                     }
@@ -137,66 +168,57 @@ namespace Engine
 
         }
 
-        public void SetPlayerMainStatOntoSkill()
+
+
+        public void SetPlayerStartingSkillsLevel()//this gets set after the user selects their background, which determines their starting skill proficiencies
         {
-            foreach (var skill in MovementSkills)
+            var totalSkills = new List<SkillsWithRank>();
+            totalSkills.AddRange(MovementSkills);
+            totalSkills.AddRange(GeneralSkills);
+            totalSkills.AddRange(InteractionSkills);
+            totalSkills.AddRange(CombatSkills);
+
+            foreach (var bgSkill in Background.StartingSkills)
             {
-                while (skill.MainStat == null)
+                foreach (var charSkill in totalSkills)
                 {
-                    skill.MainStat = skill.Description.Contains("(Toughness)") ? GetCharacterStatByName(Constants.T) : skill.MainStat;
-                    skill.MainStat = skill.Description.Contains("(Agility)") ? GetCharacterStatByName(Constants.Ag) : skill.MainStat;
-                    skill.MainStat = skill.Description.Contains("(Fellowship)") ? GetCharacterStatByName(Constants.Fel) : skill.MainStat;
-                    skill.MainStat = skill.Description.Contains("(Agility)") ? GetCharacterStatByName(Constants.Ag) : skill.MainStat;
-                    skill.MainStat = skill.Description.Contains("(Intelligence)") ? GetCharacterStatByName(Constants.Inte) : skill.MainStat;
-                    skill.MainStat = skill.Description.Contains("(Willpower)") ? GetCharacterStatByName(Constants.Wp) : skill.MainStat;
-                    skill.MainStat = skill.Description.Contains("(Perception)") ? GetCharacterStatByName(Constants.Per) : skill.MainStat;
-                    skill.MainStat = skill.Description.Contains("(Strength)") ? GetCharacterStatByName(Constants.Str) : skill.MainStat;
+                    if (bgSkill.Name == charSkill.Name)
+                    {
+                        if (charSkill.Rank >= 1)
+                        {
+                            charSkill.ModifyRank(false);
+                        }
+                        else
+                        {
+                            charSkill.ModifyRank(true);
+                        }
+                    }
+
                 }
-            }
-            foreach (var skill in GeneralSkills)
-            {
-                while (skill.MainStat == null)
-                {
-                    skill.MainStat = skill.Description.Contains("(Toughness)") ? GetCharacterStatByName(Constants.T) : skill.MainStat;
-                    skill.MainStat = skill.Description.Contains("(Agility)") ? GetCharacterStatByName(Constants.Ag) : skill.MainStat;
-                    skill.MainStat = skill.Description.Contains("(Fellowship)") ? GetCharacterStatByName(Constants.Fel) : skill.MainStat;
-                    skill.MainStat = skill.Description.Contains("(Agility)") ? GetCharacterStatByName(Constants.Ag) : skill.MainStat;
-                    skill.MainStat = skill.Description.Contains("(Intelligence)") ? GetCharacterStatByName(Constants.Inte) : skill.MainStat;
-                    skill.MainStat = skill.Description.Contains("(Willpower)") ? GetCharacterStatByName(Constants.Wp) : skill.MainStat;
-                    skill.MainStat = skill.Description.Contains("(Perception)") ? GetCharacterStatByName(Constants.Per) : skill.MainStat;
-                    skill.MainStat = skill.Description.Contains("(Strength)") ? GetCharacterStatByName(Constants.Str) : skill.MainStat;
-                }
-            }
-            foreach (var skill in InteractionSkills)
-            {
-                while (skill.MainStat == null)
-                {
-                    skill.MainStat = skill.Description.Contains("(Toughness)") ? GetCharacterStatByName(Constants.T) : skill.MainStat;
-                    skill.MainStat = skill.Description.Contains("(Agility)") ? GetCharacterStatByName(Constants.Ag) : skill.MainStat;
-                    skill.MainStat = skill.Description.Contains("(Fellowship)") ? GetCharacterStatByName(Constants.Fel) : skill.MainStat;
-                    skill.MainStat = skill.Description.Contains("(Agility)") ? GetCharacterStatByName(Constants.Ag) : skill.MainStat;
-                    skill.MainStat = skill.Description.Contains("(Intelligence)") ? GetCharacterStatByName(Constants.Inte) : skill.MainStat;
-                    skill.MainStat = skill.Description.Contains("(Willpower)") ? GetCharacterStatByName(Constants.Wp) : skill.MainStat;
-                    skill.MainStat = skill.Description.Contains("(Perception)") ? GetCharacterStatByName(Constants.Per) : skill.MainStat;
-                    skill.MainStat = skill.Description.Contains("(Strength)") ? GetCharacterStatByName(Constants.Str) : skill.MainStat;
-                }
+
+
             }
         }
-
-        public void SetPlayerStartingSkillsLevel(int[] ids)//this gets set after the user selects their background, which determines their starting skill proficiencies
+        public void ResetPlayerStartingSkillLevels()
         {
-            foreach (var id in ids)
+            var totalSkills = new List<SkillsWithRank>();
+            totalSkills.AddRange(MovementSkills);
+            totalSkills.AddRange(GeneralSkills);
+            totalSkills.AddRange(InteractionSkills);
+            totalSkills.AddRange(CombatSkills);
+            foreach (var charSkill in totalSkills)
             {
-                var skill = World.GetMovementSkillById(id, this);
-                if (skill.Rank >= 1)
+                charSkill.Rank = 0;
+                if(charSkill.TotalSkillModifiers.Count !=0)
                 {
-                    skill.ModifyRank(false);
+                    var modsToRemove = new List<SkillModifier>();
+                        foreach (var modifier in charSkill.TotalSkillModifiers)
+                        {
+                        modifer.
+                        }
+                    charSkill.TotalSkillModifiers.Remove;
+                   
                 }
-                else
-                {
-                    skill.ModifyRank(true);
-                }
-                
             }
         }
     }

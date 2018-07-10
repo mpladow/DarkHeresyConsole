@@ -74,38 +74,59 @@
             this.tbBaseAcrobatics = new System.Windows.Forms.TextBox();
             this.tbBaseAthletics = new System.Windows.Forms.TextBox();
             this.label33 = new System.Windows.Forms.Label();
-            this.textBox11 = new System.Windows.Forms.TextBox();
-            this.textBox12 = new System.Windows.Forms.TextBox();
-            this.textBox13 = new System.Windows.Forms.TextBox();
+            this.tbBaseIntimidation = new System.Windows.Forms.TextBox();
+            this.tbBaseInquiry = new System.Windows.Forms.TextBox();
+            this.tbBaseCommerce = new System.Windows.Forms.TextBox();
             this.tbBaseOperate = new System.Windows.Forms.TextBox();
             this.tbBaseStealth = new System.Windows.Forms.TextBox();
             this.label31 = new System.Windows.Forms.Label();
-            this.textBox1 = new System.Windows.Forms.TextBox();
-            this.textBox2 = new System.Windows.Forms.TextBox();
-            this.textBox3 = new System.Windows.Forms.TextBox();
+            this.tbRankIntimidation = new System.Windows.Forms.TextBox();
+            this.tbRankInquiry = new System.Windows.Forms.TextBox();
+            this.tbRankCommerce = new System.Windows.Forms.TextBox();
             this.tbRankOperate = new System.Windows.Forms.TextBox();
             this.tbRankStealth = new System.Windows.Forms.TextBox();
-            this.textBox6 = new System.Windows.Forms.TextBox();
-            this.textBox7 = new System.Windows.Forms.TextBox();
-            this.textBox8 = new System.Windows.Forms.TextBox();
+            this.tbRankInterrogation = new System.Windows.Forms.TextBox();
+            this.tbRankDeceive = new System.Windows.Forms.TextBox();
+            this.tbRankCharm = new System.Windows.Forms.TextBox();
             this.tbRankAcrobatics = new System.Windows.Forms.TextBox();
             this.tbRankAthletics = new System.Windows.Forms.TextBox();
             this.label18 = new System.Windows.Forms.Label();
             this.label19 = new System.Windows.Forms.Label();
             this.label21 = new System.Windows.Forms.Label();
-            this.label22 = new System.Windows.Forms.Label();
+            this.commerce = new System.Windows.Forms.Label();
             this.label23 = new System.Windows.Forms.Label();
             this.label24 = new System.Windows.Forms.Label();
-            this.label25 = new System.Windows.Forms.Label();
+            this.derceive = new System.Windows.Forms.Label();
             this.label28 = new System.Windows.Forms.Label();
             this.label29 = new System.Windows.Forms.Label();
             this.label32 = new System.Windows.Forms.Label();
             this.btnCheckAptitudes = new System.Windows.Forms.Button();
             this.tbCharacterName = new System.Windows.Forms.TextBox();
             this.panel3 = new System.Windows.Forms.Panel();
-            this.label40 = new System.Windows.Forms.Label();
             this.rtbEquipment = new System.Windows.Forms.RichTextBox();
             this.cboWeapons = new System.Windows.Forms.ComboBox();
+            this.label40 = new System.Windows.Forms.Label();
+            this.tbBaseInterrogation = new System.Windows.Forms.TextBox();
+            this.tbBaseDeceive = new System.Windows.Forms.TextBox();
+            this.tbBaseCharm = new System.Windows.Forms.TextBox();
+            this.label13 = new System.Windows.Forms.Label();
+            this.tbBaseScrutiny = new System.Windows.Forms.TextBox();
+            this.tbRankScrutiny = new System.Windows.Forms.TextBox();
+            this.label15 = new System.Windows.Forms.Label();
+            this.tbBaseMedicae = new System.Windows.Forms.TextBox();
+            this.tbBaseAwareness = new System.Windows.Forms.TextBox();
+            this.label20 = new System.Windows.Forms.Label();
+            this.tbBaseDodge = new System.Windows.Forms.TextBox();
+            this.tbBaseCommand = new System.Windows.Forms.TextBox();
+            this.tbRankDodge = new System.Windows.Forms.TextBox();
+            this.tbRankCommand = new System.Windows.Forms.TextBox();
+            this.tbRankMedicae = new System.Windows.Forms.TextBox();
+            this.tbRankAwareness = new System.Windows.Forms.TextBox();
+            this.label25 = new System.Windows.Forms.Label();
+            this.label34 = new System.Windows.Forms.Label();
+            this.label35 = new System.Windows.Forms.Label();
+            this.label36 = new System.Windows.Forms.Label();
+            this.label16 = new System.Windows.Forms.Label();
             this.panelPlayerStats.SuspendLayout();
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
@@ -401,7 +422,7 @@
             // button2
             // 
             this.button2.Location = new System.Drawing.Point(602, 601);
-            this.button2.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.button2.Margin = new System.Windows.Forms.Padding(2);
             this.button2.Name = "button2";
             this.button2.Size = new System.Drawing.Size(123, 39);
             this.button2.TabIndex = 21;
@@ -502,32 +523,53 @@
             // 
             // panelSkills
             // 
+            this.panelSkills.Controls.Add(this.label16);
+            this.panelSkills.Controls.Add(this.tbBaseMedicae);
+            this.panelSkills.Controls.Add(this.tbBaseAwareness);
+            this.panelSkills.Controls.Add(this.label20);
+            this.panelSkills.Controls.Add(this.tbBaseDodge);
+            this.panelSkills.Controls.Add(this.tbBaseCommand);
+            this.panelSkills.Controls.Add(this.tbRankDodge);
+            this.panelSkills.Controls.Add(this.tbRankCommand);
+            this.panelSkills.Controls.Add(this.tbRankMedicae);
+            this.panelSkills.Controls.Add(this.tbRankAwareness);
+            this.panelSkills.Controls.Add(this.label25);
+            this.panelSkills.Controls.Add(this.label34);
+            this.panelSkills.Controls.Add(this.label35);
+            this.panelSkills.Controls.Add(this.label36);
+            this.panelSkills.Controls.Add(this.tbBaseScrutiny);
+            this.panelSkills.Controls.Add(this.tbRankScrutiny);
+            this.panelSkills.Controls.Add(this.label15);
+            this.panelSkills.Controls.Add(this.label13);
+            this.panelSkills.Controls.Add(this.tbBaseInterrogation);
+            this.panelSkills.Controls.Add(this.tbBaseDeceive);
+            this.panelSkills.Controls.Add(this.tbBaseCharm);
             this.panelSkills.Controls.Add(this.tbBaseAcrobatics);
             this.panelSkills.Controls.Add(this.tbBaseAthletics);
             this.panelSkills.Controls.Add(this.label33);
-            this.panelSkills.Controls.Add(this.textBox11);
-            this.panelSkills.Controls.Add(this.textBox12);
-            this.panelSkills.Controls.Add(this.textBox13);
+            this.panelSkills.Controls.Add(this.tbBaseIntimidation);
+            this.panelSkills.Controls.Add(this.tbBaseInquiry);
+            this.panelSkills.Controls.Add(this.tbBaseCommerce);
             this.panelSkills.Controls.Add(this.tbBaseOperate);
             this.panelSkills.Controls.Add(this.tbBaseStealth);
             this.panelSkills.Controls.Add(this.label31);
-            this.panelSkills.Controls.Add(this.textBox1);
-            this.panelSkills.Controls.Add(this.textBox2);
-            this.panelSkills.Controls.Add(this.textBox3);
+            this.panelSkills.Controls.Add(this.tbRankIntimidation);
+            this.panelSkills.Controls.Add(this.tbRankInquiry);
+            this.panelSkills.Controls.Add(this.tbRankCommerce);
             this.panelSkills.Controls.Add(this.tbRankOperate);
             this.panelSkills.Controls.Add(this.tbRankStealth);
-            this.panelSkills.Controls.Add(this.textBox6);
-            this.panelSkills.Controls.Add(this.textBox7);
-            this.panelSkills.Controls.Add(this.textBox8);
+            this.panelSkills.Controls.Add(this.tbRankInterrogation);
+            this.panelSkills.Controls.Add(this.tbRankDeceive);
+            this.panelSkills.Controls.Add(this.tbRankCharm);
             this.panelSkills.Controls.Add(this.tbRankAcrobatics);
             this.panelSkills.Controls.Add(this.tbRankAthletics);
             this.panelSkills.Controls.Add(this.label18);
             this.panelSkills.Controls.Add(this.label19);
             this.panelSkills.Controls.Add(this.label21);
-            this.panelSkills.Controls.Add(this.label22);
+            this.panelSkills.Controls.Add(this.commerce);
             this.panelSkills.Controls.Add(this.label23);
             this.panelSkills.Controls.Add(this.label24);
-            this.panelSkills.Controls.Add(this.label25);
+            this.panelSkills.Controls.Add(this.derceive);
             this.panelSkills.Controls.Add(this.label28);
             this.panelSkills.Controls.Add(this.label29);
             this.panelSkills.Location = new System.Drawing.Point(576, 135);
@@ -548,36 +590,37 @@
             this.tbBaseAthletics.Name = "tbBaseAthletics";
             this.tbBaseAthletics.Size = new System.Drawing.Size(28, 20);
             this.tbBaseAthletics.TabIndex = 55;
+            this.tbBaseAthletics.TextChanged += new System.EventHandler(this.tbBaseAthletics_TextChanged);
             // 
             // label33
             // 
             this.label33.AutoSize = true;
-            this.label33.Location = new System.Drawing.Point(119, 99);
+            this.label33.Location = new System.Drawing.Point(119, 128);
             this.label33.Name = "label33";
             this.label33.Size = new System.Drawing.Size(57, 13);
             this.label33.TabIndex = 54;
             this.label33.Text = "Interaction";
             // 
-            // textBox11
+            // tbBaseIntimidation
             // 
-            this.textBox11.Location = new System.Drawing.Point(248, 171);
-            this.textBox11.Name = "textBox11";
-            this.textBox11.Size = new System.Drawing.Size(28, 20);
-            this.textBox11.TabIndex = 51;
+            this.tbBaseIntimidation.Location = new System.Drawing.Point(254, 200);
+            this.tbBaseIntimidation.Name = "tbBaseIntimidation";
+            this.tbBaseIntimidation.Size = new System.Drawing.Size(28, 20);
+            this.tbBaseIntimidation.TabIndex = 51;
             // 
-            // textBox12
+            // tbBaseInquiry
             // 
-            this.textBox12.Location = new System.Drawing.Point(248, 145);
-            this.textBox12.Name = "textBox12";
-            this.textBox12.Size = new System.Drawing.Size(28, 20);
-            this.textBox12.TabIndex = 53;
+            this.tbBaseInquiry.Location = new System.Drawing.Point(254, 174);
+            this.tbBaseInquiry.Name = "tbBaseInquiry";
+            this.tbBaseInquiry.Size = new System.Drawing.Size(28, 20);
+            this.tbBaseInquiry.TabIndex = 53;
             // 
-            // textBox13
+            // tbBaseCommerce
             // 
-            this.textBox13.Location = new System.Drawing.Point(248, 121);
-            this.textBox13.Name = "textBox13";
-            this.textBox13.Size = new System.Drawing.Size(28, 20);
-            this.textBox13.TabIndex = 52;
+            this.tbBaseCommerce.Location = new System.Drawing.Point(254, 150);
+            this.tbBaseCommerce.Name = "tbBaseCommerce";
+            this.tbBaseCommerce.Size = new System.Drawing.Size(28, 20);
+            this.tbBaseCommerce.TabIndex = 52;
             // 
             // tbBaseOperate
             // 
@@ -602,26 +645,26 @@
             this.label31.TabIndex = 35;
             this.label31.Text = "Movement";
             // 
-            // textBox1
+            // tbRankIntimidation
             // 
-            this.textBox1.Location = new System.Drawing.Point(205, 171);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(28, 20);
-            this.textBox1.TabIndex = 46;
+            this.tbRankIntimidation.Location = new System.Drawing.Point(220, 200);
+            this.tbRankIntimidation.Name = "tbRankIntimidation";
+            this.tbRankIntimidation.Size = new System.Drawing.Size(28, 20);
+            this.tbRankIntimidation.TabIndex = 46;
             // 
-            // textBox2
+            // tbRankInquiry
             // 
-            this.textBox2.Location = new System.Drawing.Point(205, 145);
-            this.textBox2.Name = "textBox2";
-            this.textBox2.Size = new System.Drawing.Size(28, 20);
-            this.textBox2.TabIndex = 48;
+            this.tbRankInquiry.Location = new System.Drawing.Point(220, 174);
+            this.tbRankInquiry.Name = "tbRankInquiry";
+            this.tbRankInquiry.Size = new System.Drawing.Size(28, 20);
+            this.tbRankInquiry.TabIndex = 48;
             // 
-            // textBox3
+            // tbRankCommerce
             // 
-            this.textBox3.Location = new System.Drawing.Point(205, 121);
-            this.textBox3.Name = "textBox3";
-            this.textBox3.Size = new System.Drawing.Size(28, 20);
-            this.textBox3.TabIndex = 47;
+            this.tbRankCommerce.Location = new System.Drawing.Point(220, 150);
+            this.tbRankCommerce.Name = "tbRankCommerce";
+            this.tbRankCommerce.Size = new System.Drawing.Size(28, 20);
+            this.tbRankCommerce.TabIndex = 47;
             // 
             // tbRankOperate
             // 
@@ -637,26 +680,26 @@
             this.tbRankStealth.Size = new System.Drawing.Size(29, 20);
             this.tbRankStealth.TabIndex = 44;
             // 
-            // textBox6
+            // tbRankInterrogation
             // 
-            this.textBox6.Location = new System.Drawing.Point(82, 171);
-            this.textBox6.Name = "textBox6";
-            this.textBox6.Size = new System.Drawing.Size(28, 20);
-            this.textBox6.TabIndex = 43;
+            this.tbRankInterrogation.Location = new System.Drawing.Point(71, 200);
+            this.tbRankInterrogation.Name = "tbRankInterrogation";
+            this.tbRankInterrogation.Size = new System.Drawing.Size(28, 20);
+            this.tbRankInterrogation.TabIndex = 43;
             // 
-            // textBox7
+            // tbRankDeceive
             // 
-            this.textBox7.Location = new System.Drawing.Point(82, 145);
-            this.textBox7.Name = "textBox7";
-            this.textBox7.Size = new System.Drawing.Size(28, 20);
-            this.textBox7.TabIndex = 42;
+            this.tbRankDeceive.Location = new System.Drawing.Point(71, 174);
+            this.tbRankDeceive.Name = "tbRankDeceive";
+            this.tbRankDeceive.Size = new System.Drawing.Size(28, 20);
+            this.tbRankDeceive.TabIndex = 42;
             // 
-            // textBox8
+            // tbRankCharm
             // 
-            this.textBox8.Location = new System.Drawing.Point(82, 121);
-            this.textBox8.Name = "textBox8";
-            this.textBox8.Size = new System.Drawing.Size(28, 20);
-            this.textBox8.TabIndex = 41;
+            this.tbRankCharm.Location = new System.Drawing.Point(71, 150);
+            this.tbRankCharm.Name = "tbRankCharm";
+            this.tbRankCharm.Size = new System.Drawing.Size(28, 20);
+            this.tbRankCharm.TabIndex = 41;
             // 
             // tbRankAcrobatics
             // 
@@ -675,38 +718,38 @@
             // label18
             // 
             this.label18.AutoSize = true;
-            this.label18.Location = new System.Drawing.Point(174, 174);
+            this.label18.Location = new System.Drawing.Point(162, 203);
             this.label18.Name = "label18";
-            this.label18.Size = new System.Drawing.Size(15, 13);
+            this.label18.Size = new System.Drawing.Size(60, 13);
             this.label18.TabIndex = 38;
-            this.label18.Text = "Ifl";
+            this.label18.Text = "Intimidation";
             // 
             // label19
             // 
             this.label19.AutoSize = true;
-            this.label19.Location = new System.Drawing.Point(14, 124);
+            this.label19.Location = new System.Drawing.Point(3, 153);
             this.label19.Name = "label19";
-            this.label19.Size = new System.Drawing.Size(20, 13);
+            this.label19.Size = new System.Drawing.Size(37, 13);
             this.label19.TabIndex = 37;
-            this.label19.Text = "Str";
+            this.label19.Text = "Charm";
             // 
             // label21
             // 
             this.label21.AutoSize = true;
-            this.label21.Location = new System.Drawing.Point(174, 148);
+            this.label21.Location = new System.Drawing.Point(162, 177);
             this.label21.Name = "label21";
-            this.label21.Size = new System.Drawing.Size(21, 13);
+            this.label21.Size = new System.Drawing.Size(38, 13);
             this.label21.TabIndex = 35;
-            this.label21.Text = "Fel";
+            this.label21.Text = "Inquiry";
             // 
-            // label22
+            // commerce
             // 
-            this.label22.AutoSize = true;
-            this.label22.Location = new System.Drawing.Point(174, 124);
-            this.label22.Name = "label22";
-            this.label22.Size = new System.Drawing.Size(24, 13);
-            this.label22.TabIndex = 34;
-            this.label22.Text = "Wp";
+            this.commerce.AutoSize = true;
+            this.commerce.Location = new System.Drawing.Point(162, 153);
+            this.commerce.Name = "commerce";
+            this.commerce.Size = new System.Drawing.Size(57, 13);
+            this.commerce.TabIndex = 34;
+            this.commerce.Text = "Commerce";
             // 
             // label23
             // 
@@ -726,14 +769,14 @@
             this.label24.TabIndex = 32;
             this.label24.Text = "Stealth";
             // 
-            // label25
+            // derceive
             // 
-            this.label25.AutoSize = true;
-            this.label25.Location = new System.Drawing.Point(15, 174);
-            this.label25.Name = "label25";
-            this.label25.Size = new System.Drawing.Size(20, 13);
-            this.label25.TabIndex = 31;
-            this.label25.Text = "Ag";
+            this.derceive.AutoSize = true;
+            this.derceive.Location = new System.Drawing.Point(3, 177);
+            this.derceive.Name = "derceive";
+            this.derceive.Size = new System.Drawing.Size(47, 13);
+            this.derceive.TabIndex = 31;
+            this.derceive.Text = "Deceive";
             // 
             // label28
             // 
@@ -765,7 +808,7 @@
             // btnCheckAptitudes
             // 
             this.btnCheckAptitudes.Location = new System.Drawing.Point(741, 601);
-            this.btnCheckAptitudes.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.btnCheckAptitudes.Margin = new System.Windows.Forms.Padding(2);
             this.btnCheckAptitudes.Name = "btnCheckAptitudes";
             this.btnCheckAptitudes.Size = new System.Drawing.Size(123, 39);
             this.btnCheckAptitudes.TabIndex = 34;
@@ -776,7 +819,7 @@
             // tbCharacterName
             // 
             this.tbCharacterName.Location = new System.Drawing.Point(536, 64);
-            this.tbCharacterName.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.tbCharacterName.Margin = new System.Windows.Forms.Padding(2);
             this.tbCharacterName.Name = "tbCharacterName";
             this.tbCharacterName.Size = new System.Drawing.Size(203, 20);
             this.tbCharacterName.TabIndex = 35;
@@ -790,15 +833,6 @@
             this.panel3.Name = "panel3";
             this.panel3.Size = new System.Drawing.Size(288, 448);
             this.panel3.TabIndex = 57;
-            // 
-            // label40
-            // 
-            this.label40.AutoSize = true;
-            this.label40.Location = new System.Drawing.Point(982, 106);
-            this.label40.Name = "label40";
-            this.label40.Size = new System.Drawing.Size(130, 13);
-            this.label40.TabIndex = 58;
-            this.label40.Text = "5. Review your equipment";
             // 
             // rtbEquipment
             // 
@@ -816,6 +850,178 @@
             this.cboWeapons.Size = new System.Drawing.Size(254, 21);
             this.cboWeapons.TabIndex = 59;
             this.cboWeapons.SelectedIndexChanged += new System.EventHandler(this.cboWeapons_SelectedIndexChanged);
+            // 
+            // label40
+            // 
+            this.label40.AutoSize = true;
+            this.label40.Location = new System.Drawing.Point(982, 106);
+            this.label40.Name = "label40";
+            this.label40.Size = new System.Drawing.Size(130, 13);
+            this.label40.TabIndex = 58;
+            this.label40.Text = "5. Review your equipment";
+            // 
+            // tbBaseInterrogation
+            // 
+            this.tbBaseInterrogation.Location = new System.Drawing.Point(105, 200);
+            this.tbBaseInterrogation.Name = "tbBaseInterrogation";
+            this.tbBaseInterrogation.Size = new System.Drawing.Size(28, 20);
+            this.tbBaseInterrogation.TabIndex = 59;
+            // 
+            // tbBaseDeceive
+            // 
+            this.tbBaseDeceive.Location = new System.Drawing.Point(105, 174);
+            this.tbBaseDeceive.Name = "tbBaseDeceive";
+            this.tbBaseDeceive.Size = new System.Drawing.Size(28, 20);
+            this.tbBaseDeceive.TabIndex = 58;
+            // 
+            // tbBaseCharm
+            // 
+            this.tbBaseCharm.Location = new System.Drawing.Point(105, 150);
+            this.tbBaseCharm.Name = "tbBaseCharm";
+            this.tbBaseCharm.Size = new System.Drawing.Size(28, 20);
+            this.tbBaseCharm.TabIndex = 57;
+            // 
+            // label13
+            // 
+            this.label13.AutoSize = true;
+            this.label13.Location = new System.Drawing.Point(3, 203);
+            this.label13.Name = "label13";
+            this.label13.Size = new System.Drawing.Size(66, 13);
+            this.label13.TabIndex = 60;
+            this.label13.Text = "Interrogation";
+            // 
+            // tbBaseScrutiny
+            // 
+            this.tbBaseScrutiny.Location = new System.Drawing.Point(181, 230);
+            this.tbBaseScrutiny.Name = "tbBaseScrutiny";
+            this.tbBaseScrutiny.Size = new System.Drawing.Size(28, 20);
+            this.tbBaseScrutiny.TabIndex = 63;
+            // 
+            // tbRankScrutiny
+            // 
+            this.tbRankScrutiny.Location = new System.Drawing.Point(147, 230);
+            this.tbRankScrutiny.Name = "tbRankScrutiny";
+            this.tbRankScrutiny.Size = new System.Drawing.Size(28, 20);
+            this.tbRankScrutiny.TabIndex = 62;
+            // 
+            // label15
+            // 
+            this.label15.AutoSize = true;
+            this.label15.Location = new System.Drawing.Point(89, 233);
+            this.label15.Name = "label15";
+            this.label15.Size = new System.Drawing.Size(45, 13);
+            this.label15.TabIndex = 61;
+            this.label15.Text = "Scrutiny";
+            // 
+            // tbBaseMedicae
+            // 
+            this.tbBaseMedicae.Location = new System.Drawing.Point(105, 311);
+            this.tbBaseMedicae.Name = "tbBaseMedicae";
+            this.tbBaseMedicae.Size = new System.Drawing.Size(28, 20);
+            this.tbBaseMedicae.TabIndex = 80;
+            // 
+            // tbBaseAwareness
+            // 
+            this.tbBaseAwareness.Location = new System.Drawing.Point(105, 287);
+            this.tbBaseAwareness.Name = "tbBaseAwareness";
+            this.tbBaseAwareness.Size = new System.Drawing.Size(28, 20);
+            this.tbBaseAwareness.TabIndex = 79;
+            // 
+            // label20
+            // 
+            this.label20.AutoSize = true;
+            this.label20.Location = new System.Drawing.Point(119, 265);
+            this.label20.Name = "label20";
+            this.label20.Size = new System.Drawing.Size(44, 13);
+            this.label20.TabIndex = 78;
+            this.label20.Text = "General";
+            // 
+            // tbBaseDodge
+            // 
+            this.tbBaseDodge.Location = new System.Drawing.Point(177, 377);
+            this.tbBaseDodge.Name = "tbBaseDodge";
+            this.tbBaseDodge.Size = new System.Drawing.Size(28, 20);
+            this.tbBaseDodge.TabIndex = 77;
+            // 
+            // tbBaseCommand
+            // 
+            this.tbBaseCommand.Location = new System.Drawing.Point(254, 287);
+            this.tbBaseCommand.Name = "tbBaseCommand";
+            this.tbBaseCommand.Size = new System.Drawing.Size(28, 20);
+            this.tbBaseCommand.TabIndex = 76;
+            // 
+            // tbRankDodge
+            // 
+            this.tbRankDodge.Location = new System.Drawing.Point(143, 377);
+            this.tbRankDodge.Name = "tbRankDodge";
+            this.tbRankDodge.Size = new System.Drawing.Size(28, 20);
+            this.tbRankDodge.TabIndex = 74;
+            // 
+            // tbRankCommand
+            // 
+            this.tbRankCommand.Location = new System.Drawing.Point(220, 287);
+            this.tbRankCommand.Name = "tbRankCommand";
+            this.tbRankCommand.Size = new System.Drawing.Size(28, 20);
+            this.tbRankCommand.TabIndex = 73;
+            // 
+            // tbRankMedicae
+            // 
+            this.tbRankMedicae.Location = new System.Drawing.Point(71, 311);
+            this.tbRankMedicae.Name = "tbRankMedicae";
+            this.tbRankMedicae.Size = new System.Drawing.Size(28, 20);
+            this.tbRankMedicae.TabIndex = 70;
+            // 
+            // tbRankAwareness
+            // 
+            this.tbRankAwareness.Location = new System.Drawing.Point(71, 287);
+            this.tbRankAwareness.Name = "tbRankAwareness";
+            this.tbRankAwareness.Size = new System.Drawing.Size(28, 20);
+            this.tbRankAwareness.TabIndex = 69;
+            // 
+            // label25
+            // 
+            this.label25.AutoSize = true;
+            this.label25.Location = new System.Drawing.Point(3, 290);
+            this.label25.Name = "label25";
+            this.label25.Size = new System.Drawing.Size(59, 13);
+            this.label25.TabIndex = 67;
+            this.label25.Text = "Awareness";
+            // 
+            // label34
+            // 
+            this.label34.AutoSize = true;
+            this.label34.Location = new System.Drawing.Point(85, 380);
+            this.label34.Name = "label34";
+            this.label34.Size = new System.Drawing.Size(39, 13);
+            this.label34.TabIndex = 66;
+            this.label34.Text = "Dodge";
+            // 
+            // label35
+            // 
+            this.label35.AutoSize = true;
+            this.label35.Location = new System.Drawing.Point(162, 290);
+            this.label35.Name = "label35";
+            this.label35.Size = new System.Drawing.Size(54, 13);
+            this.label35.TabIndex = 65;
+            this.label35.Text = "Command";
+            // 
+            // label36
+            // 
+            this.label36.AutoSize = true;
+            this.label36.Location = new System.Drawing.Point(3, 314);
+            this.label36.Name = "label36";
+            this.label36.Size = new System.Drawing.Size(48, 13);
+            this.label36.TabIndex = 64;
+            this.label36.Text = "Medicae";
+            // 
+            // label16
+            // 
+            this.label16.AutoSize = true;
+            this.label16.Location = new System.Drawing.Point(119, 347);
+            this.label16.Name = "label16";
+            this.label16.Size = new System.Drawing.Size(43, 13);
+            this.label16.TabIndex = 81;
+            this.label16.Text = "Combat";
             // 
             // CharacterCreationForm
             // 
@@ -898,31 +1104,31 @@
         private System.Windows.Forms.Label label32;
         private System.Windows.Forms.Button btnCheckAptitudes;
         private System.Windows.Forms.Label label31;
-        private System.Windows.Forms.TextBox textBox1;
-        private System.Windows.Forms.TextBox textBox2;
-        private System.Windows.Forms.TextBox textBox3;
+        private System.Windows.Forms.TextBox tbRankIntimidation;
+        private System.Windows.Forms.TextBox tbRankInquiry;
+        private System.Windows.Forms.TextBox tbRankCommerce;
         private System.Windows.Forms.TextBox tbRankOperate;
         private System.Windows.Forms.TextBox tbRankStealth;
-        private System.Windows.Forms.TextBox textBox6;
-        private System.Windows.Forms.TextBox textBox7;
-        private System.Windows.Forms.TextBox textBox8;
+        private System.Windows.Forms.TextBox tbRankInterrogation;
+        private System.Windows.Forms.TextBox tbRankDeceive;
+        private System.Windows.Forms.TextBox tbRankCharm;
         private System.Windows.Forms.TextBox tbRankAcrobatics;
         private System.Windows.Forms.TextBox tbRankAthletics;
         private System.Windows.Forms.Label label18;
         private System.Windows.Forms.Label label19;
         private System.Windows.Forms.Label label21;
-        private System.Windows.Forms.Label label22;
+        private System.Windows.Forms.Label commerce;
         private System.Windows.Forms.Label label23;
         private System.Windows.Forms.Label label24;
-        private System.Windows.Forms.Label label25;
+        private System.Windows.Forms.Label derceive;
         private System.Windows.Forms.Label label28;
         private System.Windows.Forms.Label label29;
         private System.Windows.Forms.TextBox tbBaseAcrobatics;
         private System.Windows.Forms.TextBox tbBaseAthletics;
         private System.Windows.Forms.Label label33;
-        private System.Windows.Forms.TextBox textBox11;
-        private System.Windows.Forms.TextBox textBox12;
-        private System.Windows.Forms.TextBox textBox13;
+        private System.Windows.Forms.TextBox tbBaseIntimidation;
+        private System.Windows.Forms.TextBox tbBaseInquiry;
+        private System.Windows.Forms.TextBox tbBaseCommerce;
         private System.Windows.Forms.TextBox tbBaseOperate;
         private System.Windows.Forms.TextBox tbBaseStealth;
         private System.Windows.Forms.Button btnSelectBackground;
@@ -934,5 +1140,26 @@
         private System.Windows.Forms.RichTextBox rtbEquipment;
         private System.Windows.Forms.ComboBox cboWeapons;
         private System.Windows.Forms.Label label40;
+        private System.Windows.Forms.TextBox tbBaseInterrogation;
+        private System.Windows.Forms.TextBox tbBaseDeceive;
+        private System.Windows.Forms.TextBox tbBaseCharm;
+        private System.Windows.Forms.Label label13;
+        private System.Windows.Forms.Label label16;
+        private System.Windows.Forms.TextBox tbBaseMedicae;
+        private System.Windows.Forms.TextBox tbBaseAwareness;
+        private System.Windows.Forms.Label label20;
+        private System.Windows.Forms.TextBox tbBaseDodge;
+        private System.Windows.Forms.TextBox tbBaseCommand;
+        private System.Windows.Forms.TextBox tbRankDodge;
+        private System.Windows.Forms.TextBox tbRankCommand;
+        private System.Windows.Forms.TextBox tbRankMedicae;
+        private System.Windows.Forms.TextBox tbRankAwareness;
+        private System.Windows.Forms.Label label25;
+        private System.Windows.Forms.Label label34;
+        private System.Windows.Forms.Label label35;
+        private System.Windows.Forms.Label label36;
+        private System.Windows.Forms.TextBox tbBaseScrutiny;
+        private System.Windows.Forms.TextBox tbRankScrutiny;
+        private System.Windows.Forms.Label label15;
     }
 }

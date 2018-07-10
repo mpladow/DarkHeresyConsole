@@ -45,6 +45,7 @@
   <ItemGroup>
     <Compile Include="Characters\BodyLocation.cs" />
     <Compile Include="Characters\CharacterCreation\Background.cs" />
+    <Compile Include="Events\MeleeCombat.cs" />
     <Compile Include="Skills\CharacteristicCheck.cs" />
     <Compile Include="Actions\DiceRolls.cs" />
     <Compile Include="Characters\CharacterCreation\HomeWorlds.cs" />

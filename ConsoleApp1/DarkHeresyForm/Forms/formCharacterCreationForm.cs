@@ -78,7 +78,7 @@ namespace DarkHeresyForm
             Player.UpdateHomeWorldCharacteristicBonuses();
 
             int[] startingMovementSkillsIds = { 1, 2 };
-            Player.SetPlayerStartingSkillsLevel(startingMovementSkillsIds);
+            Player.SetPlayerStartingSkillsLevel();
             rtbInformation.Text += Environment.NewLine;
             rtbInformation.Text += String.Format("Character Statistics have been generated.");
             UpdateDisplay(panelPlayerStats, Player);
@@ -150,10 +150,17 @@ namespace DarkHeresyForm
         }
         void UpdateSkillsDisplay(Panel panel, Player player)
         {
+            var totalSkills = new List<SkillsWithRank>();
+            totalSkills.AddRange(player.MovementSkills);
+            totalSkills.AddRange(player.GeneralSkills);
+            totalSkills.AddRange(player.InteractionSkills);
+            totalSkills.AddRange(player.CombatSkills);
+
             var children = panel.Controls.OfType<TextBox>();
             foreach (var control in children)
             {
-                foreach (var skill in player.MovementSkills)
+                control.Text = "";
+                foreach (var skill in totalSkills)
                 {
                     if (control.Name.Contains(skill.Name) && (control.Name.Contains("Rank")))
                     {
@@ -258,6 +265,7 @@ namespace DarkHeresyForm
                 btnSelectBackground.Text = "Select Background";
 
             };
+            Player.SetPlayerStartingSkillsLevel();
             UpdateSkillsDisplay(panelSkills, Player);
 
         }
@@ -268,6 +276,10 @@ namespace DarkHeresyForm
             {
                 var selection = cboBackground.SelectedItem;
                 Player.Background = (Background)selection;
+
+                Player.ResetPlayerStartingSkillLevels();
+                Player.SetPlayerStartingSkillsLevel();
+
                 rtbBackgroundText.Text = Player.Background.Description;
                 rtbBackgroundText.Text += Environment.NewLine;
                 foreach (var item in Player.Background.StartingEquipment)
@@ -275,6 +287,7 @@ namespace DarkHeresyForm
                     rtbBackgroundText.Text += item.Name;
                     rtbBackgroundText.Text += Environment.NewLine;
                 }
+                UpdateSkillsDisplay(panelSkills, Player);
             }
         }
 
@@ -285,6 +298,11 @@ namespace DarkHeresyForm
                 var selection = (Weapon_base)cboWeapons.SelectedItem;
                 rtbEquipment.Text += Player.Weapons.FirstOrDefault(x => x == selection).Description;
             }
+        }
+
+        private void tbBaseAthletics_TextChanged(object sender, EventArgs e)
+        {
+
         }
     }
 }

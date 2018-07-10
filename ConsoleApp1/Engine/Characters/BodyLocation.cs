@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 
 namespace Engine.Characters
 {
+    [Serializable]
     public class BodyLocation
     {
         public string Name { get; set; }

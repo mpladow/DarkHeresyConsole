@@ -28,7 +28,7 @@ namespace Engine.Utilities.Constants
         public static readonly List<SkillsWithRank> MovementSkillsList = new List<SkillsWithRank>();
         public static readonly List<SkillsWithRank> InteractionSkillsList = new List<SkillsWithRank>();
         public static readonly List<SkillsWithRank> GeneralSkillsList = new List<SkillsWithRank>();
-        public static readonly List<Skill_Base> CombatSkillsList = new List<Skill_Base>();
+        public static readonly List<SkillsWithRank> CombatSkillsList = new List<SkillsWithRank>();
 
         public static readonly Dictionary<int, string> AptitudesDict = new Dictionary<int, string>();
 
@@ -285,7 +285,7 @@ namespace Engine.Utilities.Constants
             }
             else return InteractionSkillsList.FirstOrDefault(x => x.Id == id);
         }
-        public static Skill_Base GetComabtSkillById(int id, Character_base player = null)
+        public static SkillsWithRank GetCombatSkillById(int id, Character_base player = null)
         {
             if (player != null)
             {
