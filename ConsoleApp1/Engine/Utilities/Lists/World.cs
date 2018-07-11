@@ -163,11 +163,11 @@ namespace Engine.Utilities.Constants
         //Aptitudes
         public static void PopulateSkillLevels()
         {
-            var unskilled = new SkillModifier(Constants.Unskilled, -20, "Unskilled");
-            var known = new SkillModifier(Constants.Known, 0, "Known");
-            var trained = new SkillModifier(Constants.Trained, 10, "Trained");
-            var experienced = new SkillModifier(Constants.Experienced, 20, "Experienced");
-            var veteran = new SkillModifier(Constants.Veteran, 30, "Veteran");
+            var unskilled = new SkillModifier(Constants.Unskilled, -20, "Unskilled", "Rank");
+            var known = new SkillModifier(Constants.Known, 0, "Known", "Rank");
+            var trained = new SkillModifier(Constants.Trained, 10, "Trained", "Rank");
+            var experienced = new SkillModifier(Constants.Experienced, 20, "Experienced", "Rank");
+            var veteran = new SkillModifier(Constants.Veteran, 30, "Veteran", "Rank");
 
             SkillLevelsList.Add(unskilled);
             SkillLevelsList.Add(known);

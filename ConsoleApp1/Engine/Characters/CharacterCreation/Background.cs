@@ -15,7 +15,7 @@ namespace Engine.Characters.CharacterCreation
         public int Id { get; set; }
         public string Name { get; set; }
         public string Description { get; set; }
-        public List<Skill_Base> StartingSkills { get; set; }
+        public List<SkillsWithRank> StartingSkills { get; set; }
         public List<BasicRanged> StartingEquipment {get; set; }//change this to equipment
         //public List<Talents> StartingTalents { get; set; }
         public List<string> StartingAptitudes { get; set; }
@@ -25,7 +25,7 @@ namespace Engine.Characters.CharacterCreation
             Id = id;
             Name = name;
             Description = description;
-            StartingSkills = new List<Skill_Base>();
+            StartingSkills = new List<SkillsWithRank>();
             StartingAptitudes = new List<string>();
             StartingEquipment = new List<BasicRanged>();
         }

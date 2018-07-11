@@ -34,9 +34,9 @@ namespace Engine.Skills
             {
                 var currentSkillLevel = TotalSkillModifiers.Where(x => x.Id == Rank).FirstOrDefault();//finds the current aptidude
                 TotalSkillModifiers.Remove(currentSkillLevel);//removes this
-                TotalSkillModifiers.Add(World.GetSkillLevelsById(Rank + 1));//Replace with the next level up.
-                TotalSkillModifiers.Add(World.SkillLevelsList.FirstOrDefault(x => x.Id == Rank + 1));
                 Rank += 1;
+                TotalSkillModifiers.Add(World.GetSkillLevelsById(Rank));//Replace with the next level up.
+                //TotalSkillModifiers.Add(World.SkillLevelsList.FirstOrDefault(x => x.Id == Rank));
                 result = true;
             }
             else 
@@ -44,11 +44,27 @@ namespace Engine.Skills
                 //return a warning? you cannot level up any further
                 result = false;
             }
-            if(!isLevelUp)
+            if(!isLevelUp && Rank != 0)
             {
+                var currentSkillLevel = TotalSkillModifiers.Where(x => x.Id == Rank).FirstOrDefault();//finds the current aptidude
+                TotalSkillModifiers.Remove(currentSkillLevel);//removes this
                 Rank -= 1;
+                TotalSkillModifiers.Add(World.GetSkillLevelsById(Rank));//Replace with the next level up.
+                //TotalSkillModifiers.Add(World.SkillLevelsList.FirstOrDefault(x => x.Id == Rank));
+                result = true;
             }
             return result;
+        }
+        public void SetRankToZero()
+        {
+            Rank = 0;
+            foreach (var mod in TotalSkillModifiers.ToList())
+            {
+                if(mod.ModType == "Rank" && mod.Id!=0)
+                {
+                    TotalSkillModifiers.Remove(mod);
+                }
+            }
         }
 
 

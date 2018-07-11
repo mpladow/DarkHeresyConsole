@@ -12,12 +12,14 @@ namespace Engine.Statistics
         public int Id { get; set; }
         public int Value { get; set; } //this is the public value that is constantly displayed
         public string Description { get; set; }
+        public string ModType { get; set; }
 
-        public SkillModifier(int id, int value = 0, string description = "")
+        public SkillModifier(int id, int value = 0, string description = "", string modtype = "" )
         {
             Id = id;
             Value = value;
             Description = description;
+            ModType = modtype;
         }
 
     }

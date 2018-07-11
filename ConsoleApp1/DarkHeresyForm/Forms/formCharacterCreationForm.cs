@@ -49,10 +49,6 @@ namespace DarkHeresyForm
             cboWeapons.DisplayMember = "Name";
         }
 
-        private void richTextBox1_TextChanged(object sender, EventArgs e)
-        {
-
-        }
 
         private void btnCloseForm2_Click(object sender, EventArgs e)
         {
@@ -86,6 +82,7 @@ namespace DarkHeresyForm
             {
                 cboHomeWorld.Enabled = false;
                 btnSelectHomeworld.Text = "Selected";
+                
             }
             else
             {
@@ -277,7 +274,6 @@ namespace DarkHeresyForm
                 var selection = cboBackground.SelectedItem;
                 Player.Background = (Background)selection;
 
-                Player.ResetPlayerStartingSkillLevels();
                 Player.SetPlayerStartingSkillsLevel();
 
                 rtbBackgroundText.Text = Player.Background.Description;

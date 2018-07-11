@@ -165,7 +165,6 @@ namespace Engine
                 }
             }
             this.Aptitudes.Add(HomeWorld.AptitudeBonus);
-
         }
 
 
@@ -178,20 +177,18 @@ namespace Engine
             totalSkills.AddRange(InteractionSkills);
             totalSkills.AddRange(CombatSkills);
 
+            foreach (var charSkill in totalSkills)
+            {
+                charSkill.ModifyRank(false);
+            }
+
             foreach (var bgSkill in Background.StartingSkills)
             {
                 foreach (var charSkill in totalSkills)
                 {
                     if (bgSkill.Name == charSkill.Name)
                     {
-                        if (charSkill.Rank >= 1)
-                        {
-                            charSkill.ModifyRank(false);
-                        }
-                        else
-                        {
-                            charSkill.ModifyRank(true);
-                        }
+                        charSkill.ModifyRank(true);
                     }
 
                 }
@@ -199,27 +196,6 @@ namespace Engine
 
             }
         }
-        public void ResetPlayerStartingSkillLevels()
-        {
-            var totalSkills = new List<SkillsWithRank>();
-            totalSkills.AddRange(MovementSkills);
-            totalSkills.AddRange(GeneralSkills);
-            totalSkills.AddRange(InteractionSkills);
-            totalSkills.AddRange(CombatSkills);
-            foreach (var charSkill in totalSkills)
-            {
-                charSkill.Rank = 0;
-                if(charSkill.TotalSkillModifiers.Count !=0)
-                {
-                    var modsToRemove = new List<SkillModifier>();
-                        foreach (var modifier in charSkill.TotalSkillModifiers)
-                        {
-                        modifer.
-                        }
-                    charSkill.TotalSkillModifiers.Remove;
-                   
-                }
-            }
-        }
+
     }
 }
